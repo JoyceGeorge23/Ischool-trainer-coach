@@ -1,0 +1,17 @@
+{
+  "name": "ischool-skills-chatbot",
+  "version": "1.0.0",
+  "description": "iSchool Skills Assistant Chatbot powered by Groq API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "localtunnel": "^2.0.2"
+  }
+}

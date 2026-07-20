@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="iSchool Skills Assistant - An intelligent chatbot for Teaching, Presentation, Communication, and Management Skills" />
+  <title>iSchool Trainer Coach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Animated background orbs -->
+  <div class="bg-orbs">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <div class="app-container">
+    <!-- Mobile header -->
+    <header class="mobile-header">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+        <span></span><span></span><span></span>
+      </button>
+      <h1 class="mobile-title">iSchool Trainer Coach</h1>
+    </header>
+
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-icon">🎓</div>
+          <div class="logo-text">
+            <h1>iSchool</h1>
+            <p>Trainer Coach</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="sidebar-content">
+        <p class="sidebar-label">Trainer Skills Framework</p>
+
+        <div class="skill-card" data-skill="teaching" id="card-teaching">
+          <div class="skill-icon">🎓</div>
+          <div class="skill-info">
+            <h3>Teaching Skills</h3>
+            <p>Learning Diagnosis, Instructional Adaptation, Cognitive Modeling</p>
+          </div>
+          <div class="skill-glow"></div>
+        </div>
+
+        <div class="skill-card" data-skill="presentation" id="card-presentation">
+          <div class="skill-icon">🎤</div>
+          <div class="skill-info">
+            <h3>Presentation Skills</h3>
+            <p>Structural Thinking, Framing, Verbal Control, Nonverbal Presence</p>
+          </div>
+          <div class="skill-glow"></div>
+        </div>
+
+        <div class="skill-card" data-skill="communication" id="card-communication">
+          <div class="skill-icon">💬</div>
+          <div class="skill-info">
+            <h3>Communication Skills</h3>
+            <p>Session-Based Framework, General Communication, Feedback</p>
+          </div>
+          <div class="skill-glow"></div>
+        </div>
+
+        <div class="skill-card" data-skill="management" id="card-management">
+          <div class="skill-icon">📋</div>
+          <div class="skill-info">
+            <h3>Management Skills</h3>
+            <p>Time Control, Session Flow, Adaptability, Accountability</p>
+          </div>
+          <div class="skill-glow"></div>
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <p>Powered by <strong>Groq AI</strong></p>
+      </div>
+    </aside>
+
+    <!-- Sidebar overlay for mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Main chat area -->
+    <main class="chat-main">
+      <div class="chat-header">
+        <div class="chat-header-info">
+          <div class="status-dot"></div>
+          <span>iSchool Trainer Coach</span>
+        </div>
+        <p class="chat-header-sub">Internal assistant to help iSchool tutors improve session delivery</p>
+      </div>
+
+      <div class="chat-messages" id="chatMessages">
+        <!-- Welcome message -->
+        <div class="message bot-message animate-in">
+          <div class="message-avatar">🤖</div>
+          <div class="message-content">
+            <div class="message-bubble">
+              <p>👋 <strong>Welcome!</strong></p>
+              <p>Hi, I'm iSchool Support. I help tutors with the trainer skills framework. Ask me about teaching, presentation, communication, or management skills — or just describe what happened in your session. I answer only from the official framework.</p>
+              <hr style="margin: 10px 0; border: 0; border-top: 1px solid var(--glass-border);">
+              <p dir="rtl" style="text-align: right;">أهلاً، أنا مساعد آي سكول. بساعد المدربين في إطار مهارات التدريب. اسألني عن مهارات التدريس، أو العرض والتقديم، أو التواصل، أو الإدارة — أو احكيلي بس اللي حصل في الحصة. بجاوب من الإطار الرسمي بس.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typing indicator (hidden by default) -->
+      <div class="typing-indicator" id="typingIndicator">
+        <div class="message-avatar">🤖</div>
+        <div class="typing-dots">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <!-- Input area -->
+      <div class="chat-input-area">
+        <div class="input-container">
+          <textarea
+            id="chatInput"
+            placeholder="Ask about Teaching, Presentation, Communication, or Management skills..."
+            rows="1"
+            aria-label="Type your message"
+          ></textarea>
+          <button class="send-btn" id="sendBtn" aria-label="Send message">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </div>
+        <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
