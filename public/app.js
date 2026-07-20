@@ -14,6 +14,7 @@
   const sidebarToggle = document.getElementById("sidebarToggle");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const skillCards = document.querySelectorAll(".skill-card");
+  const chatMain = document.querySelector(".chat-main");
 
   // ── State ───────────────────────────────────────────────────────
   let conversationHistory = [];
@@ -92,6 +93,19 @@
     return html;
   }
 
+  // ── Launch feedback ─────────────────────────────────────────────
+  // Retriggers cleanly on rapid sends by clearing the class first.
+  function playLaunch() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    sendBtn.classList.remove("launching");
+    void sendBtn.offsetWidth; // force reflow so the animation restarts
+    sendBtn.classList.add("launching");
+  }
+
+  sendBtn.addEventListener("animationend", () => {
+    sendBtn.classList.remove("launching");
+  });
+
   // ── Busy state ──────────────────────────────────────────────────
   // Every interactive control reflects the streaming state, so nothing
   // looks clickable while a response is in flight.
@@ -166,6 +180,7 @@
     // Clear input
     chatInput.value = "";
     chatInput.style.height = "auto";
+    playLaunch();
 
     // Detect language
     const userIsArabic = isArabic(userText);
@@ -328,6 +343,9 @@
       if (prompt && !isStreaming) {
         skillCards.forEach((c) => c.removeAttribute("aria-current"));
         card.setAttribute("aria-current", "true");
+        // Propagate the discipline to the chat surface so the header rule,
+        // reply borders and headings all resolve to that hue.
+        chatMain.dataset.skill = skill;
         sendMessage(prompt);
 
         // Close sidebar on mobile

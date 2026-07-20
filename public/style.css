@@ -50,6 +50,36 @@
 
   --focus-ring: #05acff;
 
+  /* ── Discipline colours ────────────────────────────────────────────
+     Each of the four skills owns one brand hue, used consistently as
+     wayfinding: sidebar row, active chat topic, and reply accent.
+
+     Two tones per hue, because the manual's vivid primaries cannot
+     carry white text — #FFD700 on white is 1.40:1, #FF7F1C is 2.53:1.
+     `-ink` is the darkened, AA-safe tone for text, glyphs and fills.
+     `-vivid` is the true brand tone, used only as graphics: glow,
+     accent rules and the icon-tile wash. Never behind white text.     */
+  --teaching-ink: #0563d6;
+  --teaching-tint: #e8f1fe;
+  --teaching-vivid: #056fec;
+
+  --presentation-ink: #a64f0d;
+  --presentation-tint: #fef1e7;
+  --presentation-vivid: #ff7f1c;
+
+  --communication-ink: #0270a8;
+  --communication-tint: #e6f6fe;
+  --communication-vivid: #05acff;
+
+  --management-ink: #7a5700;
+  --management-tint: #fff8e0;
+  --management-vivid: #ffd700;
+
+  /* Resolved per row / per surface via [data-skill] */
+  --skill-ink: var(--action);
+  --skill-tint: var(--surface-panel);
+  --skill-vivid: var(--brand-blue);
+
   --danger: #b42318;
   --danger-surface: #fef3f2;
   --danger-border: #fecdc9;
@@ -71,7 +101,9 @@
   --z-header: 50;
 
   /* Product motion: 150–250ms, state only */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo — confident */
+  --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --t-instant: 90ms var(--ease-out); /* under the ~80ms perception floor */
   --t-fast: 150ms var(--ease-out);
   --t-base: 220ms var(--ease-out);
 
@@ -244,12 +276,48 @@ body {
   gap: 2px;
 }
 
+/* Sibling stagger across four rows — 4 × 45ms = 180ms total, well inside
+   the budget. Rows are visible by default; the animation only offsets
+   them, so nothing is gated behind a transition that might not fire. */
+.skill-list li {
+  animation: rowIn 300ms var(--ease-out) backwards;
+  animation-delay: calc(var(--i, 0) * 45ms);
+}
+
+@keyframes rowIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Each row resolves the shared skill tokens to its own hue. */
+[data-skill="teaching"] {
+  --skill-ink: var(--teaching-ink);
+  --skill-tint: var(--teaching-tint);
+  --skill-vivid: var(--teaching-vivid);
+}
+[data-skill="presentation"] {
+  --skill-ink: var(--presentation-ink);
+  --skill-tint: var(--presentation-tint);
+  --skill-vivid: var(--presentation-vivid);
+}
+[data-skill="communication"] {
+  --skill-ink: var(--communication-ink);
+  --skill-tint: var(--communication-tint);
+  --skill-vivid: var(--communication-vivid);
+}
+[data-skill="management"] {
+  --skill-ink: var(--management-ink);
+  --skill-tint: var(--management-tint);
+  --skill-vivid: var(--management-vivid);
+}
+
 .skill-card {
+  position: relative;
   width: 100%;
   display: flex;
   align-items: center;
   gap: 11px;
-  padding: 10px 10px;
+  padding: 10px;
   background: none;
   border: 1px solid transparent;
   border-radius: var(--radius-md);
@@ -257,25 +325,54 @@ body {
   text-align: left;
   font: inherit;
   color: var(--ink);
-  transition: background var(--t-fast), border-color var(--t-fast);
+  overflow: hidden;
+  transition: border-color var(--t-fast), transform var(--t-fast);
+}
+
+/* The hover wash is a pseudo-element scaling from the left edge, so the
+   colour arrives as a sweep rather than a flat background swap. Uses
+   transform, so it never triggers layout. */
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--skill-tint);
+  border-radius: inherit;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform var(--t-base);
+  z-index: 0;
+}
+
+.skill-card:hover:not(:disabled)::before,
+.skill-card:focus-visible::before,
+.skill-card[aria-current="true"]::before {
+  transform: scaleX(1);
+}
+
+.skill-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .skill-card:hover:not(:disabled) {
-  background: var(--surface-hover);
+  border-color: color-mix(in srgb, var(--skill-vivid) 34%, transparent);
 }
 
 .skill-card:active:not(:disabled) {
-  background: var(--surface-active);
+  transform: scale(0.985);
 }
 
 .skill-card[aria-current="true"] {
-  background: var(--surface);
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-sm);
+  border-color: color-mix(in srgb, var(--skill-vivid) 46%, transparent);
+}
+
+.skill-card[aria-current="true"] .skill-info h3 {
+  color: var(--skill-ink);
 }
 
 .skill-card:disabled {
-  opacity: 0.55;
+  opacity: 0.5;
   cursor: not-allowed;
 }
 
@@ -288,18 +385,44 @@ body {
   border-radius: var(--radius-sm);
   background: var(--surface);
   border: 1px solid var(--border);
-  color: var(--action-quiet);
+  color: var(--skill-ink);
+  transition: background var(--t-fast), color var(--t-fast),
+    border-color var(--t-fast), box-shadow var(--t-base);
 }
 
 .skill-icon svg {
   width: 17px;
   height: 17px;
+  transition: transform var(--t-base);
 }
 
-/* Each discipline carries one brand hue — used as identity, not decoration */
-.skill-card[data-skill="presentation"] .skill-icon { color: var(--brand-orange-deep); }
-.skill-card[data-skill="communication"] .skill-icon { color: var(--brand-blue-light); }
-.skill-card[data-skill="management"] .skill-icon { color: var(--brand-orange); }
+/* On hover the tile inverts into its own hue and picks up a glow in the
+   true brand tone. White glyph on --skill-ink is AA in all four hues. */
+.skill-card:hover:not(:disabled) .skill-icon,
+.skill-card:focus-visible .skill-icon,
+.skill-card[aria-current="true"] .skill-icon {
+  background: var(--skill-ink);
+  border-color: var(--skill-ink);
+  color: #ffffff;
+  box-shadow: 0 4px 14px color-mix(in srgb, var(--skill-vivid) 42%, transparent);
+}
+
+/* The mortarboard nudges up, the screen glows, the chat bubble tilts,
+   the clock hand sweeps — each icon moves the way its subject moves. */
+.skill-card:hover:not(:disabled) [data-skill-icon="teaching"] {
+  transform: translateY(-2px);
+}
+.skill-card:hover:not(:disabled) [data-skill-icon="presentation"] {
+  transform: scale(1.08);
+}
+.skill-card:hover:not(:disabled) [data-skill-icon="communication"] {
+  transform: rotate(-6deg);
+}
+.skill-card:hover:not(:disabled) [data-skill-icon="management"] .clock-hand {
+  transform-origin: 12px 12px;
+  transform: rotate(90deg);
+  transition: transform 420ms var(--ease-quart);
+}
 
 .skill-info h3 {
   font-size: 0.8125rem;
@@ -350,6 +473,7 @@ body {
 }
 
 .chat-header {
+  position: relative;
   height: var(--header-height);
   min-height: var(--header-height);
   display: flex;
@@ -358,6 +482,24 @@ body {
   padding: 0 28px;
   background: var(--surface);
   border-bottom: 1px solid var(--border);
+}
+
+/* The header underline picks up the active discipline's colour and wipes
+   across when the topic changes — the one place the four hues meet, and a
+   genuine state readout rather than decoration. */
+.chat-header::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 -1px 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--skill-vivid), color-mix(in srgb, var(--skill-vivid) 25%, transparent));
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 420ms var(--ease-quart), background var(--t-base);
+}
+
+.chat-main[data-skill] .chat-header::after {
+  transform: scaleX(1);
 }
 
 .chat-header-info {
@@ -370,11 +512,27 @@ body {
 }
 
 .status-dot {
+  position: relative;
   width: 7px;
   height: 7px;
   background: var(--success);
   border-radius: 50%;
   flex-shrink: 0;
+}
+
+/* A slow halo, not a blink — signals "live" without pulling the eye. */
+.status-dot::after {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: 50%;
+  border: 1.5px solid var(--success);
+  animation: halo 2.6s var(--ease-out) infinite;
+}
+
+@keyframes halo {
+  0% { opacity: 0.55; transform: scale(0.7); }
+  70%, 100% { opacity: 0; transform: scale(1.5); }
 }
 
 .chat-header-sub {
@@ -464,6 +622,21 @@ body {
   border-top-left-radius: var(--radius-sm);
   color: var(--ink);
   box-shadow: var(--shadow-sm);
+  transition: border-color var(--t-base);
+}
+
+/* A reply given under an active discipline borders in that hue — a full
+   hairline on the whole perimeter, never a side stripe. */
+.chat-main[data-skill] .bot-message .message-bubble {
+  border-color: color-mix(in srgb, var(--skill-vivid) 38%, var(--border));
+}
+
+.chat-main[data-skill] .bot-message .message-bubble h3 {
+  color: var(--skill-ink);
+}
+
+.chat-main[data-skill] .bot-message .message-avatar {
+  border-color: color-mix(in srgb, var(--skill-vivid) 45%, var(--border));
 }
 
 .user-message .message-bubble {
@@ -559,16 +732,18 @@ body {
   box-shadow: var(--shadow-sm);
 }
 
+/* The three dots carry the three brand primaries in order. Purely a
+   waiting state, but it makes the pause feel like iSchool. */
 .typing-dots span {
   width: 6px;
   height: 6px;
-  background: var(--ink-muted);
   border-radius: 50%;
   animation: typingPulse 1.3s var(--ease-out) infinite;
 }
 
-.typing-dots span:nth-child(2) { animation-delay: 0.15s; }
-.typing-dots span:nth-child(3) { animation-delay: 0.3s; }
+.typing-dots span:nth-child(1) { background: var(--brand-blue); }
+.typing-dots span:nth-child(2) { background: var(--brand-orange); animation-delay: 0.15s; }
+.typing-dots span:nth-child(3) { background: var(--brand-gold-deep); animation-delay: 0.3s; }
 
 @keyframes typingPulse {
   0%, 60%, 100% { opacity: 0.35; }
@@ -619,6 +794,7 @@ body {
 }
 
 .send-btn {
+  position: relative;
   width: 38px;
   height: 38px;
   min-width: 38px;
@@ -629,11 +805,57 @@ body {
   cursor: pointer;
   display: grid;
   place-items: center;
-  transition: background var(--t-fast), transform var(--t-fast);
+  overflow: hidden;
+  transition: background var(--t-fast), transform var(--t-fast),
+    box-shadow var(--t-base);
 }
 
-.send-btn:hover:not(:disabled) { background: var(--action-hover); }
-.send-btn:active:not(:disabled) { background: var(--action-active); transform: scale(0.96); }
+.send-btn svg {
+  transition: transform var(--t-fast);
+}
+
+.send-btn:hover:not(:disabled) {
+  background: var(--action-hover);
+  box-shadow: 0 4px 16px color-mix(in srgb, var(--brand-blue) 45%, transparent);
+}
+
+.send-btn:hover:not(:disabled) svg {
+  transform: translate(1px, -1px);
+}
+
+.send-btn:active:not(:disabled) {
+  background: var(--action-active);
+  transform: scale(0.94);
+}
+
+/* Launch: the manual describes the dot of the "i" as a rocket, so sending
+   a message flies the glyph out and brings a fresh one back in. Fires once
+   per send via a class, not on hover, so it stays a reward for the action. */
+.send-btn.launching svg {
+  animation: launch 460ms var(--ease-out);
+}
+
+@keyframes launch {
+  0% { transform: none; opacity: 1; }
+  40% { transform: translate(14px, -14px) scale(0.85); opacity: 0; }
+  41% { transform: translate(-12px, 12px) scale(0.85); opacity: 0; }
+  100% { transform: none; opacity: 1; }
+}
+
+/* Exhaust trail — a brand-gold flare that expands and fades behind it. */
+.send-btn.launching::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 70%, var(--brand-gold), transparent 62%);
+  animation: exhaust 460ms var(--ease-out);
+  pointer-events: none;
+}
+
+@keyframes exhaust {
+  0% { opacity: 0.75; transform: scale(0.4); }
+  100% { opacity: 0; transform: scale(1.5); }
+}
 
 .send-btn:disabled {
   background: var(--border-strong);
@@ -715,8 +937,36 @@ body {
 
   .typing-dots span {
     animation: none;
-    opacity: 0.7;
+    opacity: 0.8;
   }
 
   .sidebar { transition: none; }
+
+  /* Colour still communicates; only the movement is removed. The washes
+     and accent rules snap to their end state instead of sweeping. */
+  .skill-card::before,
+  .chat-header::after {
+    transition: none;
+  }
+
+  .skill-list li {
+    animation: none;
+  }
+
+  .status-dot::after {
+    animation: none;
+    opacity: 0;
+  }
+
+  .send-btn.launching svg,
+  .send-btn.launching::after {
+    animation: none;
+  }
+
+  .send-btn.launching::after { content: none; }
+
+  .skill-card:hover:not(:disabled) .skill-icon svg,
+  .skill-card:hover:not(:disabled) [data-skill-icon] {
+    transform: none;
+  }
 }
