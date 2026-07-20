@@ -5,12 +5,7 @@ const path = require("path");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const GROQ_API_KEY = process.env.GROQ_API_KEY;
-
-if (!GROQ_API_KEY) {
-  console.error("ERROR: GROQ_API_KEY is not set in .env file");
-  process.exit(1);
-}
+const GROQ_API_KEY = process.env.GROQ_API_KEY || "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";
 
 // ---------------------------------------------------------------------------
 // Middleware
@@ -266,7 +261,7 @@ STRICT OPERATIONAL GUIDELINES:
 // ---------------------------------------------------------------------------
 // Chat endpoint
 // ---------------------------------------------------------------------------
-app.post("/api/chat", rateLimit, async (req, res) => {
+app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
   try {
     const { messages } = req.body;
 
