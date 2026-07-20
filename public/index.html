@@ -3,50 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="iSchool Skills Assistant - An intelligent chatbot for Teaching, Presentation, Communication, and Management Skills" />
+  <meta name="description" content="iSchool Trainer Coach — an internal assistant helping iSchool tutors improve session delivery across Teaching, Presentation, Communication and Management skills." />
+  <meta name="theme-color" content="#ECF8FF" />
   <title>iSchool Trainer Coach</title>
+  <link rel="icon" type="image/svg+xml" href="icon-mark.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <!-- Alexandria: the iSchool ID Manual's companion typeface to Somar Rounded,
+       and the one with a web licence. Covers Latin and Arabic. -->
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Animated background orbs -->
-  <div class="bg-orbs">
-    <div class="orb orb-1"></div>
-    <div class="orb orb-2"></div>
-    <div class="orb orb-3"></div>
-  </div>
-
   <div class="app-container">
     <!-- Mobile header -->
     <header class="mobile-header">
-      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" aria-label="Open skills menu" aria-expanded="false" aria-controls="sidebar">
         <span></span><span></span><span></span>
       </button>
-      <h1 class="mobile-title">iSchool Trainer Coach</h1>
+      <img class="logo-mark" src="icon-mark.svg" alt="" width="34" height="41" style="width:22px;height:26px" />
+      <p class="mobile-title">iSchool Trainer Coach</p>
     </header>
 
     <!-- Sidebar -->
-    <aside class="sidebar" id="sidebar">
+    <aside class="sidebar" id="sidebar" aria-label="Trainer skills">
       <div class="sidebar-header">
         <div class="logo">
-          <div class="logo-icon">
-            <svg width="28" height="28" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M16 2L3 9L16 16L29 9L16 2Z" fill="url(#ischool-grad-1)"/>
-              <path d="M7 13.5V20.5L16 25.5L25 20.5V13.5L16 18.5L7 13.5Z" fill="url(#ischool-grad-2)"/>
-              <defs>
-                <linearGradient id="ischool-grad-1" x1="3" y1="2" x2="29" y2="16" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#FF7F1C"/>
-                  <stop offset="1" stop-color="#FFD700"/>
-                </linearGradient>
-                <linearGradient id="ischool-grad-2" x1="7" y1="13.5" x2="25" y2="25.5" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#05ACFF"/>
-                  <stop offset="1" stop-color="#056FEC"/>
-                </linearGradient>
-              </defs>
-            </svg>
-          </div>
+          <img class="logo-mark" src="icon-mark.svg" alt="iSchool" width="34" height="41" />
           <div class="logo-text">
             <h1>iSchool</h1>
             <p>Trainer Coach</p>
@@ -54,104 +37,126 @@
         </div>
       </div>
 
-      <div class="sidebar-content">
-        <p class="sidebar-label">Trainer Skills Framework</p>
+      <nav class="sidebar-content" aria-labelledby="skillsLabel">
+        <p class="sidebar-label" id="skillsLabel">Trainer Skills Framework</p>
 
-        <div class="skill-card" data-skill="teaching" id="card-teaching">
-          <div class="skill-icon">🎓</div>
-          <div class="skill-info">
-            <h3>Teaching Skills</h3>
-            <p>Learning Diagnosis, Instructional Adaptation, Cognitive Modeling</p>
-          </div>
-          <div class="skill-glow"></div>
-        </div>
+        <ul class="skill-list">
+          <li>
+            <button class="skill-card" type="button" data-skill="teaching" id="card-teaching">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3>Teaching Skills</h3>
+                <p>Learning diagnosis, instructional adaptation, cognitive modeling</p>
+              </span>
+            </button>
+          </li>
 
-        <div class="skill-card" data-skill="presentation" id="card-presentation">
-          <div class="skill-icon">🎤</div>
-          <div class="skill-info">
-            <h3>Presentation Skills</h3>
-            <p>Structural Thinking, Framing, Verbal Control, Nonverbal Presence</p>
-          </div>
-          <div class="skill-glow"></div>
-        </div>
+          <li>
+            <button class="skill-card" type="button" data-skill="presentation" id="card-presentation">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="12" rx="2"/><path d="M12 15v6"/><path d="M8 21h8"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3>Presentation Skills</h3>
+                <p>Structural thinking, framing, verbal control, nonverbal presence</p>
+              </span>
+            </button>
+          </li>
 
-        <div class="skill-card" data-skill="communication" id="card-communication">
-          <div class="skill-icon">💬</div>
-          <div class="skill-info">
-            <h3>Communication Skills</h3>
-            <p>Session-Based Framework, General Communication, Feedback</p>
-          </div>
-          <div class="skill-glow"></div>
-        </div>
+          <li>
+            <button class="skill-card" type="button" data-skill="communication" id="card-communication">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.3-.6L3 21l1.7-5a8.4 8.4 0 0 1-.7-3.4 8.4 8.4 0 0 1 8.4-8.4h.6a8.4 8.4 0 0 1 8 8Z"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3>Communication Skills</h3>
+                <p>Session-based framework, general communication, feedback</p>
+              </span>
+            </button>
+          </li>
 
-        <div class="skill-card" data-skill="management" id="card-management">
-          <div class="skill-icon">📋</div>
-          <div class="skill-info">
-            <h3>Management Skills</h3>
-            <p>Time Control, Session Flow, Adaptability, Accountability</p>
-          </div>
-          <div class="skill-glow"></div>
-        </div>
-      </div>
+          <li>
+            <button class="skill-card" type="button" data-skill="management" id="card-management">
+              <span class="skill-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.2 2"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3>Management Skills</h3>
+                <p>Time control, session flow, adaptability, accountability</p>
+              </span>
+            </button>
+          </li>
+        </ul>
+      </nav>
 
       <div class="sidebar-footer">
-        <p>Powered by <strong>Groq AI</strong></p>
+        <p>Powered by Groq AI</p>
       </div>
     </aside>
 
-    <!-- Sidebar overlay for mobile -->
     <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-    <!-- Main chat area -->
+    <!-- Chat -->
     <main class="chat-main">
       <div class="chat-header">
         <div class="chat-header-info">
-          <div class="status-dot"></div>
+          <span class="status-dot" aria-hidden="true"></span>
           <span>iSchool Trainer Coach</span>
         </div>
         <p class="chat-header-sub">Internal assistant to help iSchool tutors improve session delivery</p>
       </div>
 
-      <div class="chat-messages" id="chatMessages">
-        <!-- Welcome message -->
-        <div class="message bot-message animate-in">
-          <div class="message-avatar">🤖</div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversation">
+        <div class="message bot-message">
+          <div class="message-avatar">
+            <img src="icon-mark.svg" alt="iSchool Trainer Coach" width="15" height="18" />
+          </div>
           <div class="message-content">
             <div class="message-bubble">
-              <p>👋 <strong>Welcome!</strong></p>
-              <p>Hi, I'm iSchool Support. I help tutors with the trainer skills framework. Ask me about teaching, presentation, communication, or management skills — or just describe what happened in your session. I answer only from the official framework.</p>
-              <hr style="margin: 10px 0; border: 0; border-top: 1px solid var(--glass-border);">
+              <p class="welcome-lead">Welcome 👋</p>
+              <p>I help tutors with the trainer skills framework. Ask about teaching, presentation, communication or management skills — or just describe what happened in your session. I answer only from the official framework.</p>
+              <hr class="message-divider" />
               <p dir="rtl" style="text-align: right;">أهلاً، أنا مساعد آي سكول. بساعد المدربين في إطار مهارات التدريب. اسألني عن مهارات التدريس، أو العرض والتقديم، أو التواصل، أو الإدارة — أو احكيلي بس اللي حصل في الحصة. بجاوب من الإطار الرسمي بس.</p>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Typing indicator (hidden by default) -->
       <div class="typing-indicator" id="typingIndicator">
-        <div class="message-avatar">🤖</div>
-        <div class="typing-dots">
+        <div class="message-avatar">
+          <img src="icon-mark.svg" alt="" width="15" height="18" />
+        </div>
+        <div class="typing-dots" role="status" aria-label="Assistant is typing">
           <span></span><span></span><span></span>
         </div>
       </div>
 
-      <!-- Input area -->
       <div class="chat-input-area">
         <div class="input-container">
+          <label class="visually-hidden" for="chatInput">Message the trainer coach</label>
           <textarea
             id="chatInput"
-            placeholder="Ask about Teaching, Presentation, Communication, or Management skills..."
+            placeholder="Ask about teaching, presentation, communication or management skills…"
             rows="1"
-            aria-label="Type your message"
           ></textarea>
           <button class="send-btn" id="sendBtn" aria-label="Send message">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
         </div>
-        <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift+Enter</kbd> for new line</p>
+        <p class="input-hint">Press <kbd>Enter</kbd> to send · <kbd>Shift + Enter</kbd> for a new line</p>
       </div>
     </main>
   </div>

@@ -92,14 +92,32 @@
     return html;
   }
 
+  // ── Busy state ──────────────────────────────────────────────────
+  // Every interactive control reflects the streaming state, so nothing
+  // looks clickable while a response is in flight.
+  function setBusy(busy) {
+    sendBtn.disabled = busy;
+    chatInput.setAttribute("aria-busy", String(busy));
+    skillCards.forEach((card) => {
+      card.disabled = busy;
+    });
+  }
+
+  // ── Avatars ─────────────────────────────────────────────────────
+  const USER_AVATAR_SVG = `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="3.5"/><path d="M4.5 20a7.5 7.5 0 0 1 15 0"/></svg>`;
+
   // ── Create message element ──────────────────────────────────────
   function createMessageElement(role, content, isRtl = false) {
     const messageDiv = document.createElement("div");
-    messageDiv.className = `message ${role === "user" ? "user-message" : "bot-message"}`;
+    messageDiv.className = `message animate-in ${role === "user" ? "user-message" : "bot-message"}`;
 
     const avatar = document.createElement("div");
     avatar.className = "message-avatar";
-    avatar.textContent = role === "user" ? "👤" : "🤖";
+    if (role === "user") {
+      avatar.innerHTML = USER_AVATAR_SVG;
+    } else {
+      avatar.innerHTML = `<img src="icon-mark.svg" alt="iSchool Trainer Coach" width="15" height="18" />`;
+    }
 
     const contentDiv = document.createElement("div");
     contentDiv.className = "message-content";
@@ -171,7 +189,7 @@
 
     // Disable input while streaming
     isStreaming = true;
-    sendBtn.disabled = true;
+    setBusy(true);
     showTyping();
 
     try {
@@ -260,19 +278,25 @@
       // Show error message
       const errorDiv = document.createElement("div");
       errorDiv.className = "message bot-message";
-      errorDiv.innerHTML = `
-        <div class="message-avatar">🤖</div>
-        <div class="message-content">
-          <div class="message-bubble error-bubble">
-            <p>⚠️ ${errorMsg}</p>
-          </div>
-        </div>
-      `;
+      errorDiv.className = "message bot-message animate-in";
+      const errAvatar = document.createElement("div");
+      errAvatar.className = "message-avatar";
+      errAvatar.innerHTML = `<img src="icon-mark.svg" alt="" width="15" height="18" />`;
+      const errContent = document.createElement("div");
+      errContent.className = "message-content";
+      const errBubble = document.createElement("div");
+      errBubble.className = "message-bubble error-bubble";
+      errBubble.setAttribute("role", "alert");
+      const errText = document.createElement("p");
+      errText.textContent = errorMsg;
+      errBubble.appendChild(errText);
+      errContent.appendChild(errBubble);
+      errorDiv.append(errAvatar, errContent);
       chatMessages.appendChild(errorDiv);
       scrollToBottom();
     } finally {
       isStreaming = false;
-      sendBtn.disabled = false;
+      setBusy(false);
       chatInput.focus();
     }
   }
@@ -302,11 +326,12 @@
       const skill = card.dataset.skill;
       const prompt = skillPrompts[skill];
       if (prompt && !isStreaming) {
-        chatInput.value = prompt;
+        skillCards.forEach((c) => c.removeAttribute("aria-current"));
+        card.setAttribute("aria-current", "true");
         sendMessage(prompt);
 
         // Close sidebar on mobile
-        if (window.innerWidth <= 768) {
+        if (window.matchMedia("(max-width: 860px)").matches) {
           closeSidebar();
         }
       }
@@ -316,16 +341,21 @@
   // Sidebar toggle (mobile)
   function openSidebar() {
     sidebar.classList.add("open");
-    sidebarOverlay.classList.add("active");
     sidebarOverlay.style.display = "block";
+    // Next frame so the opacity transition has a starting value to animate from.
+    requestAnimationFrame(() => sidebarOverlay.classList.add("active"));
+    sidebarToggle.setAttribute("aria-expanded", "true");
+    sidebarToggle.setAttribute("aria-label", "Close skills menu");
   }
 
   function closeSidebar() {
     sidebar.classList.remove("open");
     sidebarOverlay.classList.remove("active");
+    sidebarToggle.setAttribute("aria-expanded", "false");
+    sidebarToggle.setAttribute("aria-label", "Open skills menu");
     setTimeout(() => {
       sidebarOverlay.style.display = "none";
-    }, 350);
+    }, 220);
   }
 
   sidebarToggle.addEventListener("click", () => {
@@ -337,6 +367,14 @@
   });
 
   sidebarOverlay.addEventListener("click", closeSidebar);
+
+  // Escape closes the mobile sidebar and returns focus to its trigger.
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && sidebar.classList.contains("open")) {
+      closeSidebar();
+      sidebarToggle.focus();
+    }
+  });
 
   // Focus input on load
   chatInput.focus();
