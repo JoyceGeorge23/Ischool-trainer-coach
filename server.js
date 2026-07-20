@@ -384,8 +384,12 @@ app.post("/api/chat", rateLimit, async (req, res) => {
 // ---------------------------------------------------------------------------
 // Start server
 // ---------------------------------------------------------------------------
-app.listen(PORT, "0.0.0.0", () => {
-  console.log(`\n🚀 iSchool Skills Chatbot is running!`);
-  console.log(`   Local:   http://localhost:${PORT}`);
-  console.log(`   Network: http://0.0.0.0:${PORT}  (use your IP address)\n`);
-});
+if (require.main === module) {
+  app.listen(PORT, "0.0.0.0", () => {
+    console.log(`\n🚀 iSchool Skills Chatbot is running!`);
+    console.log(`   Local:   http://localhost:${PORT}`);
+    console.log(`   Network: http://0.0.0.0:${PORT}  (use your IP address)\n`);
+  });
+}
+
+module.exports = app;
