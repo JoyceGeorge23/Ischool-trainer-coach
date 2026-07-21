@@ -1,0 +1,114 @@
+=== 1. TEACHING SKILLS ===
+
+Teaching Skills is divided into 3 main categories:
+
+A) Learning Diagnosis Skill:
+   1. Misconception Detection – Identifying incorrect understandings or beliefs held by the learner.
+   2. Depth Recognition – Assessing how deeply the learner understands a concept.
+   3. Gap Identification – Finding missing prerequisites that the learner needs but doesn't have.
+
+B) Instructional Adaptation Skill:
+   1. Complexity Adjustment – Modifying the difficulty level of content based on the learner's ability.
+   2. Support Calibration (Level of Guidance) – Adjusting how much guidance and support is given.
+   3. Pace Adjustment – Changing the speed of instruction to match the learner's needs.
+   4. Strategy Flexibility – Being able to switch between different teaching strategies.
+
+C) Cognitive Modeling Skill:
+   1. Concept Structuring – Building mental model clarity by linking abstract concepts to known ideas.
+   2. Error Analysis Modeling – Corrective thinking where mistakes are dissected constructively.
+   3. Schema Activation – Knowledge integration where prior knowledge is connected to new concepts.
+
+=== 2. PRESENTATION SKILLS ===
+
+Presentation Skills is divided into 4 main categories:
+
+A) Structural Thinking:
+   1. Logical Sequencing – Order of ideas presented logically.
+   2. Visible Structure (Orientation) – Clear orientation and outline of the presentation.
+   3. Clear Transitions – Smooth shifts between points.
+   4. Cognitive Chunking – Grouping points into manageable parts.
+
+B) Framing & Positioning:
+   1. Relevance Activation – Audience motivation by stating why the topic matters.
+   2. Context Positioning – Linking the idea to the bigger picture.
+   3. Outcome Clarity – Defining what the learner will achieve.
+   4. Storytelling & Curiosity – Creating interest through stories and curiosity.
+
+C) Verbal Control:
+   1. Pace Management (Attention Stability) – Controlling speed to maintain attention.
+   2. Strategic Pauses – Using pauses effectively for emphasis.
+   3. Emphasis Control – Highlighting important words to help in meaning clarity.
+   4. Tone Control – Using appropriate vocal tone.
+
+D) Visual & Nonverbal Presence:
+   1. Professional Setting – Credibility, mainly about the environment.
+   2. Camera Level – Bonding with the listener through eye-level camera positioning.
+   3. Posture Stability – Minimal unnecessary movement.
+   4. Gesture Discipline – Controlled and purposeful hand gestures.
+
+=== 3. COMMUNICATION SKILLS ===
+
+Communication Skills is divided into 2 main categories:
+
+A) Session-Based Communication Framework:
+   1. Relational Initiation (Icebreaking):
+      - Set social connection
+      - Engagement Priming (student interaction increases early)
+      - Different ice breaking activities
+   2. Active Listening:
+      - Meaning Verification to control the accuracy of understanding
+      - Clarification Loop to control misinterpretation prevention
+      - Emotional Signal Detection (Tutor adjusts based on cues)
+   3. Encouragement Framing:
+      - Process Reinforcement
+      - Balanced Motivation
+      - Participation Reinforcement
+   4. Emotional Regulation:
+      - Reaction Control
+      - Stability in tense moments
+   5. Constructive Correction:
+      - Behavior-Focused Feedback (correction references action not identity)
+      - Clarity in correct mistake with encouragement
+      - Forward Guidance (clear next step provided)
+
+B) General Communication:
+   1. Professional Written Communication:
+      - Professional Written Communication (clear purpose identified)
+      - Structured Format
+      - Specific action needed (clear request or outcome stated)
+   2. Tone Management in Text:
+      - Neutral Language Control (avoid use for local phrasing)
+   3. Feedback Reports:
+      - Evidence-Based Observation
+      - Balanced Framing
+      - Actionable Recommendation
+   4. Professional Communication with Peers:
+      - Respectful Disagreement (Opinion expressed without attack)
+      - Clarification Before Assumption/Escalation (Questions asked before reacting)
+      - Escalation Discipline (Proper conflict routing, issues follow protocol)
+
+=== 4. MANAGEMENT SKILLS ===
+
+Management Skills is divided into 4 main categories:
+
+A) Time & Priority Control:
+   1. Task Prioritization Discipline – High-impact tasks handled first, not just inside the session.
+   2. Time Allocation Control – Proper distribution of time across tasks.
+   3. Deadline Adherence – Meeting deadlines consistently.
+
+B) Session Flow Control:
+   1. Session Rhythm Stability – No long idle gaps or rushed endings.
+   2. Transition Timing – Smooth progression without delay.
+   3. Distraction Management – Interruptions handled quickly.
+
+C) Adaptability & Problem-Solving:
+   1. Technical Response Stability – Tech issues handled calmly.
+   2. Plan Adjustment Discipline – Modified plan still aligned with goal.
+   3. Decision Control Under Pressure – Structured choice-making under stress.
+   4. Reset Control – Recovery after disruption.
+
+D) Accountability & Reliability:
+   1. Commitment Fulfillment – To control professional trust.
+   2. Reporting Accuracy – Clear and fact-based reporting.
+   3. Protocol Adherence – Guidelines followed properly.
+   4. Performance Self-Monitoring – Continuous improvement tracking.

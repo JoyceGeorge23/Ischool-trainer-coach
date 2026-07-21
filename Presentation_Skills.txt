@@ -1,0 +1,704 @@
+Soft Skills
+Presentation
+Skills
+
+-- 1 of 58 --
+
+Structure ideas clearly
+Deliver them with controlled energy
+Maintain attention and credibility
+This applies everywhere:
+Classroom
+Meeting room
+Interview
+Online session
+Presentation Skills
+are the ability toPresentation
+Skills
+
+-- 2 of 58 --
+
+Core Components
+Presentation
+Skills
+Structural Thinking
+Visual & Nonverbal Presence
+Verbal Control
+Framing & Positioning
+
+-- 3 of 58 --
+
+Five minutes later Tutor:
+“Okay, so what is a parameter?”
+Failure Scenario
+Tutor starts:
+A function is a block of code that can take variables and return values.
+Parameters are variables passed into a function and you can define them
+inside parentheses and…
+Students:
+“It’s a variable inside the function.”
+
+-- 4 of 58 --
+
+What Went
+Wrong?
+
+-- 5 of 58 --
+
+let's
+Analyze
+What Went Wrong?
+No reason for needing functions.
+Parameter was defined before its purpose was
+clear.
+Variable vs parameter distinction not isolated.
+Too many features introduced at once.
+The student memorized position (“inside
+parentheses”) not role.
+
+-- 6 of 58 --
+
+What Was Missing?❌ No Final Clarity Defined
+The tutor didn’t know what students should clearly
+understand at the end.
+❌ No Core Concept Anchor
+There was no simple sentence defining the main idea.
+❌ No Layered Order
+The explanation is not organized in a proper way
+
+-- 7 of 58 --
+
+Presentation
+Skills-Structural
+Thinking
+is the ability to organize content in a
+way that mirrors how the brain builds
+understanding.
+
+-- 8 of 58 --
+
+PURPOSE OF
+Structural ThinkingThe brain sees WHY before HOW.
+The mechanism is understood before
+vocabulary.
+Complexity is layered
+Students encode decision logic, not
+features.
+Structural Thinking ensures:
+
+-- 9 of 58 --
+
+Methods to Master
+Structural Thinking
+Reverse Outcome Design Drill
+The One-Core-Sentence Rule
+3-Layer Planning
+
+-- 10 of 58 --
+
+Structural Thinking
+Method 1 -
+Reverse Outcome
+Design Drill
+
+-- 11 of 58 --
+
+Reverse Outcome
+Design Drill
+How to Apply Reverse
+Outcome Design
+Step 1: Define the Final Clarity
+Ask:
+“If they remember only one thing, what should it be?”
+Example (Function):
+“They should know that functions exist to avoid
+repetition.”
+This is your anchor. Everything must serve this
+idea.
+
+-- 12 of 58 --
+
+Reverse Outcome
+Design Drill
+How to Apply Reverse
+Outcome Design
+Step 2: Identify the Key Confusion to Prevent
+Ask:
+“What likely misunderstanding could weaken this
+clarity?”
+Example (Function):
+“They might think functions must always take
+parameters.”
+Now your structure has direction:
+You are intentionally guiding them from confusion to clarity.
+
+-- 13 of 58 --
+
+Step 3: Define the Proof of Clarity
+Ask:
+“How will I know they truly understood?”
+Example (Function):
+“Can they explain why they would use a function
+instead of rewriting code?”
+This ensures your session leads to a clear outcome
+Reverse Outcome
+Design Drill
+How to Apply Reverse
+Outcome Design
+
+-- 14 of 58 --
+
+Reverse Outcome
+Design Drill
+Common Mistakes
+Writing vague outcomes like:
+“Understand Functions”, “Students can write def
+function syntax.”
+That is not measurable.
+Correct:
+“Students can decide when to use a function
+instead of repeating code.”,
+“Students can explain why using a function makes
+code cleaner and reusable.”
+
+-- 15 of 58 --
+
+Structural Thinking
+Method 2-
+One Core Sentence
+Rule
+
+-- 16 of 58 --
+
+One Core
+Sentence Rule
+How to Apply
+Every concept must have ONE structural
+identity sentence.
+Step 1: Remove features
+Ignore complexity, syntax, edge cases.
+Step 2: Define mechanism in one clean
+sentence
+Function:“It groups instructions into a reusable
+action.”
+
+-- 17 of 58 --
+
+Structural Thinking
+Method 3-
+3-Layer Planning
+Model
+
+-- 18 of 58 --
+
+3-Layer
+Planning Model
+The Order That Protects
+Understanding
+Every topic must be built in three clean
+cognitive layers.
+Context
+Core Idea(Set the definition)
+Details
+If you reverse this order, confusion appears.
+
+-- 19 of 58 --
+
+3-Layer
+Planning Model
+Layer 1 — Context
+Before defining anything, create a reason to listen.
+Why does this topic matter?
+Example: Instead of starting with definition, start
+with: “Yesterday we printed the same message five
+times. If we want to change it, how many places do we
+edit?”
+Students: “Five.”
+Tutor: “Do you think that this is efficient?”
+Now the brain has a problem.
+And the word “function” will feel like a solution.
+
+-- 20 of 58 --
+
+3-Layer
+Planning Model
+Layer 2 — Core Idea
+After the problem is clear, set a clear definition for the
+main topic without any further details:
+What is this concept really doing?
+Example:
+“So instead of rewriting code, we create one reusable
+action.That reusable action is called a function.”
+Layer 2 must be clean and focused.
+Now students understand what a function
+fundamentally is.
+
+-- 21 of 58 --
+
+3-Layer
+Planning Model
+Layer 3 — Details
+In this layer you answer the question of How
+this topic is actually work ?
+Discuss any further related topics in details,
+show code, more examples,..
+Example:
+“This reusable action sometimes needs input to
+work differently.That input is called a parameter.”
+This supports the idea.
+
+-- 22 of 58 --
+
+Presentation Skills-
+Visual & Nonverbal
+PresenceThe Impact Before You Speak
+
+-- 23 of 58 --
+
+Visual & Nonverbal
+Presence
+Before you talk
+Your physical presence shapes perception, trust, and
+authority before your content even begins.
+Notes:
+First impressions form within seconds.
+Nonverbal cues often carry more influence than words in
+initial evaluation.
+Confidence perception is driven strongly by posture,
+facial control, and movement stability.
+This component answers one question:
+👉 What does the audience feel about you before they
+process what you say?
+
+-- 24 of 58 --
+
+Failure Scenario
+Audience immediately feels:
+Uncertainty
+Low authority
+Weak presence
+Before processing a single word.
+Tutor/speaker:
+Camera slightly below chin.
+Movements not controlled.
+Neutral or low facial energy.
+Speaks while looking at the screen, not camera.
+Starts speaking immediately without grounding.
+
+-- 25 of 58 --
+
+Visual & Nonverbal
+Presence
+Main Components
+There are four visible signals your body sends:
+Grounding
+Eye Direction
+Facial Alignment
+Movement Control
+These do not change whether you’re online or
+offline.
+
+-- 26 of 58 --
+
+Visual & Nonverbal
+Presence
+Grounding (Stability First)
+If your body looks unstable, your message feels
+unstable.
+Grounding means:
+Straight posture
+Shoulders relaxed
+Balanced stance or seated position
+Controlled breathing
+Starting only after you are fully still
+Rule:
+Before speaking → Pause → Breathe → Then start.
+That pause builds authority.
+
+-- 27 of 58 --
+
+Visual & Nonverbal
+Presence
+Eye Direction
+(Connection Control)
+Eyes signal leadership.
+If you avoid them, you lose authority.
+Strong Presence:
+When stating something important → direct eye
+engagement.
+When explaining details → natural scanning.
+When transitioning → intentional shift.
+
+-- 28 of 58 --
+
+Visual & Nonverbal
+Presence
+Facial Alignment
+(Emotion Match)
+Your face must match your message.
+If you explain something exciting with a flat
+face → energy drops.
+If you smile during serious explanation →
+confusion increases.
+Alignment builds trust and support your ideas .
+
+-- 29 of 58 --
+
+Visual & Nonverbal
+Presence
+Movement Control
+Uncontrolled movement = distracting environment.
+Strong movement looks like:
+Gesture when explaining size, contrast, or structure.
+Stillness when making key point.
+Walking only when transitioning ideas.
+Stillness increases authority, Movement increases
+energy.Balance both.
+
+-- 30 of 58 --
+
+Failure Scenario
+Students:
+Feel mentally tired.
+Miss key ideas.
+Can’t tell what was important.
+Start drifting.
+Tutor says (fast, flat, continuous):
+“A function is a reusable block of code that can take parameters and return
+values and parameters are variables passed inside parentheses and…”
+Verbal control :
+No pause.
+No emphasis.
+No rhythm.
+Important words buried.
+
+-- 31 of 58 --
+
+Presentation Skills-
+Verbal Control
+is about how you manage time, rhythm, emphasis,
+and vocal dynamics to control audience cognition.
+
+-- 32 of 58 --
+
+Verbal Control is about controlling:
+Pace
+Pauses
+Emphasis
+Vocal variation
+Sentence Clarity
+to guide how the audience processes information.
+So the audience can think with you, not chase you.
+Verbal Control
+Managing the Rhythm
+of Thinking
+
+-- 33 of 58 --
+
+Speed must match complexity.
+Planning Question:
+Where will I slow down?
+Where can I move faster?
+Rule:
+New idea = slower.
+Review = normal.
+Story/example = slightly faster.
+If everything is fast → nothing is understood.
+If everything is slow → reach boredom
+Verbal Control
+Pace Management
+
+-- 34 of 58 --
+
+You could use pauses to create clarity:
+When to pause:
+Before important idea
+After definition
+Between sections
+After a question
+Silence gives thinking space.
+Without pause → cognitive compression.
+Verbal Control
+Pause Control
+
+-- 35 of 58 --
+
+Deciding What the Audience Must Notice
+Emphasis means intentionally making certain words
+more prominent than others use it with the new
+keywords
+You can create emphasis by:
+Slightly increasing volume
+Slowing down
+Stressing one specific word
+The goal is simple:
+👉 Guide the audience’s attention to the most important
+part of the sentence.
+Verbal Control
+Emphasis Placement
+
+-- 36 of 58 --
+
+Tone and volume must shift with meaning:
+Lower tone = authority
+Higher tone = curiosity
+Slight volume increase = importance
+Slight decrease = focus
+Variation maintains mental alertness.
+Monotone kills engagement.
+Verbal Control
+Vocal Dynamics
+
+-- 37 of 58 --
+
+Failure Scenario
+Students:
+Passive.
+Listening but not engaged.
+Understanding some parts.
+Forgetting most of it later.
+Content was clear., But it was not positioned.
+Tutor says :
+“A function is a reusable block of code. It helps organize instructions into a
+single structure. It improves readability and reduces redundancy.”
+Structure? ✔
+Voice control? ✔
+Technical clarity? ✔
+
+-- 38 of 58 --
+
+Presentation Skills-
+FRAMING & POSITIONING
+determines whether the audience feels
+involved or not
+
+-- 39 of 58 --
+
+Framing is how you present information so the
+audience sees it as relevant, useful, or necessary.
+Positioning is how you place the idea inside their
+world.
+Main Purpose, Make the audience feel:
+This matters to me.
+This solves something real.
+This connects to something bigger.
+The aim is to turn information into experience.
+FRAMING &
+POSITIONING
+Core Principle
+
+-- 40 of 58 --
+
+Methods to Master
+Framing & Positioing
+Immediate Relevance Framing
+Engagement Activation
+Big Picture & Narrative Positioning
+
+-- 41 of 58 --
+
+Framing & Positioning
+Immediate Relevance
+Framing
+
+-- 42 of 58 --
+
+This makes the audience care in the first minutes.
+Methods:
+Problem Framing (Start with friction or need.)
+Benefit Framing (Show what improves.)
+Contrast Framing (Before vs After.)
+This answers:
+“Why should I pay attention right now?”
+Framing & Positioning
+Immediate Relevance
+Framing
+
+-- 43 of 58 --
+
+Start by exposing friction before explaining the tool.
+How to apply:
+Before introducing the concept, ask:“What happens
+without this?”
+Instead of:“A function is…”
+Say:
+“If you copy the same code five times, how many places
+do you edit when something changes?”
+Now relevance is activated.
+Immediate Relevance
+Framing
+Problem Framing
+
+-- 44 of 58 --
+
+Show what improves after using the concept.
+How to apply:
+After presenting the idea, immediately show its
+value.
+Example:
+“With a function, you edit one place instead of
+five.”
+Now improvement is visible.
+Immediate Relevance
+Framing
+Benefit Framing
+
+-- 45 of 58 --
+
+Place old method vs new method side by side.
+How to apply:
+Always compare before and after.
+Example:
+“Without function: 5 edits.
+With function: 1 edit.”
+Contrast creates clarity instantly.
+Immediate Relevance
+Framing
+Contrast Framing
+
+-- 46 of 58 --
+
+Framing & Positioning
+Engagement Activation
+
+-- 47 of 58 --
+
+How you involve the audience mentally. This
+prevents passive listening.
+How to apply:
+Predictive Questions
+Micro Decision Moments
+Reflection Prompts
+This answers:
+“Am I thinking — or just listening?”
+Framing & Positioning
+Engagement Activation
+
+-- 48 of 58 --
+
+Ask what they think happens next.
+How to apply:
+Before revealing solution:
+“What do you think happens if we forget to
+update one copy?”
+Example:
+“With a function, you edit one place instead of
+five.”
+Now the brain Predict.
+Engagement Activation
+Predictive Questions
+
+-- 49 of 58 --
+
+A decision-making question forces the
+audience to mentally choose between two
+(or more) options.
+It moves them from passive listening
+to active positioning.
+Example:
+“Would you rather edit five lines or one?”
+Engagement Activation
+Decision Moments
+
+-- 50 of 58 --
+
+Make them connect to past
+experience.
+Example:
+“Have you ever had to fix the same
+bug in multiple places?”
+That builds ownership.
+Engagement Activation
+Reflection Prompts
+
+-- 51 of 58 --
+
+Failure Scenario
+In Situation 1: That’s not structured, No
+tension, No transformation.
+In Situation 2: Students see it as isolated
+topic.
+Situation 1 Tutor Says :
+“When I was coding once, I used functions, and it
+helped.”
+Situation 2 Tutor Says :
+““Today we learn functions.”
+
+-- 52 of 58 --
+
+Framing & Positioning
+Big Picture & Narrative
+Positioning
+
+-- 53 of 58 --
+
+This builds long-term meaning.
+Storytelling: it is not entertainment, It is structured experience
+delivery story has 4 elements:
+Situation
+Tension
+Turning Point
+Outcome
+Big Picture Linking: it answers How does this concept fit into
+the larger system?
+Without big picture, students learn fragments.
+With big picture, students build mental maps.
+Framing & Positioning
+Big Picture &
+Narrative Positioning
+
+-- 54 of 58 --
+
+How to Tell a Story Effectively
+Keep it:
+Short (30–60 seconds max)
+Relevant to topic
+Directly connected to learning goal
+Focused on problem → solution shift
+Never tell a story without linking it.
+Big Picture &
+Narrative Positioning
+Storytelling
+
+-- 55 of 58 --
+
+Situation:
+“I was building a small game.”
+Tension:
+“I copied the same code into five different places.”
+Problem:
+“When I changed one part, I forgot the others. The game
+broke.”
+Turning Point:
+“Then I grouped the repeated code into one function.”
+Outcome:
+“I fixed the bug in one place instead of five.”
+Now the concept has emotional memory attached to it.
+Big Picture &
+Narrative Positioning
+Apply Storytelling
+
+-- 56 of 58 --
+
+How to Link to Big Picture
+Use these bridges:
+“This is part of …”
+“This will help you later when …”
+“This connects to what we learned before …”
+“In real projects, this matters because …”
+Example:
+“Today it’s a small print example, But in real
+software, functions organize thousands of
+lines of code.”
+Big Picture &
+Narrative Positioning
+Big Picture Linking
+
+-- 57 of 58 --
+
+After This Journey…
+When you hear the words
+“Presentation Skills”…
+What comes to your mind?
+
+-- 58 of 58 --

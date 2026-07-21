@@ -1,0 +1,372 @@
+Management
+Skills
+@BoardingTeam
+
+-- 1 of 37 --
+
+It is about keeping the session functional when
+problems appear.
+They train the instructor to:
+Adjust plans
+Handle disruptions
+Maintain session momentum
+Protect learning time
+Management Skills
+
+-- 2 of 37 --
+
+Time management
+problem-solving
+Management
+Skills
+Accountability & Reliability
+
+-- 3 of 37 --
+
+@BoardingTeam
+Management Skills
+Time Management
+
+-- 4 of 37 --
+
+Preparation stage
+Session stage
+Time Management
+Skills
+
+-- 5 of 37 --
+
+Before teaching live, instructors should learn to
+estimate and control the time of their
+explanations.
+Why this matters:
+Many instructors believe an explanation will
+take 5 minutes, but during the session it takes
+15 minutes.This happens because they never
+tested their explanation timing before.
+Preparation stage
+Time Management
+
+-- 6 of 37 --
+
+Failure
+Scenarios
+@BoardingTeam
+
+-- 7 of 37 --
+
+Failure Scenario.1
+Instructor explains a concept, Students understand quickly.
+There are still 25 minutes left:
+The instructor starts repeating the same explanation.
+The instructor ends the session early
+What Failed:
+The instructor treated extra time as a
+problem instead of a learning
+opportunity.
+
+-- 8 of 37 --
+
+Depth Expansion Technique
+When extra time appears:
+Expand learning vertically, not horizontally(repeating).
+Examples:
+Add real-life example
+Ask students to predict outcome
+Let students explain concept themselves
+Give quick challenge question
+The concept becomes deeper.
+Too Much Available Time
+Time Management
+During the session
+
+-- 9 of 37 --
+
+Failure Scenario.2There are 10 minutes left, but the instructor still needs to explain the concept
+and do a quick practice, and not to skip any part. He explains everything
+quickly:
+The full definition
+Three examples
+Edge cases
+Extra notes
+What Failed:
+Instructor increased speed instead of
+clarity.
+
+-- 10 of 37 --
+
+Under time pressure: Speed is the worst solution
+Instead, simplify execution.
+Simplification Strategy:
+Instructor says:
+“We have limited time, so let’s focus on the core idea.”
+Instructor explains only:
+The main concept + one clear example.
+Then immediately moves to practice:
+“Let’s try it together.”
+Time pressure
+Time Management
+During the session
+
+-- 11 of 37 --
+
+@BoardingTeam
+Management Skills
+problem-solving
+
+-- 12 of 37 --
+
+Technical Problem Solving
+Recovery control
+Problem-solving
+
+-- 13 of 37 --
+
+@BoardingTeam
+Management Skills
+problem-solving(Technical)
+
+-- 14 of 37 --
+
+Failure
+Scenarios
+@BoardingTeam
+
+-- 15 of 37 --
+
+Failure Scenario.1
+A student runs the code, It shows an error.
+Instructor immediately starts guessing:
+“Maybe it’s this line… or maybe this variable… try changing this.”
+Several attempts fail.
+What Failed:
+The instructor tried random fixes instead
+of tracing the problem.
+Students did not learn how to debug.
+
+-- 16 of 37 --
+
+Step 1: Read the Error Message
+nstructor asks: “What is the error telling us?”
+Students identify:
+error type
+line number
+First rule: the error message is the first clue.
+Debugging With Students
+Technical Problem
+Solving
+
+-- 17 of 37 --
+
+Step 2: Locate the Source
+The instructor asks: “Let’s check the line the error
+mentioned.”
+Students look at the specific part of the code.
+Focus is narrowed.
+Debugging With Students
+Technical Problem
+Solving
+
+-- 18 of 37 --
+
+Step 3: Trace the Logic
+The instructor asks:
+“What happens first?”
+“What value does this variable have?”
+Students follow the execution path.
+This reveals the mistake.
+Once the mistake is clear, students correct it.
+Debugging With Students
+Technical Problem
+Solving
+
+-- 19 of 37 --
+
+@BoardingTeam
+Management Skills
+problem-solving(Recovery
+control)
+
+-- 20 of 37 --
+
+Failure
+Scenarios
+@BoardingTeam
+
+-- 21 of 37 --
+
+Failure Scenario.1
+The instructor is explaining a concept.
+Suddenly, Zoom freezes, and the instructor disconnects.
+After reconnecting, the instructor immediately continues the explanation
+from where they stopped
+What Failed:
+Students confused because the
+context was lost and they may missed
+parts of explaination.
+
+-- 22 of 37 --
+
+When reconnecting, the instructor rebuilds the
+context first:
+Confirm audio/video works.
+Briefly recap the last key idea.
+Continue the explanation.
+Example:
+“It looks like the connection dropped. Let’s quickly
+recap the last step before we continue.”
+Disconnect During Explanation
+Recovery
+control
+
+-- 23 of 37 --
+
+Failure Scenario.2
+The instructor is explaining a concept.
+A parent suddenly joins the session and says:
+“Excuse me, I need to ask you something about my child.”
+Instructor immediately starts discussing the issue with the parent.
+What Failed:
+The instructor allowed the interruption
+to take control of the session.
+The learning flow stopped.
+
+-- 24 of 37 --
+
+Instructor protects the session while
+acknowledging the parent.
+Example response:
+“Thank you for letting me know. I’ll be happy to
+discuss this with you after the session so we don’t
+interrupt the students' learning.”
+Then the instructor returns to the session
+Parents interruption
+Recovery
+control
+
+-- 25 of 37 --
+
+@BoardingTeam
+Management Skills
+Accountability & Reliability
+
+-- 26 of 37 --
+
+The instructor’s ability to be dependable in
+responsibilities that keep the learning system working.
+This is outside the explanation itself and outside the
+interaction style.It is about professional discipline.
+Ensure the instructor is consistent, prepared, and
+responsible for their role in the learning system.
+Accountability & Reliability
+
+-- 27 of 37 --
+
+Failure
+Scenarios
+@BoardingTeam
+
+-- 28 of 37 --
+
+Failure Scenario.1
+The session begins.
+The instructor opens the lesson for the first time.
+They spend several minutes reading the material before explaining it.
+Students wait.
+What Failed:
+No reliability, several mistakes,
+student confusion even though there is
+a very strong technical background
+
+-- 29 of 37 --
+
+Reliable instructors review the lesson before
+the session.
+Preparation includes:
+understanding the concept
+checking examples
+estimating explanation time
+When the session starts, the instructor is ready
+to teach immediately.
+Correct Handling
+Accountability &
+Reliability
+
+-- 30 of 37 --
+
+Failure Scenario.2
+Specific grade is using a specific coding tool.
+The instructor decides to use a different one that has the same features
+because it feels easier or because the other one does not work
+What Failed:
+The instructor ignored the established
+process.
+Students become confused.
+
+-- 31 of 37 --
+
+Reliable instructors follow the approved tool
+and system.
+If the tool has a technical issue, the instructor
+should:
+Try to solve the issue quickly
+Report the technical problem before the
+session with mentors
+follow rules
+Accountability &
+Reliability
+
+-- 32 of 37 --
+
+Failure Scenario.3The instructor receives a low score in the quality review.
+The feedback says the session had weak engagement.
+The instructor responds:
+“The problem is the student. This student is always weak and doesn’t
+participate.”
+What Failed:
+The instructor assumed that student
+difficulty automatically justifies weak
+session performance.
+
+-- 33 of 37 --
+
+Performance Handling is the instructor’s ability to monitor,
+evaluate, and improve their own teaching performance
+over time.
+Why It Belongs to Management Skills
+Because it involves:
+reviewing results
+identifying weaknesses
+adjusting future sessions
+Performance Handling
+Accountability &
+Reliability
+
+-- 34 of 37 --
+
+A professional instructor analyzes the session
+differently:
+Instead of asking:
+“Why is the student weak?”
+They ask:
+“What could I do differently to engage the student?”
+Example reflection:
+“The student was hesitant to answer. I could guide
+them with smaller questions or simpler steps.”
+This shows ownership of the session.
+Performance Handling
+Accountability &
+Reliability
+
+-- 35 of 37 --
+
+Instructing isn’t just delivery.
+It’s responsibility.
+Do you see it now?
+@BoardingTeam
+
+-- 36 of 37 --
+
+
+
+-- 37 of 37 --
