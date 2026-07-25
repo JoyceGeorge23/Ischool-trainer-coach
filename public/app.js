@@ -170,12 +170,45 @@
     }
   }
 
+  function formatMindmapBrackets(text) {
+    if (!text || !text.trim().startsWith('mindmap')) return text;
+    const lines = text.split('\n');
+    const formattedLines = lines.map(line => {
+      if (!line.trim() || line.trim().startsWith('mindmap')) return line;
+      const leadingSpaces = line.search(/\S/);
+      if (leadingSpaces === -1) return line;
+      let label = line.trim();
+      
+      // Strip existing brackets if present
+      if (label.startsWith('((') && label.endsWith('))')) {
+        label = label.slice(2, -2).trim();
+      } else if (label.startsWith('(') && label.endsWith(')')) {
+        label = label.slice(1, -1).trim();
+      } else if (label.startsWith('[') && label.endsWith(']')) {
+        label = label.slice(1, -1).trim();
+      }
+      
+      // Assign brackets by indentation level
+      if (leadingSpaces <= 2) {
+        return ' '.repeat(leadingSpaces) + `((${label}))`;
+      } else if (leadingSpaces <= 4) {
+        return ' '.repeat(leadingSpaces) + `(${label})`;
+      } else {
+        return ' '.repeat(leadingSpaces) + `[${label}]`;
+      }
+    });
+    return formattedLines.join('\n');
+  }
+
   // ── Render Mermaid diagrams ──────────────────────────────────────
   async function renderMermaid(container) {
     if (!window.mermaid || !container) return;
     const unrendered = container.querySelectorAll(".mermaid:not([data-processed='true'])");
     if (unrendered.length === 0) return;
     try {
+      unrendered.forEach(node => {
+        node.textContent = formatMindmapBrackets(node.textContent);
+      });
       await mermaid.run({ nodes: Array.from(unrendered) });
     } catch (e) {
       console.warn("Mermaid rendering warning:", e);

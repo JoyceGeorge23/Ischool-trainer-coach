@@ -1389,78 +1389,58 @@ textarea,
   font-family: "Somar Rounded", "Alexandria", sans-serif !important;
 }
 
-/* Central Root Node (Depth 0) — Royal Blue with White Text */
-#chatMessages .mermaid .mindmap-node.depth-0 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .mindmap-node.root :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .node.root :is(rect, circle, ellipse, path, polygon) {
+/* Central Root Node (double circle / circle shape) — Royal Blue with White Text */
+#chatMessages .mermaid .mindmap-node circle,
+#chatMessages .mermaid .mindmap-node .node-circle,
+.mermaid .mindmap-node circle,
+.mermaid .mindmap-node .node-circle {
   fill: #056fec !important;
   stroke: #043fad !important;
   stroke-width: 2px !important;
   filter: drop-shadow(0 4px 10px rgba(5, 111, 236, 0.25)) !important;
 }
 
+#chatMessages .mermaid .mindmap-node.section-root text,
 #chatMessages .mermaid .mindmap-node.depth-0 text,
 #chatMessages .mermaid .mindmap-node.root text,
-#chatMessages .mermaid .node.root text,
-.mermaid .mindmap-node.depth-0 text {
+.mermaid .mindmap-node.section-root text,
+.mermaid .mindmap-node.root text {
   fill: #FFFFFF !important;
   font-weight: 700 !important;
   font-size: 14px !important;
 }
 
-/* Level 1 branches (Depth 1) — Clean light gray with dark text */
-#chatMessages .mermaid .mindmap-node.depth-1 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .node.depth-1 :is(rect, circle, ellipse, path, polygon),
-.mermaid .mindmap-node.depth-1 :is(rect, circle, ellipse, path, polygon) {
+/* Level 1 branches (rounded rectangle / path shape) — Clean light gray with dark text */
+#chatMessages .mermaid .mindmap-node path:not(.mindmap-edge),
+#chatMessages .mermaid .mindmap-node .node-no-border,
+.mermaid .mindmap-node path:not(.mindmap-edge),
+.mermaid .mindmap-node .node-no-border {
   fill: #f1f5f9 !important;
   stroke: #cbd5e1 !important;
   stroke-width: 1.5px !important;
 }
 
-#chatMessages .mermaid .mindmap-node.depth-1 text,
-#chatMessages .mermaid .node.depth-1 text,
-.mermaid .mindmap-node.depth-1 text {
+#chatMessages .mermaid .mindmap-node:has(path:not(.mindmap-edge)) text,
+.mermaid .mindmap-node:has(path:not(.mindmap-edge)) text {
   fill: #0f172a !important;
   font-weight: 600 !important;
   font-size: 13px !important;
 }
 
-/* Level 2 leaf nodes (Depth 2) — Clean white with subtle border and text */
-#chatMessages .mermaid .mindmap-node.depth-2 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .node.depth-2 :is(rect, circle, ellipse, path, polygon),
-.mermaid .mindmap-node.depth-2 :is(rect, circle, ellipse, path, polygon) {
+/* Level 2+ leaf nodes (rectangle / rect shape) — Clean white card with thin gray border */
+#chatMessages .mermaid .mindmap-node rect:not(.background),
+#chatMessages .mermaid .mindmap-node .node-bkg:not(.node-circle):not(.node-no-border),
+.mermaid .mindmap-node rect:not(.background) {
   fill: #ffffff !important;
   stroke: #e2e8f0 !important;
   stroke-width: 1px !important;
 }
 
-#chatMessages .mermaid .mindmap-node.depth-2 text,
-#chatMessages .mermaid .node.depth-2 text,
-.mermaid .mindmap-node.depth-2 text {
+#chatMessages .mermaid .mindmap-node:has(rect:not(.background)) text,
+.mermaid .mindmap-node:has(rect:not(.background)) text {
   fill: #475569 !important;
   font-weight: 500 !important;
   font-size: 12px !important;
-}
-
-/* Level 3+ leaf nodes (Depth 3 & 4) — Clean white with thin light border */
-#chatMessages .mermaid .mindmap-node.depth-3 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .mindmap-node.depth-4 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .node.depth-3 :is(rect, circle, ellipse, path, polygon),
-#chatMessages .mermaid .node.depth-4 :is(rect, circle, ellipse, path, polygon),
-.mermaid .mindmap-node.depth-3 :is(rect, circle, ellipse, path, polygon) {
-  fill: #ffffff !important;
-  stroke: #f1f5f9 !important;
-  stroke-width: 1px !important;
-}
-
-#chatMessages .mermaid .mindmap-node.depth-3 text,
-#chatMessages .mermaid .mindmap-node.depth-4 text,
-#chatMessages .mermaid .node.depth-3 text,
-#chatMessages .mermaid .node.depth-4 text,
-.mermaid .mindmap-node.depth-3 text {
-  fill: #64748b !important;
-  font-weight: 400 !important;
-  font-size: 11px !important;
 }
 
 /* ── Language switch ────────────────────────────────────────────────
