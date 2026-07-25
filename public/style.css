@@ -1353,6 +1353,7 @@ textarea,
 }
 
 /* Connecting branch lines */
+#chatMessages .mermaid path.mindmap-edge,
 .mermaid path.mindmap-edge {
   stroke-width: 2px !important;
   stroke: #cbd5e1 !important;
@@ -1361,97 +1362,109 @@ textarea,
 }
 
 /* Overriding branch paths to use a clean slate-gray */
-.mermaid path.mindmap-edge.section-0,
-.mermaid path.mindmap-edge.section-1,
-.mermaid path.mindmap-edge.section-2,
-.mermaid path.mindmap-edge.section-3,
+#chatMessages .mermaid path.mindmap-edge.section-0,
+#chatMessages .mermaid path.mindmap-edge.section-1,
+#chatMessages .mermaid path.mindmap-edge.section-2,
+#chatMessages .mermaid path.mindmap-edge.section-3,
+#chatMessages .mermaid .mindmap-edge,
 .mermaid .mindmap-edge {
   stroke: #cbd5e1 !important;
 }
 
 /* Node Cards General Styling */
+#chatMessages .mermaid .mindmap-node circle,
+#chatMessages .mermaid .mindmap-node rect,
+#chatMessages .mermaid .node rect,
 .mermaid .mindmap-node circle,
-.mermaid .mindmap-node rect,
-.mermaid .node rect {
+.mermaid .mindmap-node rect {
   rx: 8px !important;
   ry: 8px !important;
   stroke-width: 1.5px !important;
   filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
 }
 
-.mermaid .mindmap-node text,
-.mermaid .node text {
+#chatMessages .mermaid .mindmap-node text,
+#chatMessages .mermaid .node text,
+.mermaid .mindmap-node text {
   font-family: "Somar Rounded", "Alexandria", sans-serif !important;
 }
 
-/* Central Root Node (Depth 0) — Royal Blue with White Text */
-.mermaid .mindmap-node.depth-0 circle,
-.mermaid .mindmap-node.depth-0 rect,
-.mermaid .mindmap-node.root circle,
-.mermaid .mindmap-node.root rect,
-.mermaid .node.root rect {
+/* Central Root Node (Level 0) — Royal Blue with White Text */
+#chatMessages .mermaid .mindmap-node.level-0 circle,
+#chatMessages .mermaid .mindmap-node.level-0 rect,
+#chatMessages .mermaid .mindmap-node.root circle,
+#chatMessages .mermaid .mindmap-node.root rect,
+#chatMessages .mermaid .node.root rect,
+.mermaid .mindmap-node.level-0 rect {
   fill: #056fec !important;
   stroke: #043fad !important;
   stroke-width: 2px !important;
   filter: drop-shadow(0 4px 10px rgba(5, 111, 236, 0.25)) !important;
 }
 
-.mermaid .mindmap-node.depth-0 text,
-.mermaid .mindmap-node.root text,
-.mermaid .node.root text {
+#chatMessages .mermaid .mindmap-node.level-0 text,
+#chatMessages .mermaid .mindmap-node.root text,
+#chatMessages .mermaid .node.root text,
+.mermaid .mindmap-node.level-0 text {
   fill: #FFFFFF !important;
   font-weight: 700 !important;
   font-size: 14px !important;
 }
 
-/* Level 1 branches (Depth 1) — Clean light gray with dark text */
-.mermaid .mindmap-node.depth-1 circle,
-.mermaid .mindmap-node.depth-1 rect,
-.mermaid .node.depth-1 rect {
+/* Level 1 branches (Level 1) — Clean light gray with dark text */
+#chatMessages .mermaid .mindmap-node.level-1 circle,
+#chatMessages .mermaid .mindmap-node.level-1 rect,
+#chatMessages .mermaid .node.level-1 rect,
+.mermaid .mindmap-node.level-1 rect {
   fill: #f1f5f9 !important;
   stroke: #cbd5e1 !important;
   stroke-width: 1.5px !important;
 }
 
-.mermaid .mindmap-node.depth-1 text,
-.mermaid .node.depth-1 text {
+#chatMessages .mermaid .mindmap-node.level-1 text,
+#chatMessages .mermaid .node.level-1 text,
+.mermaid .mindmap-node.level-1 text {
   fill: #0f172a !important;
   font-weight: 600 !important;
   font-size: 13px !important;
 }
 
-/* Level 2 leaf nodes (Depth 2) — Clean white with subtle border and text */
-.mermaid .mindmap-node.depth-2 circle,
-.mermaid .mindmap-node.depth-2 rect,
-.mermaid .node.depth-2 rect {
+/* Level 2 leaf nodes (Level 2) — Clean white with subtle border and text */
+#chatMessages .mermaid .mindmap-node.level-2 circle,
+#chatMessages .mermaid .mindmap-node.level-2 rect,
+#chatMessages .mermaid .node.level-2 rect,
+.mermaid .mindmap-node.level-2 rect {
   fill: #ffffff !important;
   stroke: #e2e8f0 !important;
   stroke-width: 1px !important;
 }
 
-.mermaid .mindmap-node.depth-2 text,
-.mermaid .node.depth-2 text {
+#chatMessages .mermaid .mindmap-node.level-2 text,
+#chatMessages .mermaid .node.level-2 text,
+.mermaid .mindmap-node.level-2 text {
   fill: #475569 !important;
   font-weight: 500 !important;
   font-size: 12px !important;
 }
 
-/* Level 3+ leaf nodes (Depth 3 & 4) — Clean white with thin light border */
-.mermaid .mindmap-node.depth-3 circle,
-.mermaid .mindmap-node.depth-3 rect,
-.mermaid .mindmap-node.depth-4 circle,
-.mermaid .mindmap-node.depth-4 rect,
-.mermaid .node.depth-3 rect,
-.mermaid .node.depth-4 rect {
+/* Level 3+ leaf nodes (Level 3 & 4) — Clean white with thin light border */
+#chatMessages .mermaid .mindmap-node.level-3 circle,
+#chatMessages .mermaid .mindmap-node.level-3 rect,
+#chatMessages .mermaid .mindmap-node.level-4 circle,
+#chatMessages .mermaid .mindmap-node.level-4 rect,
+#chatMessages .mermaid .node.level-3 rect,
+#chatMessages .mermaid .node.level-4 rect,
+.mermaid .mindmap-node.level-3 rect {
   fill: #ffffff !important;
   stroke: #f1f5f9 !important;
   stroke-width: 1px !important;
 }
 
-.mermaid .mindmap-node.depth-3 text,
-.mermaid .mindmap-node.depth-4 text,
-.mermaid .node.depth-3 text,
-.mermaid .node.depth-4 text {
+#chatMessages .mermaid .mindmap-node.level-3 text,
+#chatMessages .mermaid .mindmap-node.level-4 text,
+#chatMessages .mermaid .node.level-3 text,
+#chatMessages .mermaid .node.level-4 text,
+.mermaid .mindmap-node.level-3 text {
   fill: #64748b !important;
   font-weight: 400 !important;
   font-size: 11px !important;
