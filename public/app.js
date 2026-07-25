@@ -177,24 +177,21 @@
       if (!line.trim() || line.trim().startsWith('mindmap')) return line;
       const leadingSpaces = line.search(/\S/);
       if (leadingSpaces === -1) return line;
-      let label = line.trim();
       
-      // Strip existing brackets if present
-      if (label.startsWith('((') && label.endsWith('))')) {
-        label = label.slice(2, -2).trim();
-      } else if (label.startsWith('(') && label.endsWith(')')) {
-        label = label.slice(1, -1).trim();
-      } else if (label.startsWith('[') && label.endsWith(']')) {
-        label = label.slice(1, -1).trim();
-      }
+      // Parse indentation, optional node ID (using lookahead to check for bracket), and text contents
+      const match = line.match(/^(\s*)(?:([a-zA-Z0-9_-]+)(?=\(\(|\(|\[))?(?:\(\((.*)\)\)|\((.*)\)|\[(.*)\]|(.*))$/);
+      if (!match) return line;
+      
+      const labelText = (match[3] || match[4] || match[5] || match[6] || "").trim();
+      if (!labelText) return line;
       
       // Assign brackets by indentation level
       if (leadingSpaces <= 2) {
-        return ' '.repeat(leadingSpaces) + `((${label}))`;
+        return ' '.repeat(leadingSpaces) + `((${labelText}))`;
       } else if (leadingSpaces <= 4) {
-        return ' '.repeat(leadingSpaces) + `(${label})`;
+        return ' '.repeat(leadingSpaces) + `(${labelText})`;
       } else {
-        return ' '.repeat(leadingSpaces) + `[${label}]`;
+        return ' '.repeat(leadingSpaces) + `[${labelText}]`;
       }
     });
     return formattedLines.join('\n');
