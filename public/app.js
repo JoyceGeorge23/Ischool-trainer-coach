@@ -75,6 +75,14 @@
       "What are the Communication Skills? Explain both Session-Based and General Communication frameworks.",
     management:
       "Describe Management Skills and all its categories and sub-skills in detail.",
+    "time-priority":
+      "Explain Time and Priority Control in Management Skills, including task prioritization, time allocation, and deadline adherence.",
+    "session-flow":
+      "Explain Session Flow Control in Management Skills, including session rhythm, transition timing, and distraction management.",
+    "adaptability":
+      "Explain Adaptability and Problem-Solving in Management Skills, including technical response, plan adjustment, decision control under pressure, and reset control.",
+    "accountability":
+      "Explain Accountability and Reliability in Management Skills, including commitment fulfillment, reporting accuracy, protocol adherence, and performance self-monitoring.",
     "structural-thinking":
       "Explain Structural Thinking in Presentation Skills and how to structure concept delivery using hooks and sequencing.",
     "nonverbal-presence":
@@ -103,6 +111,14 @@
     communication:
       "إيه هي Communication Skills؟ اشرحلي إطار Session-Based وإطار General Communication.",
     management: "اشرحلي Management Skills وكل تصنيفاتها ومهاراتها الفرعية بالتفصيل.",
+    "time-priority":
+      "اشرحلي Time and Priority Control في Management Skills، وده يشمل Task Prioritization وTime Allocation وDeadline Adherence.",
+    "session-flow":
+      "اشرحلي Session Flow Control في Management Skills، وده يشمل Session Rhythm وTransition Timing وDistraction Management.",
+    "adaptability":
+      "اشرحلي Adaptability and Problem-Solving في Management Skills، وده يشمل Technical Response وPlan Adjustment وDecision Control Under Pressure وReset Control.",
+    "accountability":
+      "اشرحلي Accountability and Reliability في Management Skills، وده يشمل Commitment Fulfillment وReporting Accuracy وProtocol Adherence وPerformance Self-Monitoring.",
     "structural-thinking":
       "اشرحلي Structural Thinking في Presentation Skills وإزاي أرتب توصيل المفهوم باستخدام الـ hooks والتسلسل.",
     "nonverbal-presence":
@@ -141,11 +157,11 @@
     try {
       mermaid.initialize({
         startOnLoad: false,
-        theme: "default",
+        theme: "neutral",
         securityLevel: "loose",
-        fontFamily: "Alexandria, sans-serif",
+        fontFamily: "'Somar Rounded', 'Alexandria', sans-serif",
         themeVariables: {
-          fontFamily: "Alexandria, sans-serif",
+          fontFamily: "'Somar Rounded', 'Alexandria', sans-serif",
           fontSize: "13px",
         },
       });

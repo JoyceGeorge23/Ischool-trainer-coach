@@ -6,7 +6,36 @@ const driveLoader = require("./drive-loader");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-const GROQ_API_KEY = process.env.GROQ_API_KEY || "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";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
+// Pinned deliberately: "-latest" aliases move under you without warning, and
+// this prompt is tuned. Override with GEMINI_MODEL in .env to try another.
+//
+// The -lite variant is not a cost compromise, it is a latency requirement:
+// gemini-3.5-flash spends ~20-25s reasoning before emitting its first token,
+// which blows past the client's 30s abort. -lite answers in ~1s, and these
+// answers are short, grounded lookups that need no extended reasoning.
+const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
+const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta";
+
+if (!GEMINI_API_KEY) {
+  console.error("FATAL: GEMINI_API_KEY is not set. Add it to your .env file.");
+  process.exit(1);
+}
+
+// Gemini names the assistant role "model" and requires the turn list to open
+// with a user turn — after the language filter above, history can begin with an
+// assistant reply, which the API rejects outright.
+function toGeminiContents(messages) {
+  const mapped = messages
+    .filter((msg) => msg && typeof msg.content === "string" && msg.content.trim())
+    .map((msg) => ({
+      role: msg.role === "assistant" ? "model" : "user",
+      parts: [{ text: msg.content }],
+    }));
+
+  const firstUser = mapped.findIndex((m) => m.role === "user");
+  return firstUser <= 0 ? mapped : mapped.slice(firstUser);
+}
 
 // ---------------------------------------------------------------------------
 // Middleware
@@ -16,7 +45,8 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------------------------------------------------------------------------
-// Simple in-memory rate limiter (25 req/min per IP to stay under Groq 30 RPM)
+// Simple in-memory rate limiter (25 req/min per IP, under the Gemini free-tier
+// per-minute quota; raise RATE_LIMIT if you move to a paid tier)
 // ---------------------------------------------------------------------------
 const rateLimitMap = new Map();
 const RATE_LIMIT = 25;
@@ -44,6 +74,25 @@ function rateLimit(req, res, next) {
 // The hardcoded fallback is used only if Drive is unavailable.
 // ---------------------------------------------------------------------------
 const FALLBACK_KNOWLEDGE_BASE = `
+=== ABOUT ISCHOOL (عن آي سكول) ===
+
+iSchool is an Online Tech & Coding Platform (MENA).
+- What it is: A live online platform providing coding, artificial intelligence, and game development classes.
+- Target Audience: Children and teenagers aged 6 to 18.
+- Subjects Taught: Artificial intelligence, data science, game development, user interface (UI/UX) design, and cybersecurity.
+- Details: Founded in 2018 in Egypt, it offers interactive 1-on-1 or small group sessions.
+
+=== 0. SOFT SKILLS (المهارات الشخصية) ===
+
+Soft Skills — in Arabic "المهارات الشخصية" — is the umbrella term for the four
+core disciplines every session draws on. It is not a separate skill itself; it
+is the grouping that contains:
+   1. Teaching Skills (مهارات التدريس)
+   2. Presentation Skills (مهارات العرض والتقديم)
+   3. Communication Skills (مهارات التواصل)
+   4. Management Skills (المهارات الإدارية)
+Each is broken down in its own section below.
+
 === 1. TEACHING SKILLS ===
 
 Teaching Skills is divided into 3 main categories:
@@ -158,13 +207,90 @@ D) Accountability & Reliability:
    2. Reporting Accuracy – Clear and fact-based reporting.
    3. Protocol Adherence – Guidelines followed properly.
    4. Performance Self-Monitoring – Continuous improvement tracking.
+
+=== 5. STUDENT BEHAVIOR (STUDENT CASES) ===
+
+Student Behavior (Student Cases) is divided into 4 main categories:
+
+A) Attention-Driven Students:
+   - Behavior: Disengagement, distraction, side tasks, silence, wandering attention during session.
+   - Strategy: Engagement priming, active check-ins, direct interaction loops, pacing adjustment to maintain focus.
+
+B) Emotion-Driven Students:
+   - Behavior: Anxiety, shyness, fear of making mistakes, emotional vulnerability, hesitation to speak.
+   - Strategy: Psychological safety, positive reinforcement, low-pressure questioning, emotional regulation and support.
+
+C) Motivation-Driven Students:
+   - Behavior: Over-confident, validation-seeking, goal-oriented, interest-oriented, competitive, rushing instructions.
+   - Strategy: Channeling confidence constructively, patience reinforcement, goal alignment, evidence-based praise, listening discipline.
+
+D) Cognitive-Driven Students:
+   - Behavior: Different processing speeds, conceptual gaps, misconception struggles, overload from fast pacing.
+   - Strategy: Cognitive chunking, scaffolded guidance, concept structuring, depth recognition, support calibration.
 `;
+
+// The material is written in English, but tutors ask in Arabic. Without this
+// bridge an Arabic query scores zero against every chunk and retrieval returns
+// arbitrary text, so the model answers from the wrong section — or refuses.
+// Keys are matched after stripping the "ال" / "و" prefixes.
+const AR_EN_CONCEPTS = {
+  "مهارات": "skills",
+  "مهارة": "skill",
+  "شخصية": "soft skills interpersonal",
+  "ناعمة": "soft skills",
+  "تدريس": "teaching",
+  "تعليم": "teaching learning",
+  "عرض": "presentation",
+  "تقديم": "presentation",
+  "تواصل": "communication",
+  "اتصال": "communication",
+  "ادارة": "management",
+  "إدارة": "management",
+  "وقت": "time management",
+  "طالب": "student learner",
+  "طلاب": "students learners",
+  "حصة": "session",
+  "شرح": "explanation concept structuring",
+  "انتباه": "attention",
+  "تحفيز": "motivation encouragement",
+  "تشتت": "distraction attention",
+  "مشتت": "distraction attention",
+  "صمت": "silent participation engagement",
+  "تقييم": "feedback assessment",
+  "ملاحظات": "feedback",
+  "نبرة": "tone control",
+  "سرعة": "pace management",
+  "لغة": "verbal nonverbal",
+  "جسد": "posture gesture nonverbal",
+  "خريطة": "mindmap diagram",
+  "استماع": "active listening",
+  "انصات": "active listening",
+  "خطأ": "error analysis misconception",
+  "اخطاء": "error analysis misconception",
+  "فهم": "understanding depth recognition",
+};
+
+// Expands an Arabic query with its English concept keywords so the keyword
+// scorer below can actually find the right chunks.
+function expandQueryForRetrieval(userQuery) {
+  const raw = String(userQuery || "");
+  const extra = [];
+  for (const term of normalizeTerms(raw)) {
+    const hit = AR_EN_CONCEPTS[term];
+    if (hit) extra.push(hit);
+  }
+  return extra.length ? `${raw} ${extra.join(" ")}` : raw;
+}
 
 // Returns relevant Drive content matching the query, capped to fit token limits
 function getKnowledgeBase(userQuery) {
   const driveKB = driveLoader.getKnowledgeBase();
-  const fullKB = driveKB && driveKB.length > 0 ? driveKB : FALLBACK_KNOWLEDGE_BASE;
-  const MAX_CHARS = 4000;
+  // Always include the core framework foundation so essential topics like
+  // Teaching Skills are never omitted even if Drive only contains a subset.
+  const fullKB = driveKB && driveKB.length > 0
+    ? `${FALLBACK_KNOWLEDGE_BASE}\n\n=== GOOGLE DRIVE DOCUMENTS ===\n\n${driveKB}`
+    : FALLBACK_KNOWLEDGE_BASE;
+  const MAX_CHARS = 20000;
 
   // If KB is under MAX_CHARS, send full text
   if (fullKB.length <= MAX_CHARS) {
@@ -177,10 +303,10 @@ function getKnowledgeBase(userQuery) {
 
   // Split KB by document sections / slide markers
   const chunks = fullKB
-    .split(/(?=\n=== Document:|\n=== |^\s*-- \d+ of \d+ --)/m)
+    .split(/(?=\n=== Document:|\n=== DOCUMENT:|\n=== |\n-- \d+ of \d+ --)/m)
     .filter((s) => s.trim().length > 0);
 
-  const queryTerms = userQuery
+  const queryTerms = expandQueryForRetrieval(userQuery)
     .toLowerCase()
     .replace(/[^a-z0-9\u0600-\u06FF\s]/g, " ")
     .split(/\s+/)
@@ -208,6 +334,227 @@ function getKnowledgeBase(userQuery) {
   }
 
   return selected.trim() || fullKB.slice(0, MAX_CHARS);
+}
+
+// ---------------------------------------------------------------------------
+// Scope gate
+// ---------------------------------------------------------------------------
+// The model is told to answer only from the knowledge base, but an 8B model
+// will still happily answer "do you like McDonald's". So off-topic questions
+// are rejected here, deterministically, before any model call: we check the
+// query's content words against the knowledge base text itself.
+
+const STOPWORDS = new Set([
+  "a","about","an","and","any","are","as","at","be","been","but","by","can","could",
+  "did","do","does","doing","for","from","get","give","got","had","has","have","he",
+  "her","him","his","how","i","if","in","into","is","it","its","just","know","like",
+  "me","more","most","much","my","need","no","not","of","on","one","or","our","out",
+  "please","really","should","so","some","tell","than","that","the","their","them",
+  "then","there","these","they","this","those","to","too","up","us","very","want",
+  "was","we","were","what","when","where","which","who","why","will","with","would",
+  "you","your","am","being","because","also","only","make","made","give","us",
+  // Question/structural fillers — add no topic meaning
+  "detail","details","detailed","all","both","sub","main","each","every","list",
+  "describe","explain","overview","summary","full","complete","brief","short",
+  "category","categories","type","types","kind","kinds","area","areas","aspect",
+  // Generic context-setters — these appear in KB prose but are NOT topic indicators
+  "solution","solutions","situation","situations","problem","problems","issue","issues",
+  "help","advice","suggest","suggestion","example","examples","case","cases",
+  "happened","happen","something","anything","everything","nothing","used","use",
+  "through","during","after","before","around","without","within","between",
+  "show","showed","shows","said","say","says","asked","ask","asks",
+  "result","results","way","ways","thing","things","part","parts","point","points",
+  "first","second","third","last","next","new","different","important","good","bad",
+  "right","wrong","see","look","find","found","try","tried","trying","now","then",
+  // Arabic function words
+  "في","من","على","عن","الى","إلى","مع","هذا","هذه","ذلك","التي","الذي","ما","ماذا",
+  "كيف","لماذا","هل","انا","أنا","انت","أنت","هو","هي","نحن","كان","كانت","يكون",
+  "ان","أن","إن","او","أو","لا","نعم","بس","يعني","عايز","عاوز","ممكن","لو","كده",
+  // Arabic question/structural fillers
+  "كل","جميع","اشرح","وضح","اعطني","احكيلي","اخبرني","بالتفصيل","تفصيل",
+  "اشرحلي","قولي","ايه","إيه","بتاع","بتاعة","بتاعتها","بتاعتهم",
+  // Arabic structural qualifiers (sub, main, core, related, etc.) — NOT topic indicators
+  "فرعية","فرعي","فرعيات","رئيسية","رئيسي","أساسية","أساسي","متعلقة",
+  "جميعها","جميعهم","كلها","كلهم","بتاعها","بتاعهم","تابعة","تابع",
+  // Arabic generic context-setters
+  "مشكلة","مشاكل","حل","حلول","موقف","مواقف","موضوع","مواضيع","حاجة","حاجات",
+  "مثال","امثلة","حصل","يحصل","بيحصل","عندي","عند","كمان","كمل",
+  // Bare affirmations / continuations — no topic of their own
+  "yes","yeah","yep","sure","okay","ok","thanks","thank","continue","again","done",
+  "تمام","اه","ايوة","أيوة","شكرا","شكراً","كمان","طيب",
+]);
+
+// Words that always count as in-scope, even if the Drive content is thin.
+const DOMAIN_TERMS = [
+  "teach","teaching","tutor","trainer","training","session","class","classroom",
+  "student","learner","learning","presentation","present","communication","communicate",
+  "management","manage","skill","skills","framework","feedback","lesson","explain",
+  "engagement","attention","motivation","behaviour","behavior","pace","tone","gesture",
+  "posture","listening","correction","diagnosis","misconception","mindmap","diagram",
+  "مهارة","مهارات","تدريس","تدريب","حصة","طالب","طلاب","عرض","تقديم","تواصل","ادارة",
+  "إدارة","اطار","إطار","تعليم","شرح","تفاعل","انتباه","تحفيز","سلوك","مشاعر","دافعية","إدراك","ادراك",
+];
+
+const ARABIC_SCRIPT = /[؀-ۿݐ-ݿࢠ-ࣿﭐ-﷿ﹰ-﻿]/;
+
+function hasArabic(text) {
+  return ARABIC_SCRIPT.test(String(text || ""));
+}
+
+// Arabic attaches the conjunction "و" and the article "ال" to the front of a
+// word ("والتقديم" = "and the presenting"), so strip them before matching.
+function stripArabicAffixes(term) {
+  let t = term.replace(/^و(?=.{4,})/, "");
+  t = t.replace(/^ال(?=.{3,})/, "");
+  return t;
+}
+
+function normalizeTerms(text) {
+  return String(text || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9؀-ۿ\s]/g, " ")
+    .split(/\s+/)
+    .filter((t) => t.length > 2 && !STOPWORDS.has(t))
+    .map((t) => (/[؀-ۿ]/.test(t) ? stripArabicAffixes(t) : t))
+    .filter((t) => t.length > 2 && !STOPWORDS.has(t));
+}
+
+// A term counts as known if the KB contains it, or contains a long-enough
+// prefix of it ("interrupting" → "Interruptions").
+function kbHasTerm(kbLower, term) {
+  if (kbLower.includes(term)) return true;
+  if (term.length >= 6 && kbLower.includes(term.slice(0, Math.max(4, term.length - 3)))) {
+    return true;
+  }
+  return false;
+}
+
+// Generic domain-context words that appear in the KB but are NOT topic
+// indicators on their own. They can appear in ANY sentence ("I made X in the
+// session") and must NOT be allowed to single-handedly pass the scope gate.
+const CONTEXT_ONLY_TERMS = new Set([
+  "session","sessions","class","classes","situation","situations",
+  "solution","solutions","problem","problems","issue","issues",
+  "skill","skills","result","results","approach","approaches",
+  "الحصة","الجلسة","الموقف",
+]);
+
+// The four core skill names + their Arabic equivalents. If ANY of these appear
+// in the query, it is definitively in-scope — no ratio check needed.
+// These are the actual framework topics, not incidental words.
+const STRONG_ANCHORS = new Set([
+  "teaching","presentation","communication","management","student","cases","behavior","behaviour",
+  "attention","emotion","motivation","cognitive","ischool",
+  // Arabic direct equivalents (post-affix-strip)
+  "تدريس","تدريب","تعليم",    // teaching / training
+  "تقديم","عرض",              // presentation
+  "تواصل","اتصال",          // communication
+  "ادارة","إدارة",           // management
+  "سلوك","طالب","طلاب",      // student behavior
+  "انتباه","مشاعر","دافعية","إدراك","ادراك", // 4 student behavior models
+  "سكول","اي","آي",         // ischool in Arabic
+  // Sub-skill anchors that appear in sidebar button prompts
+  "adaptability","accountability","reliability","prioritization",
+  "adherence","rhythm","distraction",
+]);
+
+// Returns true when the query is answerable from the material.
+function isInScope(userQuery, isFollowUp) {
+  const terms = normalizeTerms(userQuery);
+
+  // "yes", "go on", "تمام" — no content of their own. Allowed only as a
+  // follow-up to an answer we already gave; never as an opening message.
+  if (terms.length === 0) return Boolean(isFollowUp);
+
+  // Strong anchors: the actual 4 skill names (+ Arabic equivalents). If any
+  // appears in the query it is unambiguously in-scope — skip all ratio checks.
+  // "I made a burger" has none of these; "Teaching Skills" always has "teaching".
+  if (terms.some((t) => STRONG_ANCHORS.has(t))) {
+    console.log(`[Scope] Strong anchor matched → in-scope`);
+    return true;
+  }
+
+  const driveKB = driveLoader.getKnowledgeBase();
+  const kbLower = (driveKB && driveKB.length > 0 ? driveKB : FALLBACK_KNOWLEDGE_BASE).toLowerCase();
+  const domainLower = DOMAIN_TERMS.join(" ").toLowerCase();
+
+  // Any Arabic term in the concept map is by definition framework vocabulary.
+  // But only allow it to pass if there is at least one OTHER non-context term
+  // in the query, OR the whole query is just the concept term itself.
+  const arabicConceptTerms = terms.filter((t) =>
+    Object.prototype.hasOwnProperty.call(AR_EN_CONCEPTS, t)
+  );
+  if (arabicConceptTerms.length > 0) {
+    const otherTerms = terms.filter(
+      (t) => !arabicConceptTerms.includes(t) && !CONTEXT_ONLY_TERMS.has(t)
+    );
+    // Pass if the concept term stands alone, or if there are no unrecognised
+    // non-context words — meaning every other word also makes sense in scope.
+    const unrecognisedOtherTerms = otherTerms.filter(
+      (t) => !kbHasTerm(kbLower, t) && !kbHasTerm(domainLower, t)
+    );
+    // If more than half the non-concept, non-context words are unrecognised
+    // (like "burger", "cooking"), treat as out of scope.
+    if (otherTerms.length === 0 || unrecognisedOtherTerms.length / Math.max(otherTerms.length, 1) < 0.5) {
+      return true;
+    }
+    // Fall through to general check below.
+  }
+
+  // Core domain words pass, but NOT if they are context-only terms used
+  // incidentally. Require the domain match to be a substantive term (i.e., not
+  // in CONTEXT_ONLY_TERMS), OR if the query ONLY has context terms check that
+  // all remaining non-stopword terms are also in the KB.
+  const substantiveDomainTerms = terms.filter(
+    (t) => !CONTEXT_ONLY_TERMS.has(t) && kbHasTerm(domainLower, t)
+  );
+  if (substantiveDomainTerms.length > 0) {
+    // A real domain term is present — but still verify the query isn't about
+    // something completely different. If most non-domain, non-context words
+    // are foreign to the KB (like "burger", "food", "cooking"), reject.
+    const nonDomainTerms = terms.filter(
+      (t) => !kbHasTerm(domainLower, t) && !CONTEXT_ONLY_TERMS.has(t)
+    );
+    const nonDomainUnrecognised = nonDomainTerms.filter((t) => !kbHasTerm(kbLower, t));
+    if (
+      nonDomainTerms.length > 0 &&
+      nonDomainUnrecognised.length / nonDomainTerms.length > 0.5
+    ) {
+      // More than half the non-domain content words are unrecognised — the
+      // domain word is incidental context, not the actual topic.
+      console.log(
+        `[Scope] Domain word found but topic appears off-scope. ` +
+        `Unrecognised non-domain terms: [${nonDomainUnrecognised.join(", ")}]`
+      );
+      return false;
+    }
+    return true;
+  }
+
+  // General check: a meaningful portion of the content words must land in the KB.
+  // Raised threshold from 0.34 to 0.5 — at least half must match.
+  const matched = terms.filter(
+    (t) => !CONTEXT_ONLY_TERMS.has(t) && kbHasTerm(kbLower, t)
+  ).length;
+  const effectiveTerms = terms.filter((t) => !CONTEXT_ONLY_TERMS.has(t));
+  if (effectiveTerms.length === 0) return Boolean(isFollowUp);
+  return matched >= 1 && matched / effectiveTerms.length >= 0.5;
+}
+
+const OUT_OF_SCOPE_REPLY = {
+  en: "This topic was not found in the official iSchool framework.",
+  ar: "عفواً، الموضوع ده غير موجود في إطار آي سكول الرسمي.",
+};
+
+// Send a canned reply down the same SSE channel the model uses, so the
+// client renders it exactly like any other answer.
+function streamPlainReply(res, text) {
+  res.setHeader("Content-Type", "text/event-stream");
+  res.setHeader("Cache-Control", "no-cache");
+  res.setHeader("Connection", "keep-alive");
+  res.write(`data: ${JSON.stringify({ content: text })}\n\n`);
+  res.write("data: [DONE]\n\n");
+  res.end();
 }
 
 // ---------------------------------------------------------------------------
@@ -242,9 +589,10 @@ STRICT OPERATIONAL GUIDELINES:
 3. **Grounding & RAG Rules**:
    - Answer using ONLY the knowledge base provided above. Never add skills, techniques, or terminology not in the material.
    - If the material partly covers the question, answer that part and say plainly what falls outside the framework.
-   - If it does not cover the question at all, reply with this fallback in the correct language:
+   - If it does not cover the question at all, reply with this fallback in the correct language, and NOTHING else. No greeting before it, no closing line after it, no explanation, no suggestion of what else to ask. The entire reply is this one sentence:
      - EN: "This topic was not found in the official iSchool framework."
      - AR: "عفواً، الموضوع ده غير موجود في إطار آي سكول الرسمي."
+   - This applies to anything outside the framework — food, sports, news, personal chat, general knowledge, coding, or any topic the material does not contain. Never answer it "just to be helpful", and never answer it from your own general knowledge.
    - Never refer to "context", "documents", or how you retrieve information. You are a colleague/peer coach, not a search engine.
 
 4. **Never Assume**:
@@ -307,6 +655,7 @@ STRICT OPERATIONAL GUIDELINES:
 
 10. **Closing Line**:
     - End every answer with one short line inviting a follow-up placed at the end of the answer.
+    - EXCEPTION: never add this line to the out-of-scope fallback in rule #3. That reply is one sentence and ends there.
     - One line only, maximum 8 words.
     - Vary the wording. Never repeat the same closing twice in a row.
     - EN examples: "Want me to go deeper on this?" / "Anything else from the session?"
@@ -330,7 +679,7 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     }
 
     // Keep only last 4 user/assistant messages to save tokens
-    const trimmedMessages = messages.slice(-4);
+    let trimmedMessages = messages.slice(-4);
 
     // Log request for debugging
     const lastMsg = trimmedMessages[trimmedMessages.length - 1];
@@ -343,7 +692,36 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
       openingReminder = "\n\nREMINDER: This is NOT the first message of the conversation. You MUST NOT include the opening greeting.";
     }
 
-    const containsArabic = /[\u0600-\u06FF\u0750-\u077F\u08A0-\u08FF\uFB50-\uFDFF\uFE70-\uFEFF]/.test(lastMsg?.content || "");
+    const containsArabic = hasArabic(lastMsg?.content);
+
+    // Off-topic questions never reach the model. One line back, nothing else:
+    // no greeting, no follow-up invite.
+    const isFollowUp = messages.length > 1;
+    if (!isInScope(lastMsg?.content, isFollowUp)) {
+      console.log(`[Chat] Out of scope, rejected without model call: "${(lastMsg?.content || "").slice(0, 60)}"`);
+      return streamPlainReply(res, containsArabic ? OUT_OF_SCOPE_REPLY.ar : OUT_OF_SCOPE_REPLY.en);
+    }
+
+    // A language directive cannot win against the context itself: if the last
+    // four messages are Arabic and the new question is English, an 8B model
+    // mirrors the majority language regardless of what the system prompt says.
+    // So drop the history that disagrees with this turn's language, keeping the
+    // current message. Same-language follow-ups keep full continuity; a
+    // language switch starts clean, which is what the tutor is signalling.
+    const historyInTurnLanguage = trimmedMessages.filter(
+      (msg, idx) =>
+        idx === trimmedMessages.length - 1 ||
+        hasArabic(msg?.content) === containsArabic
+    );
+
+    if (historyInTurnLanguage.length !== trimmedMessages.length) {
+      console.log(
+        `[Chat] Language switch to ${containsArabic ? "AR" : "EN"} — dropped ${
+          trimmedMessages.length - historyInTurnLanguage.length
+        } message(s) of opposite-language history.`
+      );
+      trimmedMessages = historyInTurnLanguage;
+    }
 
     let turnLanguageDirective = "";
     if (containsArabic) {
@@ -354,39 +732,50 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
 
     const userQueryText = lastMsg?.content || "";
 
-    const groqMessages = [
-      { role: "system", content: buildSystemPrompt(userQueryText) + openingReminder },
-      ...trimmedMessages,
-      { role: "system", content: turnLanguageDirective },
-    ];
+    // Gemini takes one systemInstruction rather than system messages
+    // interleaved in the turn list, so both directives are folded into it.
+    const systemInstruction = [
+      buildSystemPrompt(userQueryText) + openingReminder,
+      turnLanguageDirective,
+    ].join("\n\n");
 
+    // "assistant" → "model", and the turn list must begin with a user turn.
+    const contents = toGeminiContents(trimmedMessages);
+
+    // The client aborts at 30s, so the retry budget has to fit inside that
+    // with room for the answer itself. The old 6 attempts x 5s slept for 30s
+    // on a sustained 429 and guaranteed a client-side timeout instead of
+    // surfacing the rate-limit error.
     let response;
     let attempts = 0;
-    const maxAttempts = 6;
+    const maxAttempts = 3;
+    const retryDelayMs = 1500;
 
     while (attempts < maxAttempts) {
       attempts++;
       response = await fetch(
-        "https://api.groq.com/openai/v1/chat/completions",
+        `${GEMINI_API_BASE}/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse`,
         {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${GROQ_API_KEY}`,
+            "x-goog-api-key": GEMINI_API_KEY,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            model: "llama-3.1-8b-instant",
-            messages: groqMessages,
-            temperature: 0.3,
-            max_tokens: 1024,
-            stream: true,
+            systemInstruction: { parts: [{ text: systemInstruction }] },
+            contents,
+            generationConfig: {
+              temperature: 0.3,
+              maxOutputTokens: 1024,
+            },
           }),
         }
       );
 
       if (response.status === 429 && attempts < maxAttempts) {
-        console.warn(`[Chat] Rate limit hit (429). Auto-retrying attempt ${attempts}/${maxAttempts} in 5.0s...`);
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        const wait = retryDelayMs * attempts; // 1.5s, then 3s
+        console.warn(`[Chat] Rate limit hit (429). Retry ${attempts}/${maxAttempts} in ${wait}ms...`);
+        await new Promise((resolve) => setTimeout(resolve, wait));
         continue;
       }
       break;
@@ -394,7 +783,7 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
 
     if (!response.ok) {
       const errorData = await response.text();
-      console.error("Groq API error:", response.status, errorData);
+      console.error("Gemini API error:", response.status, errorData);
       if (response.status === 429) {
         return res.status(429).json({
           error: "Rate limit reached. Please wait a moment and try again.",
@@ -413,36 +802,68 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     const reader = response.body.getReader();
     const decoder = new TextDecoder();
 
-    while (true) {
-      const { done, value } = await reader.read();
-      if (done) {
-        res.write("data: [DONE]\n\n");
-        break;
-      }
+    // Gemini emits `data: {...}` frames with the text at
+    // candidates[0].content.parts[].text, and sends no [DONE] sentinel — the
+    // stream simply ends. The client still expects one, so we emit it here.
+    // Buffered by line: a network chunk can split an SSE frame mid-JSON, which
+    // would otherwise drop that piece of the answer silently.
+    let buffer = "";
+    let emittedAny = false;
 
-      const chunk = decoder.decode(value, { stream: true });
-      const lines = chunk.split("\n").filter((line) => line.trim() !== "");
+    const handleLine = (line) => {
+      if (!line.startsWith("data:")) return;
+      const data = line.slice(5).trim();
+      if (!data || data === "[DONE]") return;
 
-      for (const line of lines) {
-        if (line.startsWith("data: ")) {
-          const data = line.slice(6);
-          if (data === "[DONE]") {
-            res.write("data: [DONE]\n\n");
-          } else {
-            try {
-              const parsed = JSON.parse(data);
-              const content = parsed.choices?.[0]?.delta?.content;
-              if (content) {
-                res.write(`data: ${JSON.stringify({ content })}\n\n`);
-              }
-            } catch {
-              // Skip unparseable chunks
-            }
+      try {
+        const parsed = JSON.parse(data);
+        const blockReason = parsed.promptFeedback?.blockReason;
+        if (blockReason) {
+          console.warn(`[Chat] Gemini blocked the prompt: ${blockReason}`);
+          return;
+        }
+        const parts = parsed.candidates?.[0]?.content?.parts;
+        if (!Array.isArray(parts)) return;
+        for (const part of parts) {
+          if (typeof part?.text === "string" && part.text.length > 0) {
+            emittedAny = true;
+            res.write(`data: ${JSON.stringify({ content: part.text })}\n\n`);
           }
         }
+      } catch {
+        // Skip unparseable frames
+      }
+    };
+
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+
+      buffer += decoder.decode(value, { stream: true });
+      const lines = buffer.split("\n");
+      buffer = lines.pop() ?? ""; // keep the trailing partial line
+
+      for (const line of lines) {
+        if (line.trim()) handleLine(line.trim());
       }
     }
 
+    if (buffer.trim()) handleLine(buffer.trim());
+
+    // A stream that yields nothing (safety filter, empty candidate) would
+    // otherwise render as a blank bubble.
+    if (!emittedAny) {
+      console.warn("[Chat] Gemini returned an empty stream.");
+      res.write(
+        `data: ${JSON.stringify({
+          content: containsArabic
+            ? "حصلت مشكلة مؤقتة. ممكن تجرب تاني؟"
+            : "Something went wrong on my side. Please try again.",
+        })}\n\n`
+      );
+    }
+
+    res.write("data: [DONE]\n\n");
     res.end();
   } catch (error) {
     console.error("Server error:", error);

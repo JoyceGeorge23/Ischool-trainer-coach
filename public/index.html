@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="iSchool Trainer Coach — an internal assistant helping iSchool tutors improve session delivery across Teaching, Presentation, Communication and Management skills." />
+  <meta name="description"
+    content="iSchool Trainer Coach — an internal assistant helping iSchool tutors improve session delivery across Teaching, Presentation, Communication and Management skills." />
   <meta name="theme-color" content="#ECF8FF" />
   <title>iSchool Trainer Coach</title>
   <link rel="icon" type="image/svg+xml" href="icon-mark.svg" />
@@ -11,19 +13,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <!-- Alexandria: the iSchool ID Manual's companion typeface to Somar Rounded,
        and the one with a web licence. Covers Latin and Arabic. -->
-  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
   <div class="app-container">
     <!-- Mobile header -->
     <header class="mobile-header">
-      <button class="sidebar-toggle" id="sidebarToggle" data-i18n-aria-label="a.openMenu" aria-label="Open skills menu" aria-expanded="false" aria-controls="sidebar">
+      <button class="sidebar-toggle" id="sidebarToggle" data-i18n-aria-label="a.openMenu" aria-label="Open skills menu"
+        aria-expanded="false" aria-controls="sidebar">
         <span></span><span></span><span></span>
       </button>
       <img class="logo-mark" src="icon-mark.svg" alt="" width="34" height="41" style="width:22px;height:26px" />
       <p class="mobile-title" data-i18n="app.title">iSchool Trainer Coach</p>
-      <button class="lang-switch" id="langSwitchMobile" type="button" data-i18n-aria-label="a.switchLang" aria-label="Switch language">
+      <button class="lang-switch" id="langSwitchMobile" type="button" data-i18n-aria-label="a.switchLang"
+        aria-label="Switch language">
         <span data-lang-label>العربية</span>
       </button>
     </header>
@@ -46,8 +52,9 @@
           <li style="--i: 0">
             <button class="skill-folder-card" type="button" id="softSkillsToggle" aria-expanded="false">
               <span class="skill-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
                 </svg>
               </span>
               <span class="skill-info">
@@ -55,7 +62,8 @@
                 <p data-i18n="s.soft.d">The four core disciplines every session draws on</p>
               </span>
               <span class="folder-chevron" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </span>
@@ -66,8 +74,10 @@
               <li>
                 <button class="skill-card sub-skill-card" type="button" data-skill="teaching" id="card-teaching">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg data-skill-icon="teaching" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5"/>
+                    <svg data-skill-icon="teaching" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M22 10 12 5 2 10l10 5 10-5Z" />
+                      <path d="M6 12.5V17c0 1.5 2.7 3 6 3s6-1.5 6-3v-4.5" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -77,10 +87,14 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="presentation" id="card-presentation">
+                <button class="skill-card sub-skill-card" type="button" data-skill="presentation"
+                  id="card-presentation">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg data-skill-icon="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="3" width="18" height="12" rx="2"/><path d="M12 15v6"/><path d="M8 21h8"/>
+                    <svg data-skill-icon="presentation" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="12" rx="2" />
+                      <path d="M12 15v6" />
+                      <path d="M8 21h8" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -90,10 +104,13 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="communication" id="card-communication">
+                <button class="skill-card sub-skill-card" type="button" data-skill="communication"
+                  id="card-communication">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg data-skill-icon="communication" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.3-.6L3 21l1.7-5a8.4 8.4 0 0 1-.7-3.4 8.4 8.4 0 0 1 8.4-8.4h.6a8.4 8.4 0 0 1 8 8Z"/>
+                    <svg data-skill-icon="communication" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="M21 11.5a8.4 8.4 0 0 1-9 8.4 9 9 0 0 1-3.3-.6L3 21l1.7-5a8.4 8.4 0 0 1-.7-3.4 8.4 8.4 0 0 1 8.4-8.4h.6a8.4 8.4 0 0 1 8 8Z" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -105,8 +122,10 @@
               <li>
                 <button class="skill-card sub-skill-card" type="button" data-skill="management" id="card-management">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg data-skill-icon="management" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="9"/><path class="clock-hand" d="M12 7v5l3.2 2"/>
+                    <svg data-skill-icon="management" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                      stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="9" />
+                      <path class="clock-hand" d="M12 7v5l3.2 2" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -120,8 +139,11 @@
           <li style="--i: 1">
             <button class="skill-folder-card" type="button" id="presentationSkillsToggle" aria-expanded="false">
               <span class="skill-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="3" y="3" width="18" height="12" rx="2"/><path d="M12 15v6"/><path d="M8 21h8"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="12" rx="2" />
+                  <path d="M12 15v6" />
+                  <path d="M8 21h8" />
                 </svg>
               </span>
               <span class="skill-info">
@@ -129,17 +151,22 @@
                 <p data-i18n="s.pres.d2">How you structure and deliver an explanation</p>
               </span>
               <span class="folder-chevron" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </span>
             </button>
             <ul class="sub-skill-list" id="presentationSkillsList">
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="structural-thinking" id="card-structural">
+                <button class="skill-card sub-skill-card" type="button" data-skill="structural-thinking"
+                  id="card-structural">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polygon points="12 2 2 7 12 12 22 7 12 2" />
+                      <polyline points="2 17 12 22 22 17" />
+                      <polyline points="2 12 12 17 22 12" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -149,10 +176,15 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="nonverbal-presence" id="card-presence">
+                <button class="skill-card sub-skill-card" type="button" data-skill="nonverbal-presence"
+                  id="card-presence">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <path d="M8 14s1.5 2 4 2 4-2 4-2" />
+                      <line x1="9" y1="9" x2="9.01" y2="9" />
+                      <line x1="15" y1="9" x2="15.01" y2="9" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -164,8 +196,11 @@
               <li>
                 <button class="skill-card sub-skill-card" type="button" data-skill="verbal-control" id="card-verbal">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3z" />
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                      <line x1="12" y1="19" x2="12" y2="22" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -175,10 +210,14 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="framing-positioning" id="card-framing">
+                <button class="skill-card sub-skill-card" type="button" data-skill="framing-positioning"
+                  id="card-framing">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <rect x="3" y="3" width="18" height="18" rx="2" />
+                      <path d="M3 9h18" />
+                      <path d="M9 21V9" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -192,25 +231,104 @@
           <li style="--i: 2">
             <button class="skill-folder-card" type="button" id="managementSkillsToggle" aria-expanded="false">
               <span class="skill-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="9"/><path class="clock-hand" d="M12 7v5l3.2 2"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="9" />
+                  <path class="clock-hand" d="M12 7v5l3.2 2" />
                 </svg>
               </span>
               <span class="skill-info">
                 <h3 data-i18n="s.mgmt.t">Management Skills</h3>
                 <p data-i18n="s.mgmt.d2">Keeping the session on time and on track</p>
               </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
             </button>
             <ul class="sub-skill-list" id="managementSkillsList">
-              <!-- Empty for now -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="time-priority"
+                  id="card-time-priority">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <polyline points="12 6 12 12 16 14" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.time.t">Time &amp; Priority Control</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="session-flow"
+                  id="card-session-flow">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <line x1="8" y1="6" x2="21" y2="6" />
+                      <line x1="8" y1="12" x2="21" y2="12" />
+                      <line x1="8" y1="18" x2="21" y2="18" />
+                      <line x1="3" y1="6" x2="3.01" y2="6" />
+                      <line x1="3" y1="12" x2="3.01" y2="12" />
+                      <line x1="3" y1="18" x2="3.01" y2="18" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.flow.t">Session Flow Control</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="adaptability"
+                  id="card-adaptability">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polyline points="23 4 23 10 17 10" />
+                      <polyline points="1 20 1 14 7 14" />
+                      <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.adaptability.t">Adaptability &amp; Problem-Solving</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="accountability"
+                  id="card-accountability">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                      <polyline points="22 4 12 14.01 9 11.01" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.accountability.t">Accountability &amp; Reliability</h3>
+                  </span>
+                </button>
+              </li>
             </ul>
           </li>
 
           <li style="--i: 2">
             <button class="skill-folder-card" type="button" id="studentCasesToggle" aria-expanded="false">
               <span class="skill-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                 </svg>
               </span>
               <span class="skill-info">
@@ -218,17 +336,22 @@
                 <p data-i18n="s.student.d">Reading what a learner is doing, and why</p>
               </span>
               <span class="folder-chevron" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
                   <polyline points="6 9 12 15 18 9"></polyline>
                 </svg>
               </span>
             </button>
             <ul class="sub-skill-list" id="studentCasesList">
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="attention-driven" id="card-attention">
+                <button class="skill-card sub-skill-card" type="button" data-skill="attention-driven"
+                  id="card-attention">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <circle cx="12" cy="12" r="10" />
+                      <line x1="12" y1="8" x2="12" y2="12" />
+                      <line x1="12" y1="16" x2="12.01" y2="16" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -240,8 +363,10 @@
               <li>
                 <button class="skill-card sub-skill-card" type="button" data-skill="emotion-driven" id="card-emotion">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path
+                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -251,10 +376,13 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="motivation-driven" id="card-motivation">
+                <button class="skill-card sub-skill-card" type="button" data-skill="motivation-driven"
+                  id="card-motivation">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <polygon
+                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -264,10 +392,12 @@
               </li>
 
               <li>
-                <button class="skill-card sub-skill-card" type="button" data-skill="cognitive-driven" id="card-cognitive">
+                <button class="skill-card sub-skill-card" type="button" data-skill="cognitive-driven"
+                  id="card-cognitive">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z"/>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
+                      stroke-linejoin="round">
+                      <path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 8-8 8 8 0 0 1-8 8z" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -291,11 +421,16 @@
             <span class="status-dot" aria-hidden="true"></span>
             <span data-i18n="app.title">iSchool Trainer Coach</span>
           </div>
-          <p class="chat-header-sub" data-i18n="chat.sub">Internal assistant to help iSchool tutors improve session delivery</p>
+          <p class="chat-header-sub" data-i18n="chat.sub">Internal assistant to help iSchool tutors improve session
+            delivery</p>
         </div>
-        <button class="lang-switch" id="langSwitch" type="button" data-i18n-aria-label="a.switchLang" aria-label="Switch language">
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+        <button class="lang-switch" id="langSwitch" type="button" data-i18n-aria-label="a.switchLang"
+          aria-label="Switch language">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
           </svg>
           <span data-lang-label>العربية</span>
         </button>
@@ -304,12 +439,36 @@
       <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversation">
         <div class="message bot-message">
           <div class="message-avatar">
-            <svg width="16" height="18" viewBox="0 0 192 229" fill="none" aria-hidden="true"><mask id="bot-mask-welcome" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="192" height="229"><path d="M191.753 0H0V229H191.753V0Z" fill="white"/></mask><g mask="url(#bot-mask-welcome)"><mask id="bot-mask-welcome-1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="191" height="229"><path d="M190.134 0H0V229H190.134V0Z" fill="white"/></mask><g mask="url(#bot-mask-welcome-1)"><path d="M104.813 96.2036C72.4837 109.692 47.6786 128.836 35.5521 158.034C23.1265 188.307 48.9902 204.452 76.7407 196.918C96.0003 192.039 114.616 178.231 130.102 162.384C161.027 132.5 169.955 80.9522 139.076 48.2968C106.424 12.985 53.7303 26.0151 19.698 54.2737C13.163 59.3346 5.31648 49.8769 11.4833 44.4267C39.1878 19.7176 80.4913 1.67237 118.62 13.9926C158.404 25.7403 184.015 67.5328 181.07 108.043C178.907 149.125 152.859 183.018 120.944 206.513C90.3628 230.65 37.1628 240.863 10.2867 204.634C-11.0209 175.208 4.05091 135.408 24.6222 110.699C41.6038 89.6542 60.9325 72.2273 82.9765 59.014C105.112 46.7396 125.108 80.082 103.226 92.8602L104.813 96.2036Z" fill="#FFD700"/><path d="M115.857 126.133L117.951 181.848C118.365 192.382 112.451 199.138 102.419 199.527C92.4094 199.917 85.9895 193.642 85.5753 183.085L83.4813 127.37C83.0672 116.836 88.9808 110.08 99.0133 109.691C109.023 109.302 115.443 115.599 115.857 126.133Z" fill="#056FEC"/><path d="M95.5397 98.2869C107.549 98.2869 117.285 88.5981 117.285 76.6464C117.285 64.6946 107.549 55.0059 95.5397 55.0059C83.5304 55.0059 73.7949 64.6946 73.7949 76.6464C73.7949 88.5981 83.5304 98.2869 95.5397 98.2869Z" fill="#FF7F1C"/></g></g></svg>
+            <svg width="16" height="18" viewBox="0 0 192 229" fill="none" aria-hidden="true">
+              <mask id="bot-mask-welcome" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="192"
+                height="229">
+                <path d="M191.753 0H0V229H191.753V0Z" fill="white" />
+              </mask>
+              <g mask="url(#bot-mask-welcome)">
+                <mask id="bot-mask-welcome-1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0"
+                  width="191" height="229">
+                  <path d="M190.134 0H0V229H190.134V0Z" fill="white" />
+                </mask>
+                <g mask="url(#bot-mask-welcome-1)">
+                  <path
+                    d="M104.813 96.2036C72.4837 109.692 47.6786 128.836 35.5521 158.034C23.1265 188.307 48.9902 204.452 76.7407 196.918C96.0003 192.039 114.616 178.231 130.102 162.384C161.027 132.5 169.955 80.9522 139.076 48.2968C106.424 12.985 53.7303 26.0151 19.698 54.2737C13.163 59.3346 5.31648 49.8769 11.4833 44.4267C39.1878 19.7176 80.4913 1.67237 118.62 13.9926C158.404 25.7403 184.015 67.5328 181.07 108.043C178.907 149.125 152.859 183.018 120.944 206.513C90.3628 230.65 37.1628 240.863 10.2867 204.634C-11.0209 175.208 4.05091 135.408 24.6222 110.699C41.6038 89.6542 60.9325 72.2273 82.9765 59.014C105.112 46.7396 125.108 80.082 103.226 92.8602L104.813 96.2036Z"
+                    fill="#FFD700" />
+                  <path
+                    d="M115.857 126.133L117.951 181.848C118.365 192.382 112.451 199.138 102.419 199.527C92.4094 199.917 85.9895 193.642 85.5753 183.085L83.4813 127.37C83.0672 116.836 88.9808 110.08 99.0133 109.691C109.023 109.302 115.443 115.599 115.857 126.133Z"
+                    fill="#056FEC" />
+                  <path
+                    d="M95.5397 98.2869C107.549 98.2869 117.285 88.5981 117.285 76.6464C117.285 64.6946 107.549 55.0059 95.5397 55.0059C83.5304 55.0059 73.7949 64.6946 73.7949 76.6464C73.7949 88.5981 83.5304 98.2869 95.5397 98.2869Z"
+                    fill="#FF7F1C" />
+                </g>
+              </g>
+            </svg>
           </div>
           <div class="message-content">
             <div class="message-bubble" data-i18n-bubble>
               <p class="welcome-lead" data-i18n="welcome.lead">Welcome 👋</p>
-              <p data-i18n="welcome.body">I help tutors with the trainer skills framework. Ask about teaching, presentation, communication or management skills — or just describe what happened in your session. I answer only from the official framework.</p>
+              <p data-i18n="welcome.body">I help tutors with the trainer skills framework. Ask about teaching,
+                presentation, communication or management skills — or just describe what happened in your session. I
+                answer only from the official framework.</p>
             </div>
           </div>
         </div>
@@ -317,7 +476,29 @@
 
       <div class="typing-indicator" id="typingIndicator">
         <div class="message-avatar">
-          <svg width="16" height="18" viewBox="0 0 192 229" fill="none" aria-hidden="true"><mask id="bot-mask-typing" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="192" height="229"><path d="M191.753 0H0V229H191.753V0Z" fill="white"/></mask><g mask="url(#bot-mask-typing)"><mask id="bot-mask-typing-1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="191" height="229"><path d="M190.134 0H0V229H190.134V0Z" fill="white"/></mask><g mask="url(#bot-mask-typing-1)"><path d="M104.813 96.2036C72.4837 109.692 47.6786 128.836 35.5521 158.034C23.1265 188.307 48.9902 204.452 76.7407 196.918C96.0003 192.039 114.616 178.231 130.102 162.384C161.027 132.5 169.955 80.9522 139.076 48.2968C106.424 12.985 53.7303 26.0151 19.698 54.2737C13.163 59.3346 5.31648 49.8769 11.4833 44.4267C39.1878 19.7176 80.4913 1.67237 118.62 13.9926C158.404 25.7403 184.015 67.5328 181.07 108.043C178.907 149.125 152.859 183.018 120.944 206.513C90.3628 230.65 37.1628 240.863 10.2867 204.634C-11.0209 175.208 4.05091 135.408 24.6222 110.699C41.6038 89.6542 60.9325 72.2273 82.9765 59.014C105.112 46.7396 125.108 80.082 103.226 92.8602L104.813 96.2036Z" fill="#FFD700"/><path d="M115.857 126.133L117.951 181.848C118.365 192.382 112.451 199.138 102.419 199.527C92.4094 199.917 85.9895 193.642 85.5753 183.085L83.4813 127.37C83.0672 116.836 88.9808 110.08 99.0133 109.691C109.023 109.302 115.443 115.599 115.857 126.133Z" fill="#056FEC"/><path d="M95.5397 98.2869C107.549 98.2869 117.285 88.5981 117.285 76.6464C117.285 64.6946 107.549 55.0059 95.5397 55.0059C83.5304 55.0059 73.7949 64.6946 73.7949 76.6464C73.7949 88.5981 83.5304 98.2869 95.5397 98.2869Z" fill="#FF7F1C"/></g></g></svg>
+          <svg width="16" height="18" viewBox="0 0 192 229" fill="none" aria-hidden="true">
+            <mask id="bot-mask-typing" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="192"
+              height="229">
+              <path d="M191.753 0H0V229H191.753V0Z" fill="white" />
+            </mask>
+            <g mask="url(#bot-mask-typing)">
+              <mask id="bot-mask-typing-1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0"
+                width="191" height="229">
+                <path d="M190.134 0H0V229H190.134V0Z" fill="white" />
+              </mask>
+              <g mask="url(#bot-mask-typing-1)">
+                <path
+                  d="M104.813 96.2036C72.4837 109.692 47.6786 128.836 35.5521 158.034C23.1265 188.307 48.9902 204.452 76.7407 196.918C96.0003 192.039 114.616 178.231 130.102 162.384C161.027 132.5 169.955 80.9522 139.076 48.2968C106.424 12.985 53.7303 26.0151 19.698 54.2737C13.163 59.3346 5.31648 49.8769 11.4833 44.4267C39.1878 19.7176 80.4913 1.67237 118.62 13.9926C158.404 25.7403 184.015 67.5328 181.07 108.043C178.907 149.125 152.859 183.018 120.944 206.513C90.3628 230.65 37.1628 240.863 10.2867 204.634C-11.0209 175.208 4.05091 135.408 24.6222 110.699C41.6038 89.6542 60.9325 72.2273 82.9765 59.014C105.112 46.7396 125.108 80.082 103.226 92.8602L104.813 96.2036Z"
+                  fill="#FFD700" />
+                <path
+                  d="M115.857 126.133L117.951 181.848C118.365 192.382 112.451 199.138 102.419 199.527C92.4094 199.917 85.9895 193.642 85.5753 183.085L83.4813 127.37C83.0672 116.836 88.9808 110.08 99.0133 109.691C109.023 109.302 115.443 115.599 115.857 126.133Z"
+                  fill="#056FEC" />
+                <path
+                  d="M95.5397 98.2869C107.549 98.2869 117.285 88.5981 117.285 76.6464C117.285 64.6946 107.549 55.0059 95.5397 55.0059C83.5304 55.0059 73.7949 64.6946 73.7949 76.6464C73.7949 88.5981 83.5304 98.2869 95.5397 98.2869Z"
+                  fill="#FF7F1C" />
+              </g>
+            </g>
+          </svg>
         </div>
         <div class="typing-dots" role="status" aria-label="Assistant is typing">
           <span></span><span></span><span></span>
@@ -327,20 +508,18 @@
       <div class="chat-input-area">
         <div class="input-container">
           <label class="visually-hidden" for="chatInput" data-i18n="a.messageLabel">Message the trainer coach</label>
-          <textarea
-            id="chatInput"
-            data-i18n-placeholder="input.placeholder"
-            placeholder="Ask about teaching, presentation, communication or management skills…"
-            rows="1"
-          ></textarea>
+          <textarea id="chatInput" data-i18n-placeholder="input.placeholder"
+            placeholder="Ask about teaching, presentation, communication or management skills…" rows="1"></textarea>
           <button class="send-btn" id="sendBtn" data-i18n-aria-label="a.send" aria-label="Send message">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="22" y1="2" x2="11" y2="13"></line>
               <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
             </svg>
           </button>
         </div>
-        <p class="input-hint"><span data-i18n="hint.press">Press</span> <kbd>Enter</kbd> <span data-i18n="hint.send">to send</span> · <kbd>Shift + Enter</kbd> <span data-i18n="hint.newline">for a new line</span></p>
+        <p class="input-hint"><span data-i18n="hint.press">Press</span> <kbd>Enter</kbd> <span data-i18n="hint.send">to
+            send</span> · <kbd>Shift + Enter</kbd> <span data-i18n="hint.newline">for a new line</span></p>
       </div>
     </main>
   </div>
@@ -349,4 +528,5 @@
   <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
+
 </html>

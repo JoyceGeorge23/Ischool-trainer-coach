@@ -33,16 +33,21 @@
   --surface-active: #d6e9f7;
 
   /* Ink — all verified against their intended background */
-  --ink: #0b2447; /* 15.4:1 on white */
-  --ink-secondary: #44586e; /* 7.4:1 on white, 6.9:1 on #ECF8FF */
-  --ink-muted: #5a6e85; /* 5.4:1 on white — still passes body text */
+  --ink: #0b2447;
+  /* 15.4:1 on white */
+  --ink-secondary: #44586e;
+  /* 7.4:1 on white, 6.9:1 on #ECF8FF */
+  --ink-muted: #5a6e85;
+  /* 5.4:1 on white — still passes body text */
   --ink-on-brand: #ffffff;
 
   /* Interactive blue, darkened for AA on white text and small type */
-  --action: #0563d6; /* white on this = 5.4:1 */
+  --action: #0563d6;
+  /* white on this = 5.4:1 */
   --action-hover: #0455bb;
   --action-active: #043fad;
-  --action-quiet: #0a5bc4; /* 5.9:1 on white for links/labels */
+  --action-quiet: #0a5bc4;
+  /* 5.9:1 on white for links/labels */
 
   --border: #cae2f0;
   --border-strong: #b1d1e6;
@@ -101,9 +106,11 @@
   --z-header: 50;
 
   /* Product motion: 150–250ms, state only */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1); /* expo — confident */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* expo — confident */
   --ease-quart: cubic-bezier(0.25, 1, 0.5, 1);
-  --t-instant: 90ms var(--ease-out); /* under the ~80ms perception floor */
+  --t-instant: 90ms var(--ease-out);
+  /* under the ~80ms perception floor */
   --t-fast: 150ms var(--ease-out);
   --t-base: 220ms var(--ease-out);
 
@@ -160,19 +167,36 @@ body {
 }
 
 /* ── Typography Hierarchy ────────────────────────────────────────── */
-h1, h2, .headline, .chat-header-info span, .sidebar-brand-text {
+h1,
+h2,
+.headline,
+.chat-header-info span,
+.sidebar-brand-text {
   font-family: "Somar Rounded", "Alexandria", sans-serif;
-  font-weight: 600; /* Headline — Somar Rounded SemiBold */
+  font-weight: 600;
+  /* Headline — Somar Rounded SemiBold */
 }
 
-h3, h4, .subhead, .skill-info h3, .chat-header-sub {
+h3,
+h4,
+.subhead,
+.skill-info h3,
+.chat-header-sub {
   font-family: "Somar Rounded", "Alexandria", sans-serif;
-  font-weight: 500; /* Subhead — Somar Rounded Medium */
+  font-weight: 500;
+  /* Subhead — Somar Rounded Medium */
 }
 
-p, span, li, button, input, textarea, .message-content {
+p,
+span,
+li,
+button,
+input,
+textarea,
+.message-content {
   font-family: "Somar Rounded", "Alexandria", sans-serif;
-  font-weight: 400; /* Body — Somar Rounded Regular */
+  font-weight: 400;
+  /* Body — Somar Rounded Regular */
 }
 
 :where(button, a, textarea, [tabindex]):focus-visible {
@@ -205,13 +229,14 @@ p, span, li, button, input, textarea, .message-content {
   position: fixed;
   inset: 0 0 auto 0;
   height: 56px;
-  background: linear-gradient(90deg, #021a36 0%, #034b94 100%);
+  /* Same blue axis as the sidebar, so the two chrome surfaces agree. */
+  background: linear-gradient(90deg, #042d78 0%, #0a4fbd 100%);
   border-bottom: 1px solid rgba(5, 172, 255, 0.3);
   z-index: var(--z-header);
   align-items: center;
   padding: 0 12px;
   gap: 10px;
-  box-shadow: 0 2px 12px rgba(2, 26, 54, 0.3);
+  box-shadow: 0 2px 12px rgba(4, 45, 120, 0.32);
 }
 
 .sidebar-toggle {
@@ -248,9 +273,11 @@ p, span, li, button, input, textarea, .message-content {
 .sidebar-toggle[aria-expanded="true"] span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .sidebar-toggle[aria-expanded="true"] span:nth-child(2) {
   opacity: 0;
 }
+
 .sidebar-toggle[aria-expanded="true"] span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -268,13 +295,20 @@ p, span, li, button, input, textarea, .message-content {
    gradient, no glass, no glow — the panel recedes so the chat leads. */
 .sidebar {
   /* Panel-scoped ramp, so every child reads from one vocabulary. */
-  --nav-bg: #04295c;
-  --nav-raised: #063a7c;
-  --nav-line: rgba(255, 255, 255, 0.14);
-  --nav-line-strong: rgba(255, 255, 255, 0.26);
+  /* Committed brand blue, not a desaturated navy: the panel sits on the
+     ID Manual's #043FAD–#056FEC axis so it reads as iSchool blue, not as
+     generic dark chrome. Every value verified against white. */
+  --nav-bg: #063b96;
+  /* white on this = 10.1:1 */
+  --nav-raised: #0a4fbd;
+  /* 7.3:1 — hover / expanded rows */
+  --nav-line: rgba(255, 255, 255, 0.16);
+  --nav-line-strong: rgba(255, 255, 255, 0.3);
   --nav-ink: #ffffff;
-  --nav-ink-muted: #a9cdf0; /* 7.1:1 on --nav-bg */
-  --nav-accent: #5cc4ff; /* 7.4:1 on --nav-bg */
+  --nav-ink-muted: #a9d4ff;
+  /* 6.6:1 on --nav-bg */
+  --nav-accent: #6ec8ff;
+  /* 5.5:1 on --nav-bg */
 
   width: var(--sidebar-width);
   min-width: var(--sidebar-width);
@@ -305,7 +339,8 @@ p, span, li, button, input, textarea, .message-content {
 
 .logo-lockup {
   display: block;
-  line-height: 0; /* no descender gap under the image */
+  line-height: 0;
+  /* no descender gap under the image */
 }
 
 .logo-lockup img {
@@ -360,16 +395,38 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes rowIn {
-  from { opacity: 0; transform: translateX(-8px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateX(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Discipline hues, lifted for contrast on the solid blue panel. Each is
    used only on the row's icon and its selected marker — never as a wash. */
-[data-skill="teaching"] { --skill-ink: #7ab6ff; --skill-vivid: #05ACFF; }
-[data-skill="presentation"] { --skill-ink: #ffb066; --skill-vivid: #ff7f1c; }
-[data-skill="communication"] { --skill-ink: #5cc4ff; --skill-vivid: #05ACFF; }
-[data-skill="management"] { --skill-ink: #ffdb4d; --skill-vivid: #ffd700; }
+[data-skill="teaching"] {
+  --skill-ink: #7ab6ff;
+  --skill-vivid: #05ACFF;
+}
+
+[data-skill="presentation"] {
+  --skill-ink: #ffb066;
+  --skill-vivid: #ff7f1c;
+}
+
+[data-skill="communication"] {
+  --skill-ink: #5cc4ff;
+  --skill-vivid: #05ACFF;
+}
+
+[data-skill="management"] {
+  --skill-ink: #ffdb4d;
+  --skill-vivid: #ffd700;
+}
 
 /* ── Soft Skills parent accordion row ─────────────────────────────── */
 .skill-folder-card {
@@ -444,13 +501,29 @@ p, span, li, button, input, textarea, .message-content {
 .sub-skill-list.open li {
   animation: subRowIn 260ms var(--ease-out) backwards;
 }
-.sub-skill-list.open li:nth-child(2) { animation-delay: 40ms; }
-.sub-skill-list.open li:nth-child(3) { animation-delay: 80ms; }
-.sub-skill-list.open li:nth-child(4) { animation-delay: 120ms; }
+
+.sub-skill-list.open li:nth-child(2) {
+  animation-delay: 40ms;
+}
+
+.sub-skill-list.open li:nth-child(3) {
+  animation-delay: 80ms;
+}
+
+.sub-skill-list.open li:nth-child(4) {
+  animation-delay: 120ms;
+}
 
 @keyframes subRowIn {
-  from { opacity: 0; transform: translateY(-6px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* Leaf rows are a list, not a second tier of cards. A folder card explains
@@ -507,7 +580,8 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 .skill-card:active:not(:disabled) {
-  background: #05336d;
+  background: #04307d;
+  /* pressed: one step below --nav-bg */
 }
 
 /* Selected: a filled row plus a dot marker in the discipline's own hue —
@@ -530,8 +604,15 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes dotIn {
-  from { opacity: 0; transform: scale(0.4); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 .skill-card:disabled {
@@ -579,12 +660,15 @@ p, span, li, button, input, textarea, .message-content {
 .skill-card:hover:not(:disabled) [data-skill-icon="teaching"] {
   transform: translateY(-2px);
 }
+
 .skill-card:hover:not(:disabled) [data-skill-icon="presentation"] {
   transform: scale(1.08);
 }
+
 .skill-card:hover:not(:disabled) [data-skill-icon="communication"] {
   transform: rotate(-6deg);
 }
+
 .skill-card:hover:not(:disabled) [data-skill-icon="management"] .clock-hand {
   transform-origin: 12px 12px;
   transform: rotate(90deg);
@@ -620,7 +704,7 @@ p, span, li, button, input, textarea, .message-content {
   display: none;
   position: fixed;
   inset: 0;
-  background: rgba(11, 36, 71, 0.45);
+  background: rgba(6, 45, 120, 0.5);
   z-index: var(--z-overlay);
   opacity: 0;
   transition: opacity var(--t-base);
@@ -699,8 +783,16 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes halo {
-  0% { opacity: 0.55; transform: scale(0.7); }
-  70%, 100% { opacity: 0; transform: scale(1.5); }
+  0% {
+    opacity: 0.55;
+    transform: scale(0.7);
+  }
+
+  70%,
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
 .chat-header-sub {
@@ -730,11 +822,20 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes messageIn {
-  from { opacity: 0; transform: translateY(6px); }
-  to { opacity: 1; transform: none; }
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
-.bot-message { align-self: flex-start; }
+.bot-message {
+  align-self: flex-start;
+}
 
 .user-message {
   align-self: flex-end;
@@ -824,9 +925,13 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 /* Markdown inside messages */
-.message-bubble > * + * { margin-top: 8px; }
+.message-bubble>*+* {
+  margin-top: 8px;
+}
 
-.message-bubble strong { font-weight: 600; }
+.message-bubble strong {
+  font-weight: 600;
+}
 
 .message-bubble ul,
 .message-bubble ol {
@@ -839,7 +944,9 @@ p, span, li, button, input, textarea, .message-content {
   padding-right: 20px;
 }
 
-.message-bubble li + li { margin-top: 3px; }
+.message-bubble li+li {
+  margin-top: 3px;
+}
 
 .message-bubble h3 {
   font-size: 0.9375rem;
@@ -848,9 +955,13 @@ p, span, li, button, input, textarea, .message-content {
   margin-top: 14px;
 }
 
-.message-bubble h3:first-child { margin-top: 0; }
+.message-bubble h3:first-child {
+  margin-top: 0;
+}
 
-.user-message .message-bubble h3 { color: var(--ink-on-brand); }
+.user-message .message-bubble h3 {
+  color: var(--ink-on-brand);
+}
 
 .message-bubble code {
   background: var(--surface-panel);
@@ -887,7 +998,9 @@ p, span, li, button, input, textarea, .message-content {
   padding: 0 28px 10px;
 }
 
-.typing-indicator.active { display: flex; }
+.typing-indicator.active {
+  display: flex;
+}
 
 .typing-dots {
   display: flex;
@@ -909,13 +1022,31 @@ p, span, li, button, input, textarea, .message-content {
   animation: typingPulse 1.3s var(--ease-out) infinite;
 }
 
-.typing-dots span:nth-child(1) { background: var(--brand-blue); }
-.typing-dots span:nth-child(2) { background: var(--brand-orange); animation-delay: 0.15s; }
-.typing-dots span:nth-child(3) { background: var(--brand-gold-deep); animation-delay: 0.3s; }
+.typing-dots span:nth-child(1) {
+  background: var(--brand-blue);
+}
+
+.typing-dots span:nth-child(2) {
+  background: var(--brand-orange);
+  animation-delay: 0.15s;
+}
+
+.typing-dots span:nth-child(3) {
+  background: var(--brand-gold-deep);
+  animation-delay: 0.3s;
+}
 
 @keyframes typingPulse {
-  0%, 60%, 100% { opacity: 0.35; }
-  30% { opacity: 1; }
+
+  0%,
+  60%,
+  100% {
+    opacity: 0.35;
+  }
+
+  30% {
+    opacity: 1;
+  }
 }
 
 /* ── Input ────────────────────────────────────────────────────────── */
@@ -958,7 +1089,8 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 .input-container textarea::placeholder {
-  color: var(--ink-muted); /* 5.4:1 — placeholders meet body contrast */
+  color: var(--ink-muted);
+  /* 5.4:1 — placeholders meet body contrast */
 }
 
 .send-btn {
@@ -1004,10 +1136,25 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes launch {
-  0% { transform: none; opacity: 1; }
-  40% { transform: translate(14px, -14px) scale(0.85); opacity: 0; }
-  41% { transform: translate(-12px, 12px) scale(0.85); opacity: 0; }
-  100% { transform: none; opacity: 1; }
+  0% {
+    transform: none;
+    opacity: 1;
+  }
+
+  40% {
+    transform: translate(14px, -14px) scale(0.85);
+    opacity: 0;
+  }
+
+  41% {
+    transform: translate(-12px, 12px) scale(0.85);
+    opacity: 0;
+  }
+
+  100% {
+    transform: none;
+    opacity: 1;
+  }
 }
 
 /* Exhaust trail — a brand-gold flare that expands and fades behind it. */
@@ -1021,8 +1168,15 @@ p, span, li, button, input, textarea, .message-content {
 }
 
 @keyframes exhaust {
-  0% { opacity: 0.75; transform: scale(0.4); }
-  100% { opacity: 0; transform: scale(1.5); }
+  0% {
+    opacity: 0.75;
+    transform: scale(0.4);
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
 }
 
 .send-btn:disabled {
@@ -1058,7 +1212,9 @@ p, span, li, button, input, textarea, .message-content {
 
 /* ── Responsive ───────────────────────────────────────────────────── */
 @media (max-width: 860px) {
-  .mobile-header { display: flex; }
+  .mobile-header {
+    display: flex;
+  }
 
   .sidebar {
     position: fixed;
@@ -1068,32 +1224,58 @@ p, span, li, button, input, textarea, .message-content {
     transition: transform var(--t-base);
   }
 
-  .sidebar.open { transform: none; }
+  .sidebar.open {
+    transform: none;
+  }
 
-  .sidebar-overlay.active { display: block; }
+  .sidebar-overlay.active {
+    display: block;
+  }
 
-  .chat-main { padding-top: 56px; }
+  .chat-main {
+    padding-top: 56px;
+  }
 
-  .chat-header { display: none; }
+  .chat-header {
+    display: none;
+  }
 
-  .chat-messages { padding: 18px 16px; gap: 14px; }
+  .chat-messages {
+    padding: 18px 16px;
+    gap: 14px;
+  }
 
-  .chat-input-area { padding: 10px 14px 14px; }
+  .chat-input-area {
+    padding: 10px 14px 14px;
+  }
 
-  .message { max-width: 94%; }
+  .message {
+    max-width: 94%;
+  }
 
-  .input-hint { display: none; }
+  .input-hint {
+    display: none;
+  }
 
-  .typing-indicator { padding: 0 16px 8px; }
+  .typing-indicator {
+    padding: 0 16px 8px;
+  }
 }
 
 @media (max-width: 420px) {
-  .sidebar { width: 288px; min-width: 288px; }
-  .message-bubble { padding: 11px 14px; }
+  .sidebar {
+    width: 288px;
+    min-width: 288px;
+  }
+
+  .message-bubble {
+    padding: 11px 14px;
+  }
 }
 
 /* ── Reduced motion ───────────────────────────────────────────────── */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -1108,7 +1290,9 @@ p, span, li, button, input, textarea, .message-content {
     opacity: 0.8;
   }
 
-  .sidebar { transition: none; }
+  .sidebar {
+    transition: none;
+  }
 
   /* Colour still communicates; only the movement is removed. The washes
      and accent rules snap to their end state instead of sweeping. */
@@ -1131,7 +1315,9 @@ p, span, li, button, input, textarea, .message-content {
     animation: none;
   }
 
-  .send-btn.launching::after { content: none; }
+  .send-btn.launching::after {
+    content: none;
+  }
 
   .skill-card:hover:not(:disabled) .skill-icon svg,
   .skill-card:hover:not(:disabled) [data-skill-icon] {
@@ -1168,9 +1354,18 @@ p, span, li, button, input, textarea, .message-content {
 
 /* Connecting branch lines */
 .mermaid path.mindmap-edge {
-  stroke-width: 4px !important;
+  stroke-width: 2px !important;
+  stroke: #cbd5e1 !important;
   stroke-linecap: round !important;
   stroke-linejoin: round !important;
+}
+
+/* Override branch specific colors to use clean gray */
+.mermaid path.mindmap-edge.section-0,
+.mermaid path.mindmap-edge.section-1,
+.mermaid path.mindmap-edge.section-2,
+.mermaid path.mindmap-edge.section-3 {
+  stroke: #cbd5e1 !important;
 }
 
 /* Central Root Node — Royal Blue Circle */
@@ -1178,17 +1373,17 @@ p, span, li, button, input, textarea, .message-content {
 .mermaid .mindmap-node.root rect,
 .mermaid .mindmap-node.level-0 circle,
 .mermaid .mindmap-node.level-0 rect {
-  fill: #002BDC !important;
-  stroke: #001DB5 !important;
+  fill: #056fec !important;
+  stroke: #043fad !important;
   stroke-width: 2px !important;
-  filter: drop-shadow(0 4px 12px rgba(0, 43, 220, 0.35));
+  filter: drop-shadow(0 4px 10px rgba(5, 111, 236, 0.2));
 }
 
 .mermaid .mindmap-node.root text,
 .mermaid .mindmap-node.level-0 text {
   fill: #FFFFFF !important;
   font-weight: 700 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
 }
 
 /* Node Cards General Styling */
@@ -1198,53 +1393,48 @@ p, span, li, button, input, textarea, .message-content {
   rx: 8px !important;
   ry: 8px !important;
   stroke-width: 1.5px !important;
-  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.08));
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.04));
 }
 
 .mermaid .mindmap-node text,
 .mermaid .node text {
-  font-weight: 600 !important;
-  font-family: 'Alexandria', sans-serif !important;
+  font-family: "Somar Rounded", "Alexandria", sans-serif !important;
   font-size: 13px !important;
 }
 
-/* Branch Cluster 0 — Soft Purple */
+/* Level 1 branches (section nodes) — Clean light gray */
 .mermaid .mindmap-node.section-0 rect,
-.mermaid .mindmap-node.section-0 circle {
-  fill: #D8B4FE !important;
-  stroke: #C084FC !important;
-}
-/* Dark ink like every other section — white measured 1.77:1 here, and the
-   text-shadow was only masking that. */
-.mermaid .mindmap-node.section-0 text { fill: #1E293B !important; }
-.mermaid path.mindmap-edge.section-0 { stroke: #C084FC !important; }
-
-/* Branch Cluster 1 — Soft Yellow */
+.mermaid .mindmap-node.section-0 circle,
 .mermaid .mindmap-node.section-1 rect,
-.mermaid .mindmap-node.section-1 circle {
-  fill: #FEF08A !important;
-  stroke: #FDE047 !important;
-}
-.mermaid .mindmap-node.section-1 text { fill: #1E293B !important; }
-.mermaid path.mindmap-edge.section-1 { stroke: #FACC15 !important; }
-
-/* Branch Cluster 2 — Lime / Light Green */
+.mermaid .mindmap-node.section-1 circle,
 .mermaid .mindmap-node.section-2 rect,
-.mermaid .mindmap-node.section-2 circle {
-  fill: #D9F99D !important;
-  stroke: #BEF264 !important;
-}
-.mermaid .mindmap-node.section-2 text { fill: #1E293B !important; }
-.mermaid path.mindmap-edge.section-2 { stroke: #A3E635 !important; }
-
-/* Branch Cluster 3 — Soft Pink / Magenta */
+.mermaid .mindmap-node.section-2 circle,
 .mermaid .mindmap-node.section-3 rect,
 .mermaid .mindmap-node.section-3 circle {
-  fill: #FBCFE8 !important;
-  stroke: #F472B6 !important;
+  fill: #f1f5f9 !important;
+  stroke: #cbd5e1 !important;
 }
-.mermaid .mindmap-node.section-3 text { fill: #1E293B !important; }
-.mermaid path.mindmap-edge.section-3 { stroke: #F472B6 !important; }
+
+.mermaid .mindmap-node.section-0 text,
+.mermaid .mindmap-node.section-1 text,
+.mermaid .mindmap-node.section-2 text,
+.mermaid .mindmap-node.section-3 text {
+  fill: #0f172a !important;
+  font-weight: 600 !important;
+}
+
+/* Level 2+ leaf nodes (we can target these if Mermaid adds sub-node classes, or style default text nodes) */
+.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) rect,
+.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) circle {
+  fill: #ffffff !important;
+  stroke: #e2e8f0 !important;
+}
+
+.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) text {
+  fill: #475569 !important;
+  font-weight: 400 !important;
+  font-size: 12px !important;
+}
 
 /* ── Language switch ────────────────────────────────────────────────
    Page chrome only. The button always names the language it will
@@ -1343,6 +1533,7 @@ p, span, li, button, input, textarea, .message-content {
     right: 0;
     transform: translateX(100%);
   }
+
   [dir="rtl"] .sidebar.open {
     transform: translateX(0);
   }
