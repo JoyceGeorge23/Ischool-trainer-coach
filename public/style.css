@@ -1360,30 +1360,13 @@ textarea,
   stroke-linejoin: round !important;
 }
 
-/* Override branch specific colors to use clean gray */
+/* Overriding branch paths to use a clean slate-gray */
 .mermaid path.mindmap-edge.section-0,
 .mermaid path.mindmap-edge.section-1,
 .mermaid path.mindmap-edge.section-2,
-.mermaid path.mindmap-edge.section-3 {
+.mermaid path.mindmap-edge.section-3,
+.mermaid .mindmap-edge {
   stroke: #cbd5e1 !important;
-}
-
-/* Central Root Node — Royal Blue Circle */
-.mermaid .mindmap-node.root circle,
-.mermaid .mindmap-node.root rect,
-.mermaid .mindmap-node.level-0 circle,
-.mermaid .mindmap-node.level-0 rect {
-  fill: #056fec !important;
-  stroke: #043fad !important;
-  stroke-width: 2px !important;
-  filter: drop-shadow(0 4px 10px rgba(5, 111, 236, 0.2));
-}
-
-.mermaid .mindmap-node.root text,
-.mermaid .mindmap-node.level-0 text {
-  fill: #FFFFFF !important;
-  font-weight: 700 !important;
-  font-size: 14px !important;
 }
 
 /* Node Cards General Styling */
@@ -1399,41 +1382,79 @@ textarea,
 .mermaid .mindmap-node text,
 .mermaid .node text {
   font-family: "Somar Rounded", "Alexandria", sans-serif !important;
+}
+
+/* Central Root Node (Depth 0) — Royal Blue with White Text */
+.mermaid .mindmap-node.depth-0 circle,
+.mermaid .mindmap-node.depth-0 rect,
+.mermaid .mindmap-node.root circle,
+.mermaid .mindmap-node.root rect,
+.mermaid .node.root rect {
+  fill: #056fec !important;
+  stroke: #043fad !important;
+  stroke-width: 2px !important;
+  filter: drop-shadow(0 4px 10px rgba(5, 111, 236, 0.25)) !important;
+}
+
+.mermaid .mindmap-node.depth-0 text,
+.mermaid .mindmap-node.root text,
+.mermaid .node.root text {
+  fill: #FFFFFF !important;
+  font-weight: 700 !important;
+  font-size: 14px !important;
+}
+
+/* Level 1 branches (Depth 1) — Clean light gray with dark text */
+.mermaid .mindmap-node.depth-1 circle,
+.mermaid .mindmap-node.depth-1 rect,
+.mermaid .node.depth-1 rect {
+  fill: #f1f5f9 !important;
+  stroke: #cbd5e1 !important;
+  stroke-width: 1.5px !important;
+}
+
+.mermaid .mindmap-node.depth-1 text,
+.mermaid .node.depth-1 text {
+  fill: #0f172a !important;
+  font-weight: 600 !important;
   font-size: 13px !important;
 }
 
-/* Level 1 branches (section nodes) — Clean light gray */
-.mermaid .mindmap-node.section-0 rect,
-.mermaid .mindmap-node.section-0 circle,
-.mermaid .mindmap-node.section-1 rect,
-.mermaid .mindmap-node.section-1 circle,
-.mermaid .mindmap-node.section-2 rect,
-.mermaid .mindmap-node.section-2 circle,
-.mermaid .mindmap-node.section-3 rect,
-.mermaid .mindmap-node.section-3 circle {
-  fill: #f1f5f9 !important;
-  stroke: #cbd5e1 !important;
-}
-
-.mermaid .mindmap-node.section-0 text,
-.mermaid .mindmap-node.section-1 text,
-.mermaid .mindmap-node.section-2 text,
-.mermaid .mindmap-node.section-3 text {
-  fill: #0f172a !important;
-  font-weight: 600 !important;
-}
-
-/* Level 2+ leaf nodes (we can target these if Mermaid adds sub-node classes, or style default text nodes) */
-.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) rect,
-.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) circle {
+/* Level 2 leaf nodes (Depth 2) — Clean white with subtle border and text */
+.mermaid .mindmap-node.depth-2 circle,
+.mermaid .mindmap-node.depth-2 rect,
+.mermaid .node.depth-2 rect {
   fill: #ffffff !important;
   stroke: #e2e8f0 !important;
+  stroke-width: 1px !important;
 }
 
-.mermaid .mindmap-node:not(.root):not(.level-0):not(.section-0):not(.section-1):not(.section-2):not(.section-3) text {
+.mermaid .mindmap-node.depth-2 text,
+.mermaid .node.depth-2 text {
   fill: #475569 !important;
-  font-weight: 400 !important;
+  font-weight: 500 !important;
   font-size: 12px !important;
+}
+
+/* Level 3+ leaf nodes (Depth 3 & 4) — Clean white with thin light border */
+.mermaid .mindmap-node.depth-3 circle,
+.mermaid .mindmap-node.depth-3 rect,
+.mermaid .mindmap-node.depth-4 circle,
+.mermaid .mindmap-node.depth-4 rect,
+.mermaid .node.depth-3 rect,
+.mermaid .node.depth-4 rect {
+  fill: #ffffff !important;
+  stroke: #f1f5f9 !important;
+  stroke-width: 1px !important;
+}
+
+.mermaid .mindmap-node.depth-3 text,
+.mermaid .mindmap-node.depth-4 text,
+.mermaid .node.depth-3 text,
+.mermaid .node.depth-4 text {
+  fill: #64748b !important;
+  font-weight: 400 !important;
+  font-size: 11px !important;
 }
 
 /* ── Language switch ────────────────────────────────────────────────
