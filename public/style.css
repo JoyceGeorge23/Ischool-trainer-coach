@@ -1390,12 +1390,9 @@ textarea,
 }
 
 /* Central Root Node (Depth 0) — Royal Blue with White Text */
-#chatMessages .mermaid .mindmap-node.depth-0 circle,
-#chatMessages .mermaid .mindmap-node.depth-0 rect,
-#chatMessages .mermaid .mindmap-node.root circle,
-#chatMessages .mermaid .mindmap-node.root rect,
-#chatMessages .mermaid .node.root rect,
-.mermaid .mindmap-node.depth-0 rect {
+#chatMessages .mermaid .mindmap-node.depth-0 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .mindmap-node.root :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .node.root :is(rect, circle, ellipse, path, polygon) {
   fill: #056fec !important;
   stroke: #043fad !important;
   stroke-width: 2px !important;
@@ -1412,10 +1409,9 @@ textarea,
 }
 
 /* Level 1 branches (Depth 1) — Clean light gray with dark text */
-#chatMessages .mermaid .mindmap-node.depth-1 circle,
-#chatMessages .mermaid .mindmap-node.depth-1 rect,
-#chatMessages .mermaid .node.depth-1 rect,
-.mermaid .mindmap-node.depth-1 rect {
+#chatMessages .mermaid .mindmap-node.depth-1 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .node.depth-1 :is(rect, circle, ellipse, path, polygon),
+.mermaid .mindmap-node.depth-1 :is(rect, circle, ellipse, path, polygon) {
   fill: #f1f5f9 !important;
   stroke: #cbd5e1 !important;
   stroke-width: 1.5px !important;
@@ -1430,10 +1426,9 @@ textarea,
 }
 
 /* Level 2 leaf nodes (Depth 2) — Clean white with subtle border and text */
-#chatMessages .mermaid .mindmap-node.depth-2 circle,
-#chatMessages .mermaid .mindmap-node.depth-2 rect,
-#chatMessages .mermaid .node.depth-2 rect,
-.mermaid .mindmap-node.depth-2 rect {
+#chatMessages .mermaid .mindmap-node.depth-2 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .node.depth-2 :is(rect, circle, ellipse, path, polygon),
+.mermaid .mindmap-node.depth-2 :is(rect, circle, ellipse, path, polygon) {
   fill: #ffffff !important;
   stroke: #e2e8f0 !important;
   stroke-width: 1px !important;
@@ -1448,13 +1443,11 @@ textarea,
 }
 
 /* Level 3+ leaf nodes (Depth 3 & 4) — Clean white with thin light border */
-#chatMessages .mermaid .mindmap-node.depth-3 circle,
-#chatMessages .mermaid .mindmap-node.depth-3 rect,
-#chatMessages .mermaid .mindmap-node.depth-4 circle,
-#chatMessages .mermaid .mindmap-node.depth-4 rect,
-#chatMessages .mermaid .node.depth-3 rect,
-#chatMessages .mermaid .node.depth-4 rect,
-.mermaid .mindmap-node.depth-3 rect {
+#chatMessages .mermaid .mindmap-node.depth-3 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .mindmap-node.depth-4 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .node.depth-3 :is(rect, circle, ellipse, path, polygon),
+#chatMessages .mermaid .node.depth-4 :is(rect, circle, ellipse, path, polygon),
+.mermaid .mindmap-node.depth-3 :is(rect, circle, ellipse, path, polygon) {
   fill: #ffffff !important;
   stroke: #f1f5f9 !important;
   stroke-width: 1px !important;
