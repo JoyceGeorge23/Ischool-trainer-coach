@@ -1,6 +1,14 @@
-require("dotenv").config();
-const app = require("../server");
-
-// Export the Express app directly for Vercel (@vercel/node builder)
-// Vercel passes (req, res) directly, so serverless-http causes a 500 error here.
+let app;
+try {
+  require("dotenv").config();
+  app = require("../server");
+} catch (error) {
+  app = (req, res) => {
+    res.status(500).json({
+      error: "Initialization failed",
+      message: error.message,
+      stack: error.stack,
+    });
+  };
+}
 module.exports = app;
