@@ -18,8 +18,9 @@ const GEMINI_MODEL = process.env.GEMINI_MODEL || "gemini-3.5-flash-lite";
 const GEMINI_API_BASE = "https://generativelanguage.googleapis.com/v1beta";
 
 if (!GEMINI_API_KEY) {
-  console.error("FATAL: GEMINI_API_KEY is not set. Add it to your .env file.");
-  process.exit(1);
+  console.error("WARNING: GEMINI_API_KEY is not set. Add it to your .env file or Vercel environment variables.");
+  // Don't process.exit() — it kills Vercel serverless functions permanently.
+  // The chat endpoint will return a proper error if the key is missing.
 }
 
 // Gemini names the assistant role "model" and requires the turn list to open
@@ -676,6 +677,10 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
       return res.status(400).json({ error: "Messages array is required." });
+    }
+
+    if (!GEMINI_API_KEY) {
+      return res.status(500).json({ error: "API key not configured. Set GEMINI_API_KEY in environment variables." });
     }
 
     // Keep only last 4 user/assistant messages to save tokens
