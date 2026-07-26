@@ -1,7 +1,6 @@
 require("dotenv").config();
-const serverless = require("serverless-http");
 const app = require("../server");
 
-// Wrap the Express app for Serverless environments (Vercel/Netlify)
-// This prevents FUNCTION_INVOCATION_FAILED and body-parser hangs.
-module.exports = serverless(app);
+// Export the Express app directly for Vercel (@vercel/node builder)
+// Vercel passes (req, res) directly, so serverless-http causes a 500 error here.
+module.exports = app;
