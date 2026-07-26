@@ -1,10 +1,7 @@
-// Vercel Serverless Function entry point
-// In serverless, the credential file won't exist — Drive loader already
-// handles this gracefully (falls back to hardcoded KB).
-
-// Ensure env vars are loaded
 require("dotenv").config();
-
+const serverless = require("serverless-http");
 const app = require("../server");
 
-module.exports = app;
+// Wrap the Express app for Serverless environments (Vercel/Netlify)
+// This prevents FUNCTION_INVOCATION_FAILED and body-parser hangs.
+module.exports = serverless(app);

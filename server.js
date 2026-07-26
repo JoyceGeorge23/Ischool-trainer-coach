@@ -42,7 +42,14 @@ function toGeminiContents(messages) {
 // Middleware
 // ---------------------------------------------------------------------------
 app.use(cors());
-app.use(express.json());
+// On Vercel, the serverless wrapper automatically parses the JSON body.
+// Calling express.json() again will cause the request to hang indefinitely waiting for stream events.
+app.use((req, res, next) => {
+  if (req.body && typeof req.body === "object" && Object.keys(req.body).length > 0) {
+    return next();
+  }
+  express.json()(req, res, next);
+});
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------------------------------------------------------------------------
@@ -876,6 +883,12 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
       res.status(500).json({ error: "Internal server error. Please try again." });
     }
   }
+});
+
+// Catch-all error handler to prevent Serverless crashes
+app.use((err, req, res, next) => {
+  console.error("Unhandled error:", err);
+  res.status(500).json({ error: "Internal Server Error" });
 });
 
 // ---------------------------------------------------------------------------
