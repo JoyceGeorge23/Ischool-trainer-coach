@@ -45,7 +45,7 @@ app.use(cors());
 // On Vercel, the serverless wrapper automatically parses the JSON body.
 // Calling express.json() again will cause the request to hang indefinitely waiting for stream events.
 app.use((req, res, next) => {
-  if (req.body && typeof req.body === "object" && Object.keys(req.body).length > 0) {
+  if (req.body !== undefined) {
     return next();
   }
   express.json()(req, res, next);
