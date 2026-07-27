@@ -250,6 +250,9 @@
     // 7. Italic *text*
     html = html.replace(/(?<!\*)\*([^*]+)\*(?!\*)/g, "<em>$1</em>");
 
+    // Images: ![alt](url)
+    html = html.replace(/!\[([^\]]+)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" style="max-width: 100%; border-radius: 8px; margin: 10px 0;">');
+
     // 8. Inline code
     html = html.replace(/`([^`]+)`/g, "<code>$1</code>");
 
