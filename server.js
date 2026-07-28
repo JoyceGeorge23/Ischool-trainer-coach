@@ -528,6 +528,9 @@ const STRONG_ANCHORS = new Set([
   "منهج","مستويات","مستوى","صف","صفوف",
   "مجانية","مجاني","حصص",
   "لوحة","التحكم","داشبورد","طلب","طلبات","اجازة","إجازة","مرتب","مرتبات","سلاك",
+  // Slide/image request anchors
+  "slide","slides","image","images","picture","photo","show","screenshot",
+  "شريحة","شرايح","سلايد","سلايدات","صورة","صور","وريني","ورّيني",
 ]);
 
 // Returns true when the query is answerable from the material.
