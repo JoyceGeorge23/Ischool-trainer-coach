@@ -1,0 +1,280 @@
+=== SLIDE 1 ===
+By iSchool
+iSchool 
+Training - Part 03
+
+=== SLIDE 2 ===
+Session Structure
+
+=== SLIDE 3 ===
+SESSION STRUCTURE 
+Our sessions at iSchool are one-to-one, lasting one hour and divided into three main parts
+Learn
+Make
+Share
+
+=== SLIDE 4 ===
+SESSION STRUCTURE 
+ Sessions will be  group sessions(4-5students) , lasting one hour and half  and divided into
+three main parts
+Learn
+Make
+Share
+
+=== SLIDE 5 ===
+SESSION STRUCTURE 
+Learn:
+We explain the key concepts of the sessions
+using slides and then apply them through the
+main project.
+Make:
+We ask the student to share their screen and
+work on the project on their side
+Share:
+Finally, we have the students share what they
+learned during the sessions
+
+=== SLIDE 6 ===
+Teaching Blueprint
+1.Before the
+Session
+Planning & Preparation
+2. During the
+Session
+Delivery & Engagement
+ 3. After the
+Session
+Evaluation & Feedback
+
+=== SLIDE 7 ===
+1.Before the Session
+The foundation of a great session is laid even before the session start. This
+phase is about internalizing the curriculum and turning it into a clear,
+actionable lesson plan.
+
+=== SLIDE 8 ===
+Preparation
+Preparing for a session is about mastering the curriculum and getting your
+environment ready.
+Slides: Study the slides to understand key concepts and lesson flow.
+Video: Watch the video and build the examples yourself.
+Teacher's Guide: This guide helps you expand your knowledge of the curriculum
+and provides all the resources and files you'll need.
+Technical Setup & Hands-on Practice: Install all necessary software, gather
+materials, and try all implementation steps to be aware of the process.
+
+=== SLIDE 9 ===
+Ensure you're familiar with the topic (slides).
+Try the project on the software before the live session.
+Watch the attached videos in the slides to understand the content and learn how to explain it effectively.
+The manual (Training Guide) is there to help you manage session time and
+       guide you in executing the project or explaining concepts.
+The video is a sample demonstrating how sessions are explained with 
+       examples and how the instructor applied the project.
+Manual
+Videos
+Slides
+Prepare the Curriculum:
+
+=== SLIDE 10 ===
+Planning for the lesson  
+Effective planning is about more than just knowing the content; it's about
+anticipating student needs and building a dynamic lesson.
+Define the Lesson Flow
+Understand Objectives: Clearly define the lesson's goals.
+Plan Pacing: Time each section and ensure smooth transitions.
+Anticipate Challenges: Be ready to explain difficult topics in different
+ways
+The tutor should brainstorm about the content and questions the
+students may ask
+
+=== SLIDE 11 ===
+Plan for Possible Scenarios
+Student already knows the content
+Effect: “Learn” part may feel repetitive.
+Plan: Shorten but keep it engaging, keep explaining (no skipping), maintain
+encouragement, 
+Student takes a long time to understand
+Effect: Session time might not be enough to cover all parts..
+Plan: Use active engagement, connect concepts to what they already know, ask
+simple questions they can answer
+
+=== SLIDE 12 ===
+Joining the session
+Check Your Dashboard: Review your schedule to know your upcoming
+sessions.
+Join Early: Join the session at least 10 minutes before the scheduled start
+time.
+Preload Content: Before joining the session, open the slides and any other
+required files.
+
+=== SLIDE 13 ===
+2.During the Session
+This is where you bring the content to life. Your goal is to not only teach but
+also to keep students engaged and help them connect with the material.
+
+=== SLIDE 14 ===
+Session Flow
+1.Welcome &
+Icebreaking
+2.HW Review
+& Recap
+3.Explain
+New
+Concepts
+6.session
+closure
+4-Project &
+Make Part
+5.Question
+& Answer
+
+=== SLIDE 15 ===
+Session Flow 
+Welcome and Icebreaking
+Warmly welcome the student and start with a brief icebreaker to create a comfortable
+atmosphere. 
+HW Review and Recap
+Let the student explain the previous concepts.
+If they struggle, give hints (e.g., remind them of an example you used before).
+Ask simple, direct questions to help them recall 
+Motivate them with positive feedback 
+After they finish, give a quick, clear definition of each concept.
+
+=== SLIDE 16 ===
+Explain New Concepts
+Brainstorming :
+Before introducing a new concept, we start with a short brainstorming activity. This energizes the student,
+activates relevant prior knowledge, and creates a positive, curious mindset that makes learning smoother
+and more engaging.
+How to do it?
+Begin with a general, open-ended question about the topic to spark curiosity.
+Let the student share any ideas no right or wrong at this stage.
+Listen carefully to understand their thinking.
+Ask follow-up questions to expand their thoughts.
+Use their ideas to bridge into the topic, showing how their thoughts connect and encouraging their
+participation.
+
+=== SLIDE 17 ===
+Teaching Skills
+
+=== SLIDE 18 ===
+Explain New Concepts
+Brainstorming :
+Before introducing a new concept, start with a short brainstorming activity. This energizes the
+student, activates relevant prior knowledge, and creates a positive, curious mindset that
+makes learning smoother and more engaging.
+How to do it?
+Begin with a general, open-ended question about the topic to spark curiosity.
+Let the student share any ideas no right or wrong at this stage.
+Listen carefully to understand their thinking.
+Ask follow-up questions to expand their thoughts.
+Use their ideas to bridge into the topic, showing how their thoughts connect and
+encouraging their participation.
+
+=== SLIDE 19 ===
+General Skills for Explaining 
+Clarity and Simplicity
+Break concepts into smaller, easy-to-digest parts.
+Avoid jargon unless you explain it right away.
+Use the Right Examples
+Pick examples that match the student’s age, interests, and prior knowledge.
+Make abstract concepts relatable through real-life situations.
+Adapt to the Student’s Thinking
+Regularly check for understanding through quick questions or feedback.
+Adjust your explanation style if they look confused or disengaged.
+
+=== SLIDE 20 ===
+Support with Visuals via Annotation
+Use annotation tools on the screen to draw and highlight the key ideas.
+Connect All Concepts Together
+Link each new concept to what the student already knows.
+Show how the concept fits into the overall topic or goal.
+Help the student see the purpose and flow of the lesson.
+General Skills for Explaining
+
+=== SLIDE 21 ===
+As each curriculum is tailored to a specific age range. Your job is to
+plan your delivery to meet their specific needs and keep them
+engaged.
+How to use the Right Examples
+Ages 6-10: Focus on storytelling, and very short, hands-on activities to hold
+their attention.
+Ages 11-14: Motivate them with challenges and  Encourage them to work
+independently on a task and present their solution, fostering a sense of
+accomplishment.
+Ages 15-18: Discuss how the principles they're learning are used in professional
+careers and industry-standard projects.
+
+=== SLIDE 22 ===
+Project and Make
+Start with motivation: Show the final result of the project first to spark students’
+interest and encourage them.
+Break it down: Divide the project into small segments, each containing 2–3 steps.
+Demonstrate first: Show and explain the first 2–3 steps on your screen before
+students try them.
+Student implementation: Guide the students to repeat the same steps on their
+own devices.
+Continuous guidance: Stay involved, offering step-by-step guidance and
+encouragement, don’t leave them to work without your support.
+Project Personalization: Try to connect the lesson topic to the student’s personal
+interests. For example, if the student likes football, design programming examples
+around that theme to increase their engagement and motivation.
+
+=== SLIDE 23 ===
+During the Q&A segment, ensure that every example slide is answered by the student
+without skipping any. If a correction is needed, address it kindly and encouragingly
+Question & Answer
+
+=== SLIDE 24 ===
+At the end, ask the student what they learned and how they could use it, giving
+them 2–3 minutes to reflect and summarize.
+Presentation
+
+=== SLIDE 25 ===
+Explain the homework or task to the student and ensure they understand what is
+expected to be completed at home.
+Homework or Task
+
+=== SLIDE 26 ===
+Remind the student to publish their project on the iSchool system as part of their portfolio. If they
+don’t know how, guide them through the steps so they can do it independently next time.
+Publishing the project with the student
+
+=== SLIDE 27 ===
+3.After the Session
+
+=== SLIDE 28 ===
+Submit the feedback by selecting a suitable rating for each criterion based on the
+student’s performance. Write the comment in English, even for Arabic sessions.
+Criteria of feedback submission:
+If the student got 5 stars in all criteria, choose a positive English comment.
+If not, choose an English comment explaining why they didn’t get full stars.
+If the student was absent, use the toggle to mark them as “Absent.”
+The maximum time to submit session feedback is 2 hours.
+Avoid repeating the same comments for all students or using the same
+comment for a student across different sessions.
+Personalized Feedback: Instead of relying on generic templates, mention a
+specific moment where the student performed well during the session in your
+feedback. This gives parents a clear impression of your genuine attention to
+their child’s progress.
+Feedback Submission
+
+=== SLIDE 29 ===
+Reflection 
+Reflection is for tutors to document any unexpected situations,
+challenges, or important observations or any thing that that disrupt its
+flow that occurred during the session.explaining the cause in either
+Arabic or English.
+
+=== SLIDE 30 ===
+Meeting Take away
+How to prepare for your session
+How to manage your session flow
+How to deliver a new concept 
+How to evaluate the student 
+Prepare to any situation 
+What is next?
+
+=== SLIDE 31 ===
+Thank You

@@ -1,0 +1,776 @@
+=== SLIDE 1 ===
+By iSchool
+iSchool 
+Training - Part 01
+
+
+=== SLIDE 2 ===
+iSchool Vision
+To empower today’s generations to become 
+tomorrow's technology leaders, beginning in the 
+Middle East and Africa and spreading to the rest 
+of the world."
+
+
+=== SLIDE 3 ===
+Team 7
+Boarding Team
+Alaa Elnaggar
+Tasneem
+Mohamed
+Reem Ahmed
+Malak Adel 
+Aya El Naggar
+Edu. Head
+Yousef Hassan
+Edu. Supervisor
+Seif Aldeen
+Edu. Supervisor
+Quality Team 
+Asmaa Nasef
+Edu. Supervisor
+Content Team
+I2S
+Ghada
+Mohamed
+Nermeen Al
+Hubabti
+Yousef El Hely
+Mostafa
+Abdallah
+Maha Rabih
+Mina Issac
+Josphen
+Magdy
+Beshoy Samy
+Aya Hosny
+Keroles
+Nada
+Hussien
+Team 7
+Heba
+Samalouty
+Norhan
+Mohamed
+DEMI Mentors
+DEMI tutors
+ Mentors
+ tutors
+Education Team Structure 
+
+
+=== SLIDE 4 ===
+Education Team Structure 
+78
+97
+Education Head
+Aya Elnaggar
+Education Supervisor
+Seif Aldeen Marouf
+Education Supervisor
+Youssef Hassan
+Education Supervisor
+Asmaa Mohamed
+Team leader
+Nermeen Alhabubti
+Team leader
+Ghada Mohamed
+Team leader
+Nada Hussien
+Team leader
+Ahmed Hisham
+Team leader
+Kareem Abdelwahab
+9
+Mentors
+Tutors
+12
+Mentors
+Tutors
+8
+Mentors
+72
+Tutors
+5
+Mentors
+88
+Tutors
+5
+Mentors
+44
+Tutors
+Ischool Team
+Boarding Team leader
+Mostafa Abdullah
+Senior boarding
+Specialist
+Alaa El Naggar
+ Boarding Specialist
+Reem Ahmed
+ Boarding Specialist
+Malak Adel
+Senior boarding
+Specialist
+Tasneem Dawod
+Boarding Team
+
+
+=== SLIDE 5 ===
+Education Team Structure 
+Seif Aldeen
+Edu. Supervisor
+Quality Team 
+Mina
+Issac
+Josphen
+Magdy
+Beshoy
+ Samy
+Aya
+ Hosny
+DEMI Tutors
+DEMI Mentors
+Alaa Elnaggar
+Tasneem
+Mohamed
+Malak Adel 
+Reem Ahmed
+Boarding Team 
+
+
+=== SLIDE 6 ===
+Education Team Structure 
+Yousef Hassan
+Edu. Supervisor
+Content Team
+I2S
+Yousef El Hely
+Maha Rabih
+Keroles
+
+
+=== SLIDE 7 ===
+Education Team Structure 
+Asmaa Nasef
+Edu. Supervisor
+Ghada
+Mohamed
+Nermeen Al
+Hubabti
+Mostafa
+Abdallah
+Nada
+Hussien
+Heba
+Samalouty
+Norhan
+Mohamed
+ Mentors
+Tutors
+
+
+=== SLIDE 8 ===
+Tutors
+Edu
+ Head
+Edu.
+Supervisors
+Boarding 
+Team 
+Team
+leaders 
+Moderation
+Mentors 
+
+
+=== SLIDE 9 ===
+ Working Hours
+Outline iSchool’s working days and
+operating hours. which are essential 
+for keeping our workflow smooth and
+ensuring everyone is aligned.
+
+
+=== SLIDE 10 ===
+ Working
+ Days & Hours 
+Friday to Tuesday 
+10:00 Am to 06:00 PM
+Boarding Team
+ Team leaders
+Edu. Supervisor
+Edu. Head
+
+
+=== SLIDE 11 ===
+ Working
+ Days & Hours 
+Friday to Tuesday 
+02:00 pm to 10:00 PM
+Mentors
+Tutors
+Moderation
+
+
+=== SLIDE 12 ===
+ Working
+ Days & Hours 
+Sunday to Thursday 
+01:00 pm to 09:00 PM
+Mentors
+Tutors
+Moderation
+
+
+=== SLIDE 13 ===
+Slots
+Time
+Slot 1
+03:00 - 04:00 PM
+Slot 2
+04:30 - 05:30 PM
+Slot 3
+06:00 - 07:00 PM
+Slot 4
+07:30 - 08:30 PM
+Slot 5
+09:00 - 10:00 PM
+From Saturday to Wednesday
+From 02:00 to 10:00 PM
+Check the dashboard during working hours for
+your scheduled sessions starting from 3:00 PM.
+If you have any unoccupied slots, please note
+that they may be assigned to sessions based
+on your study during the day. You may be
+notified by the moderation team on Slack, and
+the session will also appear on your dashboard.
+Time Slots 
+Tutors
+
+
+=== SLIDE 14 ===
+Slots
+Time
+Slot 1
+02:00 - 03:00 PM
+Slot 2
+03:30 - 04:30 PM
+Slot 3
+05:00 - 06:00 PM
+Slot 4
+06:30 - 07:30 PM
+Slot 5
+08:00 - 09:00 PM
+From Friday to Tuesday 
+From 01:00 to 09:00 PM
+Time Slots 
+Tutors
+
+
+=== SLIDE 15 ===
+iSchool K12
+Outline iSchool’s K12 Curriculum with
+each grade content, to understand the
+delivered content by the tutors
+
+
+=== SLIDE 16 ===
+K12 Roadmap
+Module 2
+GRADE 1
+Module 1 
+Module 1 
+Module 1
+ Coding with Minecraft
+Module 2
+Space Exploration with
+Minecraft
+ Technology Around Us
+Module 2
+Creative Computing (Hello
+World!)
+GRADE 2
+Module 2
+GRADE 3
+Module 1 
+Module 1 
+Module 1 
+Chatbots - Create Your
+Own Siri L01
+Module 2
+Chatbots - Create Your
+Own Siri L01
+ 2D block-based Game
+Development 
+Module 2
+ Game Development with
+AI
+GRADE 4
+Module 2
+GRADE 5
+Module 1 
+Module 1 
+Module 1 
+ UI/UX Design - L01
+Module 2
+ UI/UX Design - L02
+ Chatbot Development
+with Python L01
+Module 2
+ Chatbot Development
+with Python L02
+GRADE 6
+Module 2
+GRADE 11
+Module 1 
+Module 1 
+Module 1 
+Advanced  Machine  
+Learning
+Module 2
+Intro to Deep Learning
+Data science and analysis
+with Python
+Module 2
+Machine Learning
+GRADE 12
+Module 2
+GRADE 9
+Module 1 
+Module 1 
+Module 1 
+Game Development with
+Unity - Level 1
+Module 2
+Game Development with
+Unity - Level 1
+ 2D Game Design With
+Game Engine - L01 
+Module 2
+ 2D Game Design With
+Game Engine - L02
+GRADE 10
+Module 2
+GRADE 7
+Module 1 
+Module 1 
+Module 1 
+Web Development with
+HTML & CSS L01
+Module 2
+Web Development with
+HTML & CSS L02
+ Mobile App Development -
+L01 
+Module 2
+ Mobile App Development -
+L02
+GRADE 8
+
+
+=== SLIDE 17 ===
+K12 ROADMAP
+Level 1
+Age (6-7)
+GRADE 1
+GRADE 2
+Semester 1
+ Technology Around Us
+Semester 2
+Creative Computing (Hello
+World!)
+Semester 1
+ Coding with Minecraft
+Semester 2
+Space Exploration with
+Minecraft
+
+
+=== SLIDE 18 ===
+K12 ROADMAP
+Level 2
+Age (8-9)
+GRADE 3
+GRADE 4
+Semester 1
+2D block-based Game
+Development
+Semester 2
+Game Development with
+AI
+Semester 1
+Chatbots - Create Your
+Own Siri L01
+Semester 2
+Chatbots - Create Your
+Own Siri L02
+
+
+=== SLIDE 19 ===
+K12 ROADMAP
+Level 3
+Age (10-11)
+GRADE 5
+GRADE 6
+Semester 1
+Chatbot Development
+with Python L01
+Semester 2
+Chatbot Development
+with Python L02
+Semester 1
+UI/UX Design - L01
+Semester 2
+UI/UX Design - L02
+
+
+=== SLIDE 20 ===
+K12 ROADMAP
+Level 4
+Age (12-13)
+GRADE 7
+GRADE 8
+Semester 1
+Mobile App Development
+- L01
+Semester 2
+Mobile App Development
+- L02
+Semester 1
+Web Development with
+HTML & CSS L01
+Semester 2
+Web Development with
+HTML & CSS L02
+
+
+=== SLIDE 21 ===
+Level 5
+Age (14-15)
+Semester 1
+Game Development with
+Unity - Level 1
+Semester 2
+Game Development with
+Unity - Level 2
+Semester 1
+2D Game Design With
+Game Engine - L01
+Semester 2
+2D Game Design With
+Game Engine - L02
+GRADE 10
+GRADE 9
+K12 ROADMAP
+
+
+=== SLIDE 22 ===
+Level 6
+Age (16-17)
+Semester 1
+Advanced Machine
+Learning
+Semester 2
+Intro to Deep Learning
+Semester 1
+Data science and
+analysis with Python
+Semester 2
+Machine Learning
+GRADE 12
+GRADE 11
+K12 ROADMAP
+
+
+=== SLIDE 23 ===
+iSchool Free Sessions
+Free Sessions is a module designed for
+students who haven't subscribed to
+iSchool yet. It consists of 6 sessions.
+This module is intended to introduce
+kids to our courses before they apply.
+
+
+=== SLIDE 24 ===
+iSchool Free Sessions
+Purpose of the Free Sessions:
+Engage young minds and spark curiosity about the
+course content and activities.
+Provide a sneak peek into the exciting topics,
+projects, and skills covered in the course.
+Introduce the instructors and showcase their passion
+for teaching and guiding students.
+Offer hands-on activities to let students experience
+the fun and educational aspects of the course.
+
+
+=== SLIDE 25 ===
+Level 4
+Level 3
+Grade 5
+Grade 6
+Grade 7
+Grade 8
+Session 3
+Session 4
+Level 2
+Level 1
+Grade 1
+Grade 2
+Grade 3
+Grade 4
+Session 1
+Session 2
+Level 5
+Level 6
+Grade 9
+Grade 10
+Grade 11
+Grade 12
+Session 6
+Session 5
+iSchool Free Sessions
+
+
+=== SLIDE 26 ===
+Session Structure 
+
+
+=== SLIDE 27 ===
+SESSION STRUCTURE 
+Our sessions at iSchool are one-to-one, lasting one hour and divided into three main parts
+Learn
+Make
+Share
+
+
+=== SLIDE 28 ===
+SESSION STRUCTURE 
+Our sessions at iSchool are group sessions, lasting one hour and divided into three main parts
+Learn
+Make
+Share
+
+
+=== SLIDE 29 ===
+SESSION STRUCTURE 
+Learn:
+We explain the key concepts of the sessions
+using slides and then apply them through the
+main project.
+Make:
+We ask the student to share their screen and
+work on the project on their side
+Share:
+Finally, we have the students share what they
+learned during the sessions
+
+
+=== SLIDE 30 ===
+How to study
+
+
+=== SLIDE 31 ===
+STUDY
+Ensure you're familiar with the topic (slides).
+Try the project on the software before the live session.
+Watch the attached videos in the slides to understand the content and learn how to explain it effectively.
+The manual (Training Guide) is there to help you manage session time and
+       guide you in executing the project or explaining concepts.
+The video is a sample demonstrating how sessions are explained with 
+       examples and how the instructor applied the project.
+Manual
+Videos
+Slides
+
+
+=== SLIDE 32 ===
+Training Agenda
+
+
+=== SLIDE 33 ===
+
+
+=== SLIDE 34 ===
+Assessment
+
+
+=== SLIDE 35 ===
+What Is the Assessment project?
+Asessment form 
+
+
+=== SLIDE 36 ===
+Aessssment notes 
+  1- Share your screen while recording.
+  2- Keep your camera and microphone on, ensuring both are of good quality.
+  3- Submit a separate form for each module. 
+  4- By the end of the training, you should have submitted the form six times.
+
+
+=== SLIDE 37 ===
+Required Assessments 
+You are required to complete the assessment
+according to each module assigned to you on
+the dashboard.
+
+
+=== SLIDE 38 ===
+iSchool Dashboard
+
+
+=== SLIDE 39 ===
+Dashboard
+This platform not only allows us to
+communicate seamlessly but also helps
+us stay on top of our schedules, ensuring
+that everyone is aligned and tasks are on
+track. 
+
+
+=== SLIDE 40 ===
+01
+02
+Use the user name and password
+provided by your boarding
+member. 
+The Dashboard is the key to
+knowing your updated schedule,
+students, Classes, and Feedback
+Creating The Next  
+Technology Leaders
+ISCHOOL DASHBOARD
+
+
+=== SLIDE 41 ===
+CLASSES TAB 
+01
+We can use Classes tab to check all the
+Upcoming and History classes you gave ,
+and also the Today's sessions
+We will find the session slides and
+teacher guide beside the session and also
+can submit feedback from the Feedback
+cell
+Finally you will find the session
+rating/review .
+
+
+=== SLIDE 42 ===
+We can use the Profile tab to check all
+your information.
+02
+PROFILE TAB
+
+
+=== SLIDE 43 ===
+In the report tab we will find all our quality
+reports and other related reports
+Finally, you will find all the payroll history
+and recent payments
+In  the schedule tab you will find your
+available time slots. 
+02
+PROFILE TAB
+
+
+=== SLIDE 44 ===
+We can check all our off days we took
+during the month 
+02
+PROFILE TAB
+
+
+=== SLIDE 45 ===
+
+
+=== SLIDE 46 ===
+STUDY TAB
+03
+In the study tab, you will find all the
+courses that you studied that are
+available.
+In the LMS tab, you will find all the
+Modules you are requested to
+complete .
+
+
+=== SLIDE 47 ===
+You can reach the Modules
+assigned to you in Study tab.
+STUDY TAB
+03
+
+
+=== SLIDE 48 ===
+You can check your study
+and completed modules and
+lessons .
+STUDY TAB
+03
+
+
+=== SLIDE 49 ===
+You can find all the session
+material slides and the
+student resources.
+STUDY TAB
+03
+
+
+=== SLIDE 50 ===
+You can access the session
+manual (T.G)  
+STUDY TAB
+03
+
+
+=== SLIDE 51 ===
+REQUESTS
+04
+In the Requests tab, you can
+request planned vacation,
+emergency, and sick leave.
+You will find all the history of your
+requests 
+
+
+=== SLIDE 52 ===
+There are different request types, and
+each request has its own policy.
+You can choose the date and the reason
+for the request then submit  
+REQUESTS
+04
+
+
+=== SLIDE 53 ===
+The policies tab containing the different
+tybes of leaves policies such as annual
+leave, sick leave, emergency leave....etc.
+POLICIES
+05
+
+
+=== SLIDE 54 ===
+HELP
+05
+In the help tab, you can ask for any
+help from the HR or excuse except
+the off days or you can mention
+any problem you faced   .
+
+
+=== SLIDE 55 ===
+Meeting Take away
+Check Your Dashboard and Accounts
+Contact the team if you face any
+problems with your accounts
+Start Your Study on the dashboard
+according to the agenda 
+
+
+=== SLIDE 56 ===
+Thank You
+
+
