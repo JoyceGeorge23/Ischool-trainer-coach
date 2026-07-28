@@ -15,6 +15,10 @@
   const sidebarOverlay = document.getElementById("sidebarOverlay");
   const skillCards = document.querySelectorAll(".skill-card");
   const chatMain = document.querySelector(".chat-main");
+  const fullTimeCourseToggle = document.getElementById("fullTimeCourseToggle");
+  const fullTimeCourseList = document.getElementById("fullTimeCourseList");
+  const fullTimeCourse2Toggle = document.getElementById("fullTimeCourse2Toggle");
+  const fullTimeCourse2List = document.getElementById("fullTimeCourse2List");
   const softSkillsToggle = document.getElementById("softSkillsToggle");
   const softSkillsList = document.getElementById("softSkillsList");
   const managementSkillsToggle = document.getElementById("managementSkillsToggle");
@@ -24,6 +28,45 @@
 
   const presentationSkillsToggle = document.getElementById("presentationSkillsToggle");
   const presentationSkillsList = document.getElementById("presentationSkillsList");
+
+  const partTimeCourse1Toggle = document.getElementById("partTimeCourse1Toggle");
+  const partTimeCourse1List = document.getElementById("partTimeCourse1List");
+
+  // ── Full Time Course Accordion Toggle ───────────────────────────
+  if (fullTimeCourseToggle && fullTimeCourseList) {
+    fullTimeCourseToggle.addEventListener("click", () => {
+      const isExpanded = fullTimeCourseToggle.getAttribute("aria-expanded") === "true";
+      fullTimeCourseToggle.setAttribute("aria-expanded", String(!isExpanded));
+      fullTimeCourseList.classList.toggle("open");
+    });
+  }
+
+  // ── Full Time Course Part 2 Accordion Toggle ────────────────────
+  if (fullTimeCourse2Toggle && fullTimeCourse2List) {
+    fullTimeCourse2Toggle.addEventListener("click", () => {
+      const isExpanded = fullTimeCourse2Toggle.getAttribute("aria-expanded") === "true";
+      fullTimeCourse2Toggle.setAttribute("aria-expanded", String(!isExpanded));
+      fullTimeCourse2List.classList.toggle("open");
+    });
+  }
+
+  // ── Full Time Course Part 3 Accordion Toggle ────────────────────
+  if (fullTimeCourse3Toggle && fullTimeCourse3List) {
+    fullTimeCourse3Toggle.addEventListener("click", () => {
+      const isExpanded = fullTimeCourse3Toggle.getAttribute("aria-expanded") === "true";
+      fullTimeCourse3Toggle.setAttribute("aria-expanded", String(!isExpanded));
+      fullTimeCourse3List.classList.toggle("open");
+    });
+  }
+
+  // ── Part Time Course 1 Accordion Toggle ───────────────────────────
+  if (partTimeCourse1Toggle && partTimeCourse1List) {
+    partTimeCourse1Toggle.addEventListener("click", () => {
+      const isExpanded = partTimeCourse1Toggle.getAttribute("aria-expanded") === "true";
+      partTimeCourse1Toggle.setAttribute("aria-expanded", String(!isExpanded));
+      partTimeCourse1List.classList.toggle("open");
+    });
+  }
 
   // ── Soft Skills Accordion Toggle ──────────────────────────────
   if (softSkillsToggle && softSkillsList) {
@@ -67,8 +110,52 @@
 
   // ── Skill card prompt map ───────────────────────────────────────
   const skillPrompts = {
+    "vision-structure":
+      "Explain the iSchool Vision and the Education & Boarding Team Structure from Part Time course 1 (Education Head, Supervisors, Team Leaders, Mentors, Tutors, Boarding Specialists).",
+    "working-hours":
+      "What are the working days, shifts, operating hours, and time slots for tutors and mentors in Part Time course 1?",
+    "required-assessments":
+      "Explain the Required Assessments for Part Time course 1: what the assessment is, recording requirements (camera/mic on, screen sharing), submission rules, and module forms.",
+    "k12-roadmap":
+      "Explain the iSchool K12 Curriculum Roadmap across all grades (Grade 1 to 12) and levels (Level 1 to 6) from Part Time course 1.",
+    "free-sessions":
+      "Explain the purpose, structure, and details of iSchool Free Sessions (6 introductory sessions for non-subscribed students) from Part Time course 1.",
+    "pt-dashboard-tabs":
+      "Explain the iSchool Dashboard Tabs (Classes, Profile, Study, Requests, Policies, Help, Insights, community) and how to log in from Part Time course 1.",
+    "session-setup":
+      "Explain the Session Setup checklist (mic, camera, virtual background, internet) and Tone of Voice requirements from iSchool Onboarding Course 02.",
+    icebreakers:
+      "Explain the Icebreaking types (Question, Game, Creative, Funny, Digital, Reflection) and student engagement strategies from iSchool Onboarding Course 02.",
+    "constructive-feedback":
+      "Give concrete Constructive Feedback examples from iSchool Onboarding Course 02 for student coding and session work.",
+    "c2-management":
+      "Explain Time Management, Learn & Make execution, Planning, and Problem-Solving skills from iSchool Onboarding Course 02.",
+    "zoom-tools":
+      "Explain how to use Zoom tools in sessions, including Screen Sharing permissions, Whiteboard, Annotation, Reactions, Camera & Mic, and Virtual Background.",
+    "struct-c3":
+      "Explain the Session Structure in iSchool Teaching Course 03: 1-on-1 sessions last 1 hour, Group sessions last 1.5 hours (4-5 students). Both follow Learn (explain key concepts via slides), Make (student shares screen and builds the project), Share (student summarizes what they learned).",
+    "before-session":
+      "Explain everything a tutor must do BEFORE the session in iSchool Teaching Course 03: (1) Preparation: study slides, watch video, read Teacher's Guide, install software & practice the project. (2) Curriculum Prep: use Manual, Videos, Slides. (3) Lesson Planning: define lesson goals, plan pacing, anticipate challenges, brainstorm student questions. (4) Plan for scenarios: student already knows content (shorten Learn but keep engaging), student takes long to understand (use active engagement and simple questions). (5) Joining: review Dashboard schedule, join 10 minutes early, preload slides and files.",
+    "during-session":
+      "Explain everything that happens DURING the session in iSchool Teaching Course 03 — the 6-step Session Flow: (1) Welcome & Icebreaking: warmly welcome, brief icebreaker. (2) HW Review & Recap: student explains previous concepts, give hints, motivate with positive feedback, give clear definitions. (3) Explain New Concepts: start with Brainstorming (open-ended question, no right/wrong), use clarity & simplicity, right examples by age, adapt to student thinking, support with Annotation visuals, connect all concepts. Age delivery: Ages 6-10 use storytelling & short hands-on; Ages 11-14 use challenges & independent tasks; Ages 15-18 connect to professional careers. (4) Project & Make: show final result first, break into 2-3 step segments, demonstrate then guide student, connect to personal interests. (5) Q&A: every example answered by student, correct kindly. (6) Session Closure: student reflects 2-3 min (Presentation), explain homework, guide student to publish project on iSchool portfolio.",
+    "post-feedback":
+      "Explain everything a tutor must do AFTER the session in iSchool Teaching Course 03: (1) Feedback Submission: rate each criterion based on performance, write comment in English even for Arabic sessions, if 5 stars choose positive English comment, if not explain why. Mark absent students with the Absent toggle. Submit within 2 hours max. Use personalized comments — mention a specific moment from the session, avoid repeating generic templates. (2) Tutor Reflection: document any unexpected situations, challenges, disruptions, or important observations from the session in Arabic or English.",
     teaching:
       "Tell me about Teaching Skills and all its sub-skills in detail.",
+    // ── Part Time course 1 sub-section prompts ───────────────────────
+    "pt1-vision-structure":
+      "Explain the iSchool Vision and the full Education & Boarding Team Structure from Part Time course 1 Training - Part 01. Include: the iSchool Vision statement, the hierarchy (Education Head → Supervisors → Team Leaders → Mentors → Tutors), the Boarding Team (Team Leader, Senior Boarding Specialists, Boarding Specialists), and all team member names listed in the slides.",
+    "pt1-working-hours":
+      "Explain all Working Hours, Working Days, and Time Slots for different roles from Part Time course 1 Training - Part 01. Include: Boarding Team & Team Leaders shifts (Sat-Wed 10AM-6PM, Fri-Tue 10AM-6PM), Mentors & Moderation shifts (2PM-10PM), Tutors time slots (Slot 1-5, 3PM-10PM Fri-Wed), and the Tier system (Tier 1: 6-10 slots / min 4 modules, Tier 2: 11-15 slots / min 5 modules, Tier 3: 16-25 slots / min 6 modules).",
+    "pt1-assessments":
+      "Explain the Required Assessments from Part Time course 1 Training - Part 01. Include: what the assessment is (video explaining the Make activity), recording rules (screen share on, camera on, mic on, good quality), submission rules (separate form per module, 4 forms total by end of training, submitted before deadline), and how to access the assessment form.",
+    "pt1-k12-roadmap":
+      "Explain the full iSchool K12 Curriculum Roadmap from Part Time course 1 Training - Part 01. Cover all 6 levels and grades: Level 1 (Age 6-7, G1-G2: Technology Around Us, Creative Computing, Coding with Minecraft, Space Exploration), Level 2 (Age 8-9, G3-G4: 2D Game Dev, Game Dev with AI, Chatbots L01/L02), Level 3 (Age 10-11, G5-G6: Chatbot Python L01/L02, UI/UX Design L01/L02), Level 4 (Age 12-13, G7-G8: Mobile App Dev L01/L02, Web Dev HTML/CSS L01/L02), Level 5 (Age 14-15, G9-G10: Game Dev Unity L1/L2, 2D Game Design L01/L02), Level 6 (Age 16-17, G11-G12: Advanced ML, Deep Learning, Data Science, Machine Learning).",
+    "pt1-free-sessions":
+      "Explain iSchool Free Sessions and Session Structure from Part Time course 1 Training - Part 01. Free Sessions: 6 introductory sessions for non-subscribed students, purpose (spark curiosity, sneak peek into content, introduce instructors, hands-on activities). Assigned by grade level (L1→Sessions 1-2, L2-L3→Sessions 3-4, L4-L5-L6→Sessions 5-6). Session Structure: 1-on-1 and group sessions are 1 hour each, divided into 3 parts — Learn (explain key concepts using slides + main project), Make (student shares screen and works on project), Share (student summarizes what they learned). How to study: study slides, try the project on software before the session, watch attached videos, use the Manual (Training Guide) for time management.",
+    "pt1-dashboard":
+      "Explain the full iSchool Dashboard from Part Time course 1 Training - Part 01. Cover: Login process, Main Screen (Navigation bar, Menu Tab, Notifications). Teaching Tab — Schedule (view today's sessions, Materials button, search by student name/ID, Join Now appears 10 min before, Ping Parent button), Projects (student projects reviewed within 24 working hours, marked late otherwise), Tasks (project reviews, session feedback, follow-up tasks). LMS Tab — completed modules, session materials, student resources, quiz at end of each module. Insights Tab — tutor performance overview. Requests Tab — all request types history, submit planned vacation/emergency/sick leave with date, reason and policy per type. Community Tab — main communication space between tutors and students, two channel types: Announcement channels (important updates, tutors reply only if mentioned directly) and Direct Channels (dedicated per student for Q&A and support). Profile Menu — personal details, team affiliations, payroll, Credentials section (all work accounts), Payroll tab (salary, payment history), Policies & Agreements tab (HR, meetings, communication, session protocols), Reports tab (monthly performance report: strengths, improvement areas, red flags), Quality Insights tab (session performance summary).",
+
     presentation:
       "Explain Presentation Skills and all its sub-categories and sub-skills.",
     communication:
@@ -101,12 +188,53 @@
       "Explain the Cognitive-Driven Student Cases behavior model and how to adjust pacing for different processing speeds.",
   };
 
-  // Arabic counterparts. The server picks the reply language from the text of
-  // the question itself, so sending the Arabic prompt is what makes the answer
-  // come back in Arabic — framework names stay in English on purpose, matching
-  // the rule the system prompt already follows.
+  // Arabic counterparts.
   const skillPromptsAr = {
+    "vision-structure":
+      "اشرحلي رؤية آي سكول وهيكل فريق التعليم وفريق البوردينج (رئيس قسم التعليم، المشرفين، قادة الفرق، الموجهين Mentors، المدربين Tutors، ومختصي البوردينج) من Part Time course 1.",
+    "working-hours":
+      "إيه هي أيام العمل الرسمية، الشفتات، ساعات التشغيل، ومواعيد الـ Time Slots للمدربين والـ Mentors في Part Time course 1؟",
+    "required-assessments":
+      "اشرحلي التقييمات المطلوبة Required Assessments في Part Time course 1: إيه هو التقييم، وشروط التسجيل (مشاركة الشاشة، تشغيل الكاميرا والمايك)، وقواعد التسليم لكل موديول.",
+    "k12-roadmap":
+      "اشرحلي خارطة منهج iSchool K12 Roadmap لكل الصفوف (من Grade 1 لحد Grade 12) والمستويات (Level 1 to 6) بالتفصيل من Part Time course 1.",
+    "free-sessions":
+      "اشرحلي الغرض من الجلسات المجانية Free Sessions وهيكلها المكون من 6 جلسات للفئات العمرية المختلفة من Part Time course 1.",
+    "pt-dashboard-tabs":
+      "اشرحلي أقسام لوحة التحكم iSchool Dashboard (الصفوف Classes، الملف الشخصي Profile، الدراسة Study، الطلبات Requests، السياسات Policies، المساعدة Help، والتقارير Insights والـ Community) وكيفية تسجيل الدخول من Part Time course 1.",
+    "session-setup":
+      "اشرحلي قائمة تجهيز الجلسة Session Setup (المايك، الكاميرا، الخلفية الافتراضية، الإنترنت) وقواعد نبرة الصوت Tone of Voice في iSchool Onboarding Course 02.",
+    icebreakers:
+      "اشرحلي أنواع أنشطة كسر الجليد Icebreakers واستراتيجيات تفاعل الطلاب Engagement من iSchool Onboarding Course 02.",
+    "constructive-feedback":
+      "اديني أمثلة رسمية على التغذية الراجعة البناءة Constructive Feedback من iSchool Onboarding Course 02.",
+    "c2-management":
+      "اشرحلي إدارة الوقت Time Management والتطبيق العملي Learn and Make والـ Planning وProblem-Solving من iSchool Onboarding Course 02.",
+    "zoom-tools":
+      "اشرحلي إزاي أستخدم أدوات زوم Zoom Tools في الحصة (مشاركة الشاشة Screen Sharing، السبورة Whiteboard، التوضيح Annotation، والتفاعلات Reactions، والكاميرا والمايك).",
+    "struct-c3":
+      "اشرحلي هيكل الحصة في iSchool Teaching Course 03: الحصص الفردية 1-on-1 مدتها ساعة، والحصص الجماعية مدتها ساعة ونصف (4-5 طلاب). كلاهم بيتبعوا نفس الهيكل: Learn (شرح المفاهيم من خلال السلايد)، Make (الطالب يشارك الشاشة ويطبق المشروع)، Share (الطالب يلخص اللي اتعلمه).",
+    "before-session":
+      "اشرحلي كل اللي المدرب لازم يعمله قبل الحصة في iSchool Teaching Course 03: (1) التجهيز: ادرس السلايد، شوف الفيديو، اقرأ دليل المعلم، حمل البرامج وجرب المشروع. (2) تحضير المنهج: باستخدام Manual وVideos وSlides. (3) تخطيط الدرس: حدد أهداف الدرس، خطط الوقت، توقع التحديات، وتخيل أسئلة الطلاب. (4) تجهيز للسيناريوهات: الطالب يعرف المحتوى (اختصر Learn بس افضل تجاوب)، الطالب بيأخد وقت (استخدم التفاعل والأسئلة البسيطة). (5) الانضمام: راجع الـ Dashboard، انضم 10 دقائق قبل الحصة، افتح السلايد والملفات قبل البدء.",
+    "during-session":
+      "اشرحلي كل اللي بيحصل خلال الحصة في iSchool Teaching Course 03 الـ 6 خطوات: (1) الترحيب وكسر الجليد: ترحيب حار ونشاط كسر جليد سريع. (2) مراجعة الواجب: الطالب يشرح المفاهيم، ادي له تلميحات لو وقف، حفزه بتفاعل ايجابي، واشرح تعريف واضح. (3) شرح مفاهيم جديدة: ابدأ بالعصف الذهني (Brainstorming) بسؤال مفتوح، بساطة ووضوح في الشرح، استخدم Annotation بالشاشة، أمثلة مناسبة للعمر: 6-10 سنة (قصص وأنشطة سريعة)، 11-14 (تحديات ومهام مستقلة)، 15-18 (ربط بالمجال المهني). (4) المشروع وMake: اعرض النتيجة النهائية أولاً، قسم لخطوات 2-3، اعمل ديمو ثم وجه الطالب، اربط باهتماماته. (5) الأسئلة والأجوبة: كل سلايد أسئلة يجاوب عليها الطالب، صحح بلطف. (6) ختام الحصة: الطالب يلخص لمدة 2-3 دقائق (Presentation)، شرح الواجب، وجه الطالب ينشر المشروع في النظام.",
+    "post-feedback":
+      "اشرحلي كل اللي لازم يتعمله المدرب بعد الحصة في iSchool Teaching Course 03: (1) تسليم التقييم Feedback: قيّم كل معيار حسب أداء الطالب، اكتب التعليق بالإنجليزي حتى لو الحصة بالعربي، لو 5 نجوم اختار تعليق إيجابي، لو متش فل اشرح ليه. حدد الغياب بال Absent toggle. سلم خلال ساعتين. اكتب تعليق مخصص من لحظة حقيقية في الحصة، متش تكرر نفس التعليق. (2) Tutor Reflection: وثّق أي موقف غير متوقع، تحديات، أو ملاحظات مهمة حصلت خلال الحصة بالعربي أو الإنجليزي.",
     teaching: "احكيلي عن Teaching Skills وكل المهارات الفرعية بتاعتها بالتفصيل.",
+    // ── Part Time course 1 Arabic prompts ────────────────────────────
+    "pt1-vision-structure":
+      "اشرحلي رؤية iSchool وهيكل فريق التعليم والبوردينج الكامل من Part Time course 1 Training - Part 01. ابعت: رسالة رؤية iSchool، التسلسل الهرمي (Education Head → Supervisors → Team Leaders → Mentors → Tutors)، فريق البوردينج (Team Leader، Senior Boarding Specialists، Boarding Specialists)، وأسماء أعضاء الفريق المذكورين في السلايدات.",
+    "pt1-working-hours":
+      "اشرحلي كل أيام العمل وساعات العمل والـ Time Slots للأدوار المختلفة في Part Time course 1 Training - Part 01. ابعت: شفتات فريق البوردينج والـ Team Leaders (السبت-الأربعاء 10ص-6م، الجمعة-الثلاثاء 10ص-6م)، شفتات الـ Mentors والـ Moderation (2م-10م)، والـ Slots للـ Tutors (Slot 1-5، 3م-10م جمعة-أربعاء)، ونظام الـ Tiers (Tier 1: 6-10 slots / دقيقة 4 موديولز، Tier 2: 11-15 slots / دقيقة 5 موديولز، Tier 3: 16-25 slots / دقيقة 6 موديولز).",
+    "pt1-assessments":
+      "اشرحلي التقييمات المطلوبة Required Assessments من Part Time course 1 Training - Part 01. ابعت: إيه هو التقييم (فيديو بيشرح نشاط الـ Make)، قواعد التسجيل (مشاركة الشاشة، الكاميرا مشغلة، المايك مشغل، جودة عالية)، قواعد التسليم (نموذج منفصل لكل موديول، 4 نماذج إجمالاً بنهاية التدريب، قبل الـ deadline)، وإزاي توصل لنموذج التقييم.",
+    "pt1-k12-roadmap":
+      "اشرحلي خارطة طريق منهج iSchool K12 الكامل من Part Time course 1 Training - Part 01. غطي كل المستويات الـ 6 والصفوف: Level 1 (6-7 سنة، G1-G2: Technology Around Us، Creative Computing، Coding with Minecraft، Space Exploration)، Level 2 (8-9 سنة، G3-G4: 2D Game Dev، Game Dev with AI، Chatbots L01/L02)، Level 3 (10-11 سنة، G5-G6: Chatbot Python L01/L02، UI/UX Design L01/L02)، Level 4 (12-13 سنة، G7-G8: Mobile App Dev L01/L02، Web Dev HTML/CSS L01/L02)، Level 5 (14-15 سنة، G9-G10: Game Dev Unity L1/L2، 2D Game Design L01/L02)، Level 6 (16-17 سنة، G11-G12: Advanced ML، Deep Learning، Data Science، Machine Learning).",
+    "pt1-free-sessions":
+      "اشرحلي الجلسات المجانية iSchool Free Sessions وهيكل الجلسة Session Structure من Part Time course 1 Training - Part 01. الجلسات المجانية: 6 جلسات تعريفية للطلاب اللي لسه مشتركوش، الهدف (إثارة الفضول، لمحة عن المحتوى، تعريف بالمدربين، أنشطة تطبيقية). توزيع حسب المستوى (L1→جلسات 1-2، L2-L3→جلسات 3-4، L4-L5-L6→جلسات 5-6). هيكل الجلسة: الجلسات الفردية والجماعية مدتها ساعة، مقسمة لـ 3 أجزاء - Learn (شرح المفاهيم الأساسية بالسلايدات + المشروع الرئيسي)، Make (الطالب يشارك شاشته ويشتغل على المشروع)، Share (الطالب يلخص اللي اتعلمه). كيفية الدراسة: ادرس السلايدات، جرب المشروع على البرنامج قبل الجلسة، شوف الفيديوهات المرفقة، استخدم الـ Manual (Training Guide) لإدارة وقت الجلسة.",
+    "pt1-dashboard":
+      "اشرحلي لوحة التحكم الكاملة iSchool Dashboard من Part Time course 1 Training - Part 01. غطي: تسجيل الدخول، الشاشة الرئيسية (Navigation Bar، Menu Tab، Notifications). تبويب Teaching - الجدول Schedule (شوف جلساتك اليوم، زر المواد Materials، ابحث باسم الطالب أو ID، زر Join Now يظهر 10 دقائق قبل، زر Ping Parent)، المشاريع Projects (مراجعة مشاريع الطلاب خلال 24 ساعة عمل، أي مشروع بعد كده يتعتبر متأخر)، المهام Tasks (مراجعات المشاريع، تغذية راجعة للجلسة، مهام متابعة). تبويب LMS - الموديولز المكتملة، مواد الجلسة وموارد الطلاب، اختبار في نهاية كل موديول للتقدم. تبويب Insights - نظرة عامة على أداء المدرب. تبويب Requests - كل أنواع الطلبات وتاريخها، تقدر تطلب إجازة مخططة أو طارئة أو مرضية مع تاريخ وسبب وكل طلب ليه سياسته. تبويب Community - مساحة التواصل الرئيسية بين المدربين والطلاب، نوعان من القنوات: قنوات الإعلانات Announcement (تحديثات مهمة، المدرب يرد بس لو اتذكر مباشرة) وقنوات Direct (قناة مخصصة لكل طالب للأسئلة والدعم). قائمة Profile - البيانات الشخصية، الارتباطات الفريق، Credentials (كل الأكونتات المطلوبة)، Payroll (تفاصيل الراتب والمدفوعات)، Policies & Agreements (قواعد HR والاجتماعات والتواصل وبروتوكولات الجلسة)، Reports (تقرير شهري للأداء: نقاط قوة، مجالات تحسين، علامات تحذير)، Quality Insights (ملخص أداء الجلسة).",
+
     presentation: "اشرحلي Presentation Skills وكل التصنيفات والمهارات الفرعية بتاعتها.",
     communication:
       "إيه هي Communication Skills؟ اشرحلي إطار Session-Based وإطار General Communication.",
@@ -177,14 +305,14 @@
       if (!line.trim() || line.trim().startsWith('mindmap')) return line;
       const leadingSpaces = line.search(/\S/);
       if (leadingSpaces === -1) return line;
-      
+
       // Parse indentation, optional node ID (using lookahead to check for bracket), and text contents
       const match = line.match(/^(\s*)(?:([a-zA-Z0-9_-]+)(?=\(\(|\(|\[))?(?:\(\((.*)\)\)|\((.*)\)|\[(.*)\]|(.*))$/);
       if (!match) return line;
-      
+
       const labelText = (match[3] || match[4] || match[5] || match[6] || "").trim();
       if (!labelText) return line;
-      
+
       // Assign brackets by indentation level
       if (leadingSpaces <= 2) {
         return ' '.repeat(leadingSpaces) + `((${labelText}))`;
@@ -398,9 +526,9 @@
     // Add to history
     conversationHistory.push({ role: "user", content: userText });
 
-    // Keep only last 10 messages
-    if (conversationHistory.length > 10) {
-      conversationHistory = conversationHistory.slice(-10);
+    // Keep only last 6 messages to reduce payload size
+    if (conversationHistory.length > 6) {
+      conversationHistory = conversationHistory.slice(-6);
     }
 
     // Disable input while streaming
@@ -411,7 +539,7 @@
     try {
       // Add timeout to prevent hanging
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 30000);
+      const timeout = setTimeout(() => controller.abort(), 60000); // 60s timeout
 
       const response = await fetch("/api/chat", {
         method: "POST",

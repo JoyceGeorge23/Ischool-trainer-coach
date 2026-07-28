@@ -46,6 +46,534 @@
       </div>
 
       <nav class="sidebar-content" aria-labelledby="skillsLabel">
+        <!-- Courses Flow Section -->
+        <p class="sidebar-label" id="coursesLabel" data-i18n="nav.courses">Training Roadmap</p>
+        <ul class="skill-list" style="margin-bottom: 24px;">
+          <li style="--i: 0">
+            <button class="skill-folder-card" type="button" id="fullTimeCourseToggle" aria-expanded="false">
+              <span class="skill-icon" aria-hidden="true" style="color: #ff7f1c;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#ff7f1c"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3 data-i18n="s.fulltime.t">Part Time course 1</h3>
+                <p data-i18n="s.fulltime.d">Vision &amp; structure, working hours, assessment, K12 roadmap, free sessions &amp; dashboard tabs</p>
+              </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Nested sub-skills for Full Time Course Part 1 -->
+            <ul class="sub-skill-list" id="fullTimeCourseList">
+              <!-- 1. Vision & Structure -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="vision-structure" id="card-vision-structure">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" stroke="#056FEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <circle cx="9" cy="7" r="4" stroke="#056FEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M23 21v-2a4 4 0 0 0-3-3.87" stroke="#056FEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M16 3.13a4 4 0 0 1 0 7.75" stroke="#056FEC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.whours.t">Vision &amp; Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 2. Working Hours & Time Slots -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="working-hours" id="card-working-hours">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#056FEC" stroke-width="2" fill="#FFFFFF" />
+                      <path d="M12 6v6l4 2" stroke="#056FEC" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.k12map.t">Working Hours &amp; Time Slots</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 3. Required Assessments -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="required-assessments" id="card-required-assessments">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="5" y="3" width="14" height="18" rx="2" stroke="#22c55e" stroke-width="2" fill="#ffffff" />
+                      <path d="M9 11l2 2 4-4" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.sflow.t">Required Assessments</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 4. K12 Curriculum Roadmap -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="k12-roadmap" id="card-k12-roadmap">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M3 17l6-6 4 4 8-8" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 7h7v7" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.tagenda.t">K12 Curriculum Roadmap</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 5. iSchool Free Sessions -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="free-sessions" id="card-free-sessions">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#05acff" stroke-width="2" fill="#ffd700"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.dash.t">iSchool Free Sessions</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 6. iSchool Dashboard Tabs -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt-dashboard-tabs" id="card-pt-dashboard-tabs">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#05acff" stroke-width="2" fill="#ffffff"/>
+                      <path d="M3 9h18M9 21V9" stroke="#05acff" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.ptdash.t">iSchool Dashboard Tabs</h3>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <!-- ===== Part Time course 1 ===== -->
+          <li style="--i: 1; margin-top: 12px;">
+            <button class="skill-folder-card" type="button" id="partTimeCourse1Toggle" aria-expanded="false">
+              <span class="skill-icon" aria-hidden="true" style="color: #a855f7;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#a855f7"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3 data-i18n="s.parttime1.t">Part Time course 1</h3>
+                <p data-i18n="s.parttime1.d">Vision, working hours, assessments, K12 roadmap, free sessions &amp; dashboard</p>
+              </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Nested sub-sections for Part Time course 1 -->
+            <ul class="sub-skill-list" id="partTimeCourse1List">
+
+              <!-- 1. iSchool Vision & Team Structure (Slides 1-7) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-vision-structure" id="card-pt1-vision-structure">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5z" stroke="#a855f7" stroke-width="2" fill="#ffffff"/>
+                      <circle cx="12" cy="12" r="3" stroke="#a855f7" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1vision.t">iSchool Vision &amp; Team Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 2. Working Hours & Time Slots (Slides 8-15) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-working-hours" id="card-pt1-working-hours">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#056FEC" stroke-width="2" fill="#ffffff"/>
+                      <path d="M12 6v6l4 2" stroke="#056FEC" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1hours.t">Working Hours &amp; Time Slots</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 3. Required Assessments (Slides 18-22) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-assessments" id="card-pt1-assessments">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="5" y="3" width="14" height="18" rx="2" stroke="#22c55e" stroke-width="2" fill="#ffffff"/>
+                      <path d="M9 11l2 2 4-4" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 16h6" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1assess.t">Required Assessments</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 4. K12 Curriculum Roadmap (Slides 23-30) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-k12-roadmap" id="card-pt1-k12-roadmap">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M3 17l6-6 4 4 8-8" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 7h7v7" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1k12.t">K12 Curriculum Roadmap</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 5. iSchool Free Sessions & Session Structure (Slides 31-39) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-free-sessions" id="card-pt1-free-sessions">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#05acff" stroke-width="2" fill="#ffd700"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1free.t">iSchool Free Sessions &amp; Session Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 6. iSchool Dashboard (Slides 40-71) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-dashboard" id="card-pt1-dashboard">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#a855f7" stroke-width="2" fill="#ffffff"/>
+                      <path d="M3 9h18M9 21V9" stroke="#a855f7" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1dash.t">iSchool Dashboard</h3>
+                  </span>
+                </button>
+              </li>
+
+            </ul>
+          </li>
+
+          <li style="--i: 2; margin-top: 12px;">
+            <button class="skill-folder-card" type="button" id="fullTimeCourse2Toggle" aria-expanded="false">
+              <span class="skill-icon" aria-hidden="true" style="color: #05acff;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#05acff"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3 data-i18n="s.fulltime2.t">Training - Part 02</h3>
+                <p data-i18n="s.fulltime2.d">Presentation setup, icebreakers, feedback, session management &amp; Zoom tools</p>
+              </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Nested sub-skills for Full Time Course Part 2 -->
+            <ul class="sub-skill-list" id="fullTimeCourse2List">
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="session-setup" id="card-session-setup">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="3" y="4" width="18" height="12" rx="2" stroke="#ff7f1c" stroke-width="2" fill="#ffffff"/>
+                      <path d="M8 20h8M12 16v4" stroke="#ff7f1c" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.setup.t">Session Setup &amp; Tone of Voice</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="icebreakers" id="card-icebreakers">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="#05acff" stroke-width="2" fill="#ffffff"/>
+                      <path d="M8 12l3 3 5-5" stroke="#05acff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.icebreakers.t">Icebreakers &amp; Student Engagement</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="constructive-feedback" id="card-constructive-feedback">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" stroke="#22c55e" stroke-width="2" fill="#ffffff"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.feedback.t">Constructive Feedback Examples</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="c2-management" id="card-c2-management">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="4" y="4" width="16" height="16" rx="2" stroke="#043fad" stroke-width="2" fill="#ffffff"/>
+                      <path d="M9 9h6M9 13h6M9 17h4" stroke="#043fad" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.c2mgmt.t">Management &amp; Session Time</h3>
+                  </span>
+                </button>
+              </li>
+
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="zoom-tools" id="card-zoom-tools">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="2" y="6" width="13" height="12" rx="2" fill="#05acff"/>
+                      <path d="M15 10l5-3v10l-5-3v-4z" fill="#05acff"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.zoom.t">Zoom Tools &amp; Screen Sharing</h3>
+                  </span>
+                </button>
+              </li>
+            </ul>
+          </li>
+
+          <li style="--i: 3; margin-top: 12px;">
+            <button class="skill-folder-card" type="button" id="fullTimeCourse3Toggle" aria-expanded="false">
+              <span class="skill-icon" aria-hidden="true" style="color: #22c55e;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#22c55e"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3 data-i18n="s.fulltime3.t">Teaching - Part 03</h3>
+                <p data-i18n="s.fulltime3.d">Session structure, before, during &amp; after the session</p>
+              </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Nested sub-skills for Full Time Course Part 3 -->
+            <ul class="sub-skill-list" id="fullTimeCourse3List">
+
+              <!-- 1. Session Structure (Slides 2-5) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="struct-c3" id="card-struct-c3">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="3" y="4" width="8" height="16" rx="2" stroke="#05acff" stroke-width="2" fill="#ffffff"/>
+                      <rect x="13" y="4" width="8" height="16" rx="2" stroke="#22c55e" stroke-width="2" fill="#ffffff"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.structc3.t">Session Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 2. Before the Session (Slides 7-12) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="before-session" id="card-before-session">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="#043fad" stroke-width="2" fill="#ffffff"/>
+                      <path d="M12 7v5l-3 2" stroke="#043fad" stroke-width="2" stroke-linecap="round"/>
+                      <path d="M8 3l4 2 4-2" stroke="#043fad" stroke-width="1.5" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.beforesession.t">Before the Session</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 3. During the Session (Slides 13-26) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="during-session" id="card-during-session">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M5 12h14M12 5l7 7-7 7" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.duringsession.t">During the Session</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 4. After the Session (Slides 27-29) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="post-feedback" id="card-post-feedback">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="9" stroke="#ff7f1c" stroke-width="2" fill="#ffffff"/>
+                      <path d="M9 12l2 2 4-4" stroke="#ff7f1c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.aftersession.t">After the Session</h3>
+                  </span>
+                </button>
+              </li>
+
+            </ul>
+          </li>
+
+          <li style="--i: 4; margin-top: 12px;">
+            <button class="skill-folder-card" type="button" id="partTimeCourse1Toggle" aria-expanded="false">
+              <span class="skill-icon" aria-hidden="true" style="color: #a855f7;">
+                <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                  <path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3z M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82z" fill="#a855f7"/>
+                </svg>
+              </span>
+              <span class="skill-info">
+                <h3 data-i18n="s.parttime1.t">Part Time course 1</h3>
+                <p data-i18n="s.parttime1.d">Vision, working hours, assessments, K12 roadmap, free sessions &amp; dashboard</p>
+              </span>
+              <span class="folder-chevron" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                  stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </button>
+
+            <!-- Nested sub-sections for Part Time course 1 -->
+            <ul class="sub-skill-list" id="partTimeCourse1List">
+
+              <!-- 1. iSchool Vision & Team Structure (Slides 1–7) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-vision-structure" id="card-pt1-vision-structure">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5C21.27 7.61 17 4.5 12 4.5z" stroke="#a855f7" stroke-width="2" fill="#ffffff"/>
+                      <circle cx="12" cy="12" r="3" stroke="#a855f7" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1vision.t">iSchool Vision &amp; Team Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 2. Working Hours & Time Slots (Slides 8–15) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-working-hours" id="card-pt1-working-hours">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <circle cx="12" cy="12" r="10" stroke="#056FEC" stroke-width="2" fill="#ffffff"/>
+                      <path d="M12 6v6l4 2" stroke="#056FEC" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1hours.t">Working Hours &amp; Time Slots</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 3. Required Assessments (Slides 18–22) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-assessments" id="card-pt1-assessments">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="5" y="3" width="14" height="18" rx="2" stroke="#22c55e" stroke-width="2" fill="#ffffff"/>
+                      <path d="M9 11l2 2 4-4" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M9 16h6" stroke="#22c55e" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1assess.t">Required Assessments</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 4. K12 Curriculum Roadmap (Slides 23–30) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-k12-roadmap" id="card-pt1-k12-roadmap">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M3 17l6-6 4 4 8-8" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                      <path d="M14 7h7v7" stroke="#ff7f1c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1k12.t">K12 Curriculum Roadmap</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 5. iSchool Free Sessions & Session Structure (Slides 31–39) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-free-sessions" id="card-pt1-free-sessions">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#05acff" stroke-width="2" fill="#ffd700"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1free.t">iSchool Free Sessions &amp; Session Structure</h3>
+                  </span>
+                </button>
+              </li>
+
+              <!-- 6. iSchool Dashboard (Slides 40–71) -->
+              <li>
+                <button class="skill-card sub-skill-card" type="button" data-skill="pt1-dashboard" id="card-pt1-dashboard">
+                  <span class="skill-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="3" y="3" width="18" height="18" rx="2" stroke="#a855f7" stroke-width="2" fill="#ffffff"/>
+                      <path d="M3 9h18M9 21V9" stroke="#a855f7" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  <span class="skill-info">
+                    <h3 data-i18n="s.pt1dash.t">iSchool Dashboard</h3>
+                  </span>
+                </button>
+              </li>
+
+            </ul>
+          </li>
+
+        </ul>
+
+        <!-- Trainer Skills Framework Section -->
         <p class="sidebar-label" id="skillsLabel" data-i18n="nav.framework">Trainer Skills Framework</p>
 
         <ul class="skill-list">
@@ -265,10 +793,17 @@
                 <button class="skill-card sub-skill-card" type="button" data-skill="time-priority"
                   id="card-time-priority">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <polyline points="12 6 12 12 16 14" />
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <rect x="9" y="1" width="6" height="2" rx="1" fill="#056FEC" />
+                      <rect x="11" y="3" width="2" height="2" fill="#056FEC" />
+                      <path d="M5.5 5.5l2 2" stroke="#056FEC" stroke-width="2.2" stroke-linecap="round" />
+                      <path d="M18.5 5.5l-2 2" stroke="#056FEC" stroke-width="2.2" stroke-linecap="round" />
+                      <circle cx="12" cy="14" r="8.5" stroke="#056FEC" stroke-width="2" fill="#FFFFFF" />
+                      <path d="M12 14 L12 5.5 A8.5 8.5 0 1 0 20.5 14 Z" fill="#05ACFF" opacity="0.9" />
+                      <path d="M12 14 L20.5 14 A8.5 8.5 0 0 0 12 5.5 Z" fill="#E6F6FE" />
+                      <path d="M12 14L12 8" stroke="#043FAD" stroke-width="2" stroke-linecap="round" />
+                      <path d="M12 14L17 14" stroke="#043FAD" stroke-width="2" stroke-linecap="round" />
+                      <circle cx="12" cy="14" r="1.2" fill="#043FAD" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -358,11 +893,22 @@
                 <button class="skill-card sub-skill-card" type="button" data-skill="attention-driven"
                   id="card-attention">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <circle cx="12" cy="12" r="10" />
-                      <line x1="12" y1="8" x2="12" y2="12" />
-                      <line x1="12" y1="16" x2="12.01" y2="16" />
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <!-- Yellow light rays -->
+                      <line x1="12" y1="1.5" x2="12" y2="4.5" stroke="#FFB800" stroke-width="2.2" stroke-linecap="round" />
+                      <line x1="4.5" y1="4.5" x2="6.8" y2="6.8" stroke="#FFB800" stroke-width="2.2" stroke-linecap="round" />
+                      <line x1="19.5" y1="4.5" x2="17.2" y2="6.8" stroke="#FFB800" stroke-width="2.2" stroke-linecap="round" />
+                      <line x1="1" y1="13" x2="4" y2="13" stroke="#FFB800" stroke-width="2.2" stroke-linecap="round" />
+                      <line x1="23" y1="13" x2="20" y2="13" stroke="#FFB800" stroke-width="2.2" stroke-linecap="round" />
+
+                      <!-- Siren Orange Dome -->
+                      <path d="M6.5 17.5 C6.5 9.5, 17.5 9.5, 17.5 17.5 Z" fill="#FF5500" />
+                      <!-- Inner dome shine highlight -->
+                      <path d="M9 17.5 C9 11.8, 15 11.8, 15 17.5 Z" fill="#FFB800" opacity="0.35" />
+
+                      <!-- Dark Blue Base -->
+                      <path d="M5.5 17.5 h13 a1.5 1.5 0 0 1 1.5 1.5 v1.5 a1 1 0 0 1 -1 1 H5 a1 1 0 0 1 -1 -1 v-1.5 a1.5 1.5 0 0 1 1.5 -1.5 Z" fill="#004BD6" />
+                      <path d="M4 20.5 h16 a1 1 0 0 1 1 1 v0.5 H3 v-0.5 a1 1 0 0 1 1 -1 Z" fill="#00359C" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -374,10 +920,18 @@
               <li>
                 <button class="skill-card sub-skill-card" type="button" data-skill="emotion-driven" id="card-emotion">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <path
-                        d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                    <svg viewBox="0 0 24 24" width="22" height="22" fill="none">
+                      <!-- Mountain Body (Vibrant Blue) -->
+                      <path d="M2.5 21.5 h19 a1.5 1.5 0 0 0 1.3 -2.25 L13.3 6.25 a1.5 1.5 0 0 0 -2.6 0 L1.2 19.25 A1.5 1.5 0 0 0 2.5 21.5 Z" fill="#0091FF" />
+                      
+                      <!-- Snow Cap (Light Blue / Soft White) -->
+                      <path d="M12 5.5 L17.8 14.5 C16.2 13.2, 14.2 15.2, 12 13.5 C9.8 15.2, 7.8 13.2, 6.2 14.5 Z" fill="#E2F4FF" />
+
+                      <!-- Flag Pole -->
+                      <line x1="12" y1="1.5" x2="12" y2="7" stroke="#0077E6" stroke-width="1.8" stroke-linecap="round" />
+
+                      <!-- Orange Flag Banner -->
+                      <path d="M12 1.5 L18.5 4 L12 6.5 Z" fill="#FF6500" />
                     </svg>
                   </span>
                   <span class="skill-info">
@@ -390,10 +944,9 @@
                 <button class="skill-card sub-skill-card" type="button" data-skill="motivation-driven"
                   id="card-motivation">
                   <span class="skill-icon" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"
-                      stroke-linejoin="round">
-                      <polygon
-                        points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                    <svg viewBox="0 0 24 24" width="20" height="20">
+                      <polygon fill="#FFC107"
+                        points="12 2 14.76 5.35 19.07 4.93 18.65 8.24 22 12 18.65 15.76 19.07 19.07 14.76 18.65 12 22 9.24 18.65 4.93 19.07 5.35 15.76 2 12 5.35 8.24 4.93 4.93 9.24 5.35" />
                     </svg>
                   </span>
                   <span class="skill-info">

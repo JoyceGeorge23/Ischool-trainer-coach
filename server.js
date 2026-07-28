@@ -78,6 +78,35 @@ function rateLimit(req, res, next) {
 }
 
 // ---------------------------------------------------------------------------
+// Local course documents loader
+// ---------------------------------------------------------------------------
+const fs = require("fs");
+let localCoursesKB = "";
+try {
+  const pt1Path = path.join(__dirname, "PartTime_Course_01.txt");
+  const c2Path = path.join(__dirname, "OnBoarding_Course_02.txt");
+  const c3Path = path.join(__dirname, "OnBoarding_Course_03.txt");
+
+  let pt1Text = "";
+  let c2Text = "";
+  let c3Text = "";
+
+  if (fs.existsSync(pt1Path)) {
+    pt1Text = `=== DOCUMENT: Part Time course 1 ===\n\n` + fs.readFileSync(pt1Path, "utf8");
+  }
+  if (fs.existsSync(c2Path)) {
+    c2Text = `=== DOCUMENT: Training - Part 02 ===\n\n` + fs.readFileSync(c2Path, "utf8");
+  }
+  if (fs.existsSync(c3Path)) {
+    c3Text = `=== DOCUMENT: Teaching - Part 03 ===\n\n` + fs.readFileSync(c3Path, "utf8");
+  }
+
+  localCoursesKB = [pt1Text, c2Text, c3Text].filter(Boolean).join("\n\n============================================================\n\n");
+} catch (err) {
+  console.error("Error loading local course files:", err);
+}
+
+// ---------------------------------------------------------------------------
 // Knowledge Base – loaded dynamically from Google Drive
 // The hardcoded fallback is used only if Drive is unavailable.
 // ---------------------------------------------------------------------------
@@ -308,12 +337,13 @@ function expandQueryForRetrieval(userQuery) {
 // Returns relevant Drive content matching the query, capped to fit token limits
 function getKnowledgeBase(userQuery) {
   const driveKB = driveLoader.getKnowledgeBase();
-  // Always include the core framework foundation so essential topics like
-  // Teaching Skills are never omitted even if Drive only contains a subset.
-  const fullKB = driveKB && driveKB.length > 0
-    ? `${FALLBACK_KNOWLEDGE_BASE}\n\n=== GOOGLE DRIVE DOCUMENTS ===\n\n${driveKB}`
-    : FALLBACK_KNOWLEDGE_BASE;
-  const MAX_CHARS = 20000;
+  // Always include the core framework foundation and local courses so essential topics are never omitted.
+  const fullKB = [
+    FALLBACK_KNOWLEDGE_BASE,
+    localCoursesKB,
+    driveKB && driveKB.length > 0 ? `=== GOOGLE DRIVE DOCUMENTS ===\n\n${driveKB}` : ""
+  ].filter(Boolean).join("\n\n");
+  const MAX_CHARS = 35000;
 
   // If KB is under MAX_CHARS, send full text
   if (fullKB.length <= MAX_CHARS) {
@@ -485,6 +515,19 @@ const STRONG_ANCHORS = new Set([
   // Sub-skill anchors that appear in sidebar button prompts
   "adaptability","accountability","reliability","prioritization",
   "adherence","rhythm","distraction",
+  // Training/Onboarding specific anchors
+  "working","hours","shift","shifts","operating","slot","slots","tier","tiers",
+  "assessment","assessments","video","recording","camera","microphone","mic",
+  "curriculum","roadmap","k12","grade","grades","level","levels",
+  "free","sessions","introductory",
+  "dashboard","tabs","classes","profile","study","requests","policies","payroll","insights",
+  "vacation","leaves","sick","leave","emergency","slack",
+  // Arabic equivalents
+  "شفت","شفتات","ساعة","ساعات","مواعيد","سلوت","سلوتس",
+  "تقييم","تقييمات","الفيديو","تسجيل","كاميرا","مايك",
+  "منهج","مستويات","مستوى","صف","صفوف",
+  "مجانية","مجاني","حصص",
+  "لوحة","التحكم","داشبورد","طلب","طلبات","اجازة","إجازة","مرتب","مرتبات","سلاك",
 ]);
 
 // Returns true when the query is answerable from the material.
@@ -504,7 +547,12 @@ function isInScope(userQuery, isFollowUp) {
   }
 
   const driveKB = driveLoader.getKnowledgeBase();
-  const kbLower = (driveKB && driveKB.length > 0 ? driveKB : FALLBACK_KNOWLEDGE_BASE).toLowerCase();
+  const fullKBForScope = [
+    FALLBACK_KNOWLEDGE_BASE,
+    localCoursesKB,
+    driveKB
+  ].filter(Boolean).join("\n\n");
+  const kbLower = fullKBForScope.toLowerCase();
   const domainLower = DOMAIN_TERMS.join(" ").toLowerCase();
 
   // Any Arabic term in the concept map is by definition framework vocabulary.
@@ -696,7 +744,16 @@ STRICT OPERATIONAL GUIDELINES:
     - **Teaching Skills**: E.g., Structuring a "for loop" explanation by starting with an everyday example (like walking steps) before showing code. (AR: شرح التكرار بخطوات المشي أولاً). E.g., Diagnosing learning by asking "What does the Y-axis control?" instead of giving the direct answer. E.g., "Thinking out loud" to model cognitive debugging.
     - **Presentation Skills**: E.g., Slowing speaking pace and raising tone slightly when typing a critical line of code. E.g., Using circular hand motions to visually explain loops to students. E.g., Framing a session as "building a game YOU can play."
     - **Management Skills**: E.g., Transitioning to an unscripted "challenge mode" if students finish early to avoid dead air. E.g., Prioritizing teaching the debugging process over finishing game features when time is running out. E.g., Looking up unknown documentation together with a student to show reliability.
-    - **Student Behavior**: E.g., Redirecting an attention-seeking student by saying "Hold that thought, you can share your screen in 5 minutes." (AR: احتفظ بالكود، شارك شاشتك بعد 5 دقائق). E.g., Emotionally regulating a frustrated student by reminding them that even pros get bugs, then debugging together. E.g., Assigning a bored gifted student a "Mentor" role to help others.`;
+    - **Student Behavior**: E.g., Redirecting an attention-seeking student by saying "Hold that thought, you can share your screen in 5 minutes." (AR: احتفظ بالكود، شارك شاشتك بعد 5 دقائق). E.g., Emotionally regulating a frustrated student by reminding them that even pros get bugs, then debugging together. E.g., Assigning a bored gifted student a "Mentor" role to help others.
+
+13. **Embedding Slide Images**:
+    - When the tutor asks to see a specific slide or mentions a slide number (e.g. "show slide 10", "الشريحة رقم 12", "وريني slide 5"), you MUST output the Markdown image link for that slide.
+    - Choose the correct folder based on the course:
+      - For **Part Time course 1** (or "Part Time 1" / "Part Time Course"): Use \`![Slide X](/slides_pt1/slide_X.png)\` (where X is the slide number from 1 to 71).
+      - For **Onboarding Course 01** (or "Course 01" / "Training - Part 01"): Use \`![Slide X](/slides/slide_X.png)\` (where X is the slide number from 1 to 56).
+      - For **Onboarding Course 02** (or "Course 02" / "Training - Part 02"): Use \`![Slide X](/slides_c2/slide_X.png)\` (where X is the slide number from 1 to 32).
+      - For **Teaching Course 03** (or "Course 03" / "Teaching - Part 03"): Use \`![Slide X](/slides_c3/slide_X.png)\` (where X is the slide number from 1 to 31).
+    - Always output the Markdown image link on its own line directly under the slide's text content. Never use HTML img tags, always use standard Markdown syntax.`;
 }
 
 // ---------------------------------------------------------------------------
@@ -918,4 +975,5 @@ if (require.main === module) {
   });
 }
 
+app.isInScope = isInScope;
 module.exports = app;

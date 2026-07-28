@@ -8,12 +8,37 @@
     en: {
       "app.title": "iSchool Trainer Coach",
       "app.subtitle": "Trainer Coach",
+      "nav.courses": "Training Roadmap",
       "nav.framework": "Trainer Skills Framework",
       "chat.sub": "Internal assistant to help iSchool tutors improve session delivery",
 
       "welcome.lead": "Welcome 👋",
       "welcome.body":
         "I help tutors with the trainer skills framework. Ask about teaching, presentation, communication or management skills — or just describe what happened in your session. I answer only from the official framework.",
+
+      "s.fulltime.t": "Part Time course 1",
+      "s.fulltime.d": "Vision & structure, working hours, assessment, K12 roadmap, free sessions & dashboard tabs",
+      "s.whours.t": "Vision & Structure",
+      "s.k12map.t": "Working Hours & Time Slots",
+      "s.sflow.t": "Required Assessments",
+      "s.tagenda.t": "K12 Curriculum Roadmap",
+      "s.dash.t": "iSchool Free Sessions",
+      "s.ptdash.t": "iSchool Dashboard Tabs",
+
+      "s.fulltime2.t": "Training - Part 02",
+      "s.fulltime2.d": "Presentation setup, icebreakers, feedback, session management & Zoom tools",
+      "s.setup.t": "Session Setup & Tone of Voice",
+      "s.icebreakers.t": "Icebreakers & Student Engagement",
+      "s.feedback.t": "Constructive Feedback Examples",
+      "s.c2mgmt.t": "Management & Session Time",
+      "s.zoom.t": "Zoom Tools & Screen Sharing",
+
+      "s.fulltime3.t": "Teaching - Part 03",
+      "s.fulltime3.d": "Session structure, before, during & after the session",
+      "s.structc3.t": "Session Structure",
+      "s.beforesession.t": "Before the Session",
+      "s.duringsession.t": "During the Session",
+      "s.aftersession.t": "After the Session",
 
       "s.soft.t": "Soft Skills",
       "s.soft.d": "The four core disciplines every session draws on",
@@ -54,12 +79,37 @@
     ar: {
       "app.title": "مدرب آي سكول",
       "app.subtitle": "مدرب المدربين",
+      "nav.courses": "خارطة طريق التدريب",
       "nav.framework": "إطار مهارات المدرب",
       "chat.sub": "مساعد داخلي لمساعدة مدربي آي سكول على تحسين أداء الحصة",
 
       "welcome.lead": "أهلاً 👋",
       "welcome.body":
         "بساعد المدربين في إطار مهارات التدريب. اسألني عن مهارات التدريس، أو العرض والتقديم، أو التواصل، أو الإدارة — أو احكيلي بس اللي حصل في الحصة. بجاوب من الإطار الرسمي بس.",
+
+      "s.fulltime.t": "Part Time course 1",
+      "s.fulltime.d": "الرؤية والهيكل، ساعات العمل، التقييمات، خارطة K12، الجلسات المجانية ولوحة التحكم",
+      "s.whours.t": "الرؤية وهيكل الفريق",
+      "s.k12map.t": "ساعات العمل ومواعيد الـ Slots",
+      "s.sflow.t": "التقييمات المطلوبة والـ Assessment",
+      "s.tagenda.t": "خارطة منهج K12 Roadmap",
+      "s.dash.t": "حصص آي سكول المجانية",
+      "s.ptdash.t": "أقسام لوحة التحكم Dashboard",
+
+      "s.fulltime2.t": "Training - Part 02",
+      "s.fulltime2.d": "تجهيز الجلسة، أنشطة كسر الجليد، التغذية الراجعة، وإدارة أدوات زوم",
+      "s.setup.t": "تجهيز الجلسة ونبرة الصوت",
+      "s.icebreakers.t": "أنشطة كسر الجليد وتفاعل الطلاب",
+      "s.feedback.t": "أمثلة التغذية الراجعة البناءة",
+      "s.c2mgmt.t": "إدارة الحصة والوقت",
+      "s.zoom.t": "أدوات زوم ومشاركة الشاشة",
+
+      "s.fulltime3.t": "Teaching - Part 03",
+      "s.fulltime3.d": "هيكل الحصة، قبل وخلال وبعد الحصة",
+      "s.structc3.t": "هيكل الحصة",
+      "s.beforesession.t": "قبل الحصة",
+      "s.duringsession.t": "خلال الحصة",
+      "s.aftersession.t": "بعد الحصة",
 
       "s.soft.t": "المهارات الشخصية",
       "s.soft.d": "المجالات الأربعة الأساسية اللي أي حصة بتعتمد عليها",
