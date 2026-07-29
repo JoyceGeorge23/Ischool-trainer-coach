@@ -28,11 +28,26 @@ if (!GEMINI_API_KEY) {
 // assistant reply, which the API rejects outright.
 function toGeminiContents(messages) {
   const mapped = messages
-    .filter((msg) => msg && typeof msg.content === "string" && msg.content.trim())
-    .map((msg) => ({
-      role: msg.role === "assistant" ? "model" : "user",
-      parts: [{ text: msg.content }],
-    }));
+    .filter((msg) => msg && (typeof msg.content === "string" || msg.attachment))
+    .map((msg) => {
+      const parts = [];
+      if (typeof msg.content === "string" && msg.content.trim()) {
+        parts.push({ text: msg.content });
+      }
+      if (msg.attachment && msg.attachment.data && msg.attachment.mimeType) {
+        parts.push({
+          inlineData: {
+            mimeType: msg.attachment.mimeType,
+            data: msg.attachment.data,
+          },
+        });
+      }
+      return {
+        role: msg.role === "assistant" ? "model" : "user",
+        parts,
+      };
+    })
+    .filter((msg) => msg.parts.length > 0);
 
   const firstUser = mapped.findIndex((m) => m.role === "user");
   return firstUser <= 0 ? mapped : mapped.slice(firstUser);
@@ -48,7 +63,7 @@ app.use((req, res, next) => {
   if (req.body !== undefined) {
     return next();
   }
-  express.json()(req, res, next);
+  express.json({ limit: "10mb" })(req, res, next);
 });
 app.use(express.static(path.join(__dirname, "public")));
 
@@ -359,15 +374,31 @@ function getKnowledgeBase(userQuery) {
     .split(/(?=\n=== Document:|\n=== DOCUMENT:|\n=== |\n-- \d+ of \d+ --)/m)
     .filter((s) => s.trim().length > 0);
 
+  const cleanQuery = userQuery.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF\s]/g, " ").trim();
   const queryTerms = expandQueryForRetrieval(userQuery)
     .toLowerCase()
     .replace(/[^a-z0-9\u0600-\u06FF\s]/g, " ")
     .split(/\s+/)
-    .filter((t) => t.length > 1);
+    .filter((t) => t.length > 1 || /^\d+$/.test(t));
 
   const scored = chunks.map((chunk) => {
-    const lower = chunk.toLowerCase();
+    const lower = chunk.toLowerCase().replace(/[^a-z0-9\u0600-\u06FF\s]/g, " ");
     let score = 0;
+    
+    // Phrase boost for exact queries
+    if (cleanQuery && lower.includes(cleanQuery)) {
+      score += 10;
+    }
+    
+    // Multi-word phrase boost
+    const words = cleanQuery.split(/\s+/).filter((w) => w.length > 1 || /^\d+$/.test(w));
+    for (let i = 0; i < words.length - 1; i++) {
+      const phrase2 = `${words[i]} ${words[i + 1]}`;
+      if (lower.includes(phrase2)) {
+        score += 5;
+      }
+    }
+
     for (const term of queryTerms) {
       if (lower.includes(term)) score += 1;
     }
@@ -698,7 +729,7 @@ STRICT OPERATIONAL GUIDELINES:
 7. **Format**:
    - Open with the direct answer or the named skill name.
    - Bullets only for action steps. Prose for everything else.
-   - **NO SLIDE/SOURCE REFERENCES**: Do NOT output any "Source:" line, file names, or slide numbers. Output ONLY the skill name and content.
+   - **NO SLIDE/SOURCE REFERENCES**: Do NOT output any "Source:" line, file names, or slide numbers in plain text. Output ONLY the skill name and content. (Note: You are required to output slide image Markdown links as specified in rule 13).
 
 8. **Diagrams & Mind Maps**:
    - Only produce a diagram/mindmap when the tutor explicitly asks for one (map, mindmap, diagram, visual, chart, tree, خريطة, رسم, مخطط). Never volunteer one.
@@ -750,13 +781,15 @@ STRICT OPERATIONAL GUIDELINES:
     - **Student Behavior**: E.g., Redirecting an attention-seeking student by saying "Hold that thought, you can share your screen in 5 minutes." (AR: احتفظ بالكود، شارك شاشتك بعد 5 دقائق). E.g., Emotionally regulating a frustrated student by reminding them that even pros get bugs, then debugging together. E.g., Assigning a bored gifted student a "Mentor" role to help others.
 
 13. **Embedding Slide Images**:
-    - When the tutor asks to see a specific slide or mentions a slide number (e.g. "show slide 10", "الشريحة رقم 12", "وريني slide 5"), you MUST output the Markdown image link for that slide.
+    - When the tutor asks to see a specific slide, mentions a slide number (e.g. "show slide 10", "الشريحة رقم 12", "وريني slide 5"), or asks for the slide/image of a specific topic, module, or curriculum level present in the knowledge base (e.g., "image of level 2", "slide of level 3", "صورة level 2", "سلايد level 3"), you MUST identify the slide number X from the header \`=== SLIDE X ===\` of that content in your knowledge base and output the Markdown image link for it.
+    - If they ask "the image?", "the slide?", "i want the image", or ask for the visual of the topic currently being discussed or explained in the previous turn, you MUST output the Markdown image link of that slide.
     - Choose the correct folder based on the course:
       - For **Part Time course 1** (or "Part Time 1" / "Part Time Course"): Use \`![Slide X](/slides_pt1/slide_X.png)\` (where X is the slide number from 1 to 71).
       - For **Onboarding Course 01** (or "Course 01" / "Training - Part 01"): Use \`![Slide X](/slides/slide_X.png)\` (where X is the slide number from 1 to 56).
       - For **Onboarding Course 02** (or "Course 02" / "Training - Part 02"): Use \`![Slide X](/slides_c2/slide_X.png)\` (where X is the slide number from 1 to 32).
       - For **Teaching Course 03** (or "Course 03" / "Teaching - Part 03"): Use \`![Slide X](/slides_c3/slide_X.png)\` (where X is the slide number from 1 to 31).
-    - Always output the Markdown image link on its own line directly under the slide's text content. Never use HTML img tags, always use standard Markdown syntax.`;
+    - Always output the Markdown image link on its own line directly under the slide's text content. Never use HTML img tags, always use standard Markdown syntax.
+    - When an image link is requested or relevant for a topic, this topic is DEFINITELY found in the framework. You MUST explain the content and display the image link, and you must NOT trigger the fallback "This topic was not found in the official iSchool framework."`;
 }
 
 // ---------------------------------------------------------------------------
@@ -793,7 +826,8 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     // Off-topic questions never reach the model. One line back, nothing else:
     // no greeting, no follow-up invite.
     const isFollowUp = messages.length > 1;
-    if (!isInScope(lastMsg?.content, isFollowUp)) {
+    const hasAttachment = trimmedMessages.some((m) => m && m.attachment);
+    if (!hasAttachment && !isInScope(lastMsg?.content, isFollowUp)) {
       console.log(`[Chat] Out of scope, rejected without model call: "${(lastMsg?.content || "").slice(0, 60)}"`);
       return streamPlainReply(res, containsArabic ? OUT_OF_SCOPE_REPLY.ar : OUT_OF_SCOPE_REPLY.en);
     }
@@ -979,4 +1013,4 @@ if (require.main === module) {
 }
 
 app.isInScope = isInScope;
-module.exports = app;
+module.exports = app; // restarted again 3

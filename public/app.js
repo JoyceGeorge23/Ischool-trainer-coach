@@ -13,6 +13,11 @@
   const sidebar = document.getElementById("sidebar");
   const sidebarToggle = document.getElementById("sidebarToggle");
   const sidebarOverlay = document.getElementById("sidebarOverlay");
+  const attachBtn = document.getElementById("attachBtn");
+  const fileInput = document.getElementById("fileInput");
+  const attachmentPreview = document.getElementById("attachmentPreview");
+  const previewImg = document.getElementById("previewImg");
+  const removeAttachBtn = document.getElementById("removeAttachBtn");
   const skillCards = document.querySelectorAll(".skill-card");
   const chatMain = document.querySelector(".chat-main");
   const fullTimeCourseToggle = document.getElementById("fullTimeCourseToggle");
@@ -107,6 +112,7 @@
   // ── State ───────────────────────────────────────────────────────
   let conversationHistory = [];
   let isStreaming = false;
+  let currentAttachment = null;
 
   // ── Skill card prompt map ───────────────────────────────────────
   const skillPrompts = {
@@ -445,7 +451,7 @@
   const BOT_AVATAR_SVG = `<svg width="16" height="18" viewBox="0 0 192 229" fill="none" aria-hidden="true"><mask id="bot-mask-0" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="192" height="229"><path d="M191.753 0H0V229H191.753V0Z" fill="white"/></mask><g mask="url(#bot-mask-0)"><mask id="bot-mask-1" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="0" y="0" width="191" height="229"><path d="M190.134 0H0V229H190.134V0Z" fill="white"/></mask><g mask="url(#bot-mask-1)"><path d="M104.813 96.2036C72.4837 109.692 47.6786 128.836 35.5521 158.034C23.1265 188.307 48.9902 204.452 76.7407 196.918C96.0003 192.039 114.616 178.231 130.102 162.384C161.027 132.5 169.955 80.9522 139.076 48.2968C106.424 12.985 53.7303 26.0151 19.698 54.2737C13.163 59.3346 5.31648 49.8769 11.4833 44.4267C39.1878 19.7176 80.4913 1.67237 118.62 13.9926C158.404 25.7403 184.015 67.5328 181.07 108.043C178.907 149.125 152.859 183.018 120.944 206.513C90.3628 230.65 37.1628 240.863 10.2867 204.634C-11.0209 175.208 4.05091 135.408 24.6222 110.699C41.6038 89.6542 60.9325 72.2273 82.9765 59.014C105.112 46.7396 125.108 80.082 103.226 92.8602L104.813 96.2036Z" fill="#FFD700"/><path d="M115.857 126.133L117.951 181.848C118.365 192.382 112.451 199.138 102.419 199.527C92.4094 199.917 85.9895 193.642 85.5753 183.085L83.4813 127.37C83.0672 116.836 88.9808 110.08 99.0133 109.691C109.023 109.302 115.443 115.599 115.857 126.133Z" fill="#056FEC"/><path d="M95.5397 98.2869C107.549 98.2869 117.285 88.5981 117.285 76.6464C117.285 64.6946 107.549 55.0059 95.5397 55.0059C83.5304 55.0059 73.7949 64.6946 73.7949 76.6464C73.7949 88.5981 83.5304 98.2869 95.5397 98.2869Z" fill="#FF7F1C"/></g></g></svg>`;
 
   // ── Create message element ──────────────────────────────────────
-  function createMessageElement(role, content, isRtl = false) {
+  function createMessageElement(role, content, isRtl = false, attachment = null) {
     const messageDiv = document.createElement("div");
     messageDiv.className = `message animate-in ${role === "user" ? "user-message" : "bot-message"}`;
 
@@ -470,7 +476,17 @@
     }
 
     if (role === "user") {
-      bubble.textContent = content;
+      if (attachment && attachment.data && attachment.mimeType) {
+        const img = document.createElement("img");
+        img.className = "message-image";
+        img.src = `data:${attachment.mimeType};base64,${attachment.data}`;
+        img.alt = "User attached image";
+        bubble.appendChild(img);
+      }
+      if (content) {
+        const textNode = document.createTextNode(content);
+        bubble.appendChild(textNode);
+      }
     } else {
       bubble.innerHTML = renderMarkdown(content);
     }
@@ -504,7 +520,7 @@
   async function sendMessage(text) {
     if (isStreaming) return;
     const userText = (text || chatInput.value).trim();
-    if (!userText) return;
+    if (!userText && !currentAttachment) return;
 
     // Clear input
     chatInput.value = "";
@@ -514,17 +530,35 @@
     // Detect language
     const userIsArabic = isArabic(userText);
 
+    // Save attachment for this turn and reset global state
+    const turnAttachment = currentAttachment;
+    currentAttachment = null;
+    if (attachmentPreview) {
+      attachmentPreview.style.display = "none";
+    }
+    if (previewImg) {
+      previewImg.src = "";
+    }
+    if (fileInput) {
+      fileInput.value = "";
+    }
+
     // Add user message to UI
     const { messageDiv: userMsgEl } = createMessageElement(
       "user",
       userText,
-      userIsArabic
+      userIsArabic,
+      turnAttachment
     );
     chatMessages.appendChild(userMsgEl);
     scrollToBottom();
 
     // Add to history
-    conversationHistory.push({ role: "user", content: userText });
+    const userMsg = { role: "user", content: userText };
+    if (turnAttachment) {
+      userMsg.attachment = turnAttachment;
+    }
+    conversationHistory.push(userMsg);
 
     // Keep only last 6 messages to reduce payload size
     if (conversationHistory.length > 6) {
@@ -667,6 +701,57 @@
     chatInput.style.height = "auto";
     chatInput.style.height = Math.min(chatInput.scrollHeight, 120) + "px";
   });
+
+  // Attachment click triggers file upload
+  if (attachBtn && fileInput) {
+    attachBtn.addEventListener("click", () => {
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      // Restrict file size to 5MB
+      if (file.size > 5 * 1024 * 1024) {
+        alert(isArabic(chatInput.placeholder) 
+          ? "حجم الصورة كبير جداً. يجب أن يكون أقل من 5 ميجابايت."
+          : "Image size is too large. Please select an image under 5MB."
+        );
+        fileInput.value = "";
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const result = event.target.result;
+        // Base64 data is formatted as "data:image/jpeg;base64,...."
+        const base64Parts = result.split(",");
+        const base64Data = base64Parts[1];
+        
+        currentAttachment = {
+          mimeType: file.type,
+          data: base64Data
+        };
+
+        // Update preview UI
+        if (previewImg && attachmentPreview) {
+          previewImg.src = result;
+          attachmentPreview.style.display = "block";
+        }
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  if (removeAttachBtn) {
+    removeAttachBtn.addEventListener("click", () => {
+      currentAttachment = null;
+      if (fileInput) fileInput.value = "";
+      if (attachmentPreview) attachmentPreview.style.display = "none";
+      if (previewImg) previewImg.src = "";
+    });
+  }
 
   // Skill card clicks
   skillCards.forEach((card) => {

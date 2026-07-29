@@ -1664,3 +1664,17 @@ textarea,
     transform: translateX(0);
   }
 }
+
+/* ── Attachment Styling ──────────────────────────────────────────── */
+.attach-btn:hover {
+  color: var(--action) !important;
+}
+
+.message-image {
+  max-width: 100%;
+  max-height: 240px;
+  border-radius: var(--radius-md);
+  margin-bottom: 8px;
+  display: block;
+  object-fit: contain;
+}
