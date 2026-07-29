@@ -7,3 +7,7 @@ node_modules/
 .codex/
 .cursor/
 .gemini/
+
+# Large PDF course files — exceed GitHub 50MB limit
+Courses Flow/
+*.pdf
