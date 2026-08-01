@@ -68,28 +68,11 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------------------------------------------------------------------------
-// Simple in-memory rate limiter — configurable via RATE_LIMIT env variable.
-// Default: 60 req/min per IP. On Vercel serverless the map resets per cold
-// start, so effective limit is per function instance (usually fine).
+// Rate limiter — disabled for Vercel serverless (in-memory Map does not
+// persist reliably across function instances and causes false positives).
+// This is an internal iSchool tool so no rate limiting is needed.
 // ---------------------------------------------------------------------------
-const rateLimitMap = new Map();
-const RATE_LIMIT = parseInt(process.env.RATE_LIMIT || "60", 10);
-const RATE_WINDOW_MS = 60_000;
-
 function rateLimit(req, res, next) {
-  const ip = req.ip || req.headers["x-forwarded-for"] || "unknown";
-  const now = Date.now();
-  if (!rateLimitMap.has(ip)) {
-    rateLimitMap.set(ip, []);
-  }
-  const timestamps = rateLimitMap.get(ip).filter((t) => now - t < RATE_WINDOW_MS);
-  if (timestamps.length >= RATE_LIMIT) {
-    return res.status(429).json({
-      error: "Rate limit reached. Please wait a moment and try again.",
-    });
-  }
-  timestamps.push(now);
-  rateLimitMap.set(ip, timestamps);
   next();
 }
 
