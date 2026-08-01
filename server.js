@@ -68,15 +68,16 @@ app.use((req, res, next) => {
 app.use(express.static(path.join(__dirname, "public")));
 
 // ---------------------------------------------------------------------------
-// Simple in-memory rate limiter (25 req/min per IP, under the Gemini free-tier
-// per-minute quota; raise RATE_LIMIT if you move to a paid tier)
+// Simple in-memory rate limiter — configurable via RATE_LIMIT env variable.
+// Default: 60 req/min per IP. On Vercel serverless the map resets per cold
+// start, so effective limit is per function instance (usually fine).
 // ---------------------------------------------------------------------------
 const rateLimitMap = new Map();
-const RATE_LIMIT = 25;
+const RATE_LIMIT = parseInt(process.env.RATE_LIMIT || "60", 10);
 const RATE_WINDOW_MS = 60_000;
 
 function rateLimit(req, res, next) {
-  const ip = req.ip;
+  const ip = req.ip || req.headers["x-forwarded-for"] || "unknown";
   const now = Date.now();
   if (!rateLimitMap.has(ip)) {
     rateLimitMap.set(ip, []);
@@ -84,7 +85,7 @@ function rateLimit(req, res, next) {
   const timestamps = rateLimitMap.get(ip).filter((t) => now - t < RATE_WINDOW_MS);
   if (timestamps.length >= RATE_LIMIT) {
     return res.status(429).json({
-      error: "Too many requests. Please wait a moment and try again.",
+      error: "Rate limit reached. Please wait a moment and try again.",
     });
   }
   timestamps.push(now);
