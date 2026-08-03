@@ -37,12 +37,30 @@
   const partTimeCourse1Toggle = document.getElementById("partTimeCourse1Toggle");
   const partTimeCourse1List = document.getElementById("partTimeCourse1List");
 
+  const fullTimeCourse3Toggle = document.getElementById("fullTimeCourse3Toggle");
+  const fullTimeCourse3List = document.getElementById("fullTimeCourse3List");
+  const fullTimeCourse4Toggle = document.getElementById("fullTimeCourse4Toggle");
+  const fullTimeCourse4List = document.getElementById("fullTimeCourse4List");
+  const fullTimeCourse5Toggle = document.getElementById("fullTimeCourse5Toggle");
+  const fullTimeCourse5List = document.getElementById("fullTimeCourse5List");
+  const b2cCourseToggle = document.getElementById("b2cCourseToggle");
+  const b2cCourseList = document.getElementById("b2cCourseList");
+
   // ── Full Time Course Accordion Toggle ───────────────────────────
   if (fullTimeCourseToggle && fullTimeCourseList) {
     fullTimeCourseToggle.addEventListener("click", () => {
       const isExpanded = fullTimeCourseToggle.getAttribute("aria-expanded") === "true";
       fullTimeCourseToggle.setAttribute("aria-expanded", String(!isExpanded));
       fullTimeCourseList.classList.toggle("open");
+    });
+  }
+
+  // ── B2C Project-Based Accordion Toggle ────────────────────────────
+  if (b2cCourseToggle && b2cCourseList) {
+    b2cCourseToggle.addEventListener("click", () => {
+      const isExpanded = b2cCourseToggle.getAttribute("aria-expanded") === "true";
+      b2cCourseToggle.setAttribute("aria-expanded", String(!isExpanded));
+      b2cCourseList.classList.toggle("open");
     });
   }
 
@@ -61,6 +79,24 @@
       const isExpanded = fullTimeCourse3Toggle.getAttribute("aria-expanded") === "true";
       fullTimeCourse3Toggle.setAttribute("aria-expanded", String(!isExpanded));
       fullTimeCourse3List.classList.toggle("open");
+    });
+  }
+
+  // ── Full Time Course Part 4 Accordion Toggle ────────────────────
+  if (fullTimeCourse4Toggle && fullTimeCourse4List) {
+    fullTimeCourse4Toggle.addEventListener("click", () => {
+      const isExpanded = fullTimeCourse4Toggle.getAttribute("aria-expanded") === "true";
+      fullTimeCourse4Toggle.setAttribute("aria-expanded", String(!isExpanded));
+      fullTimeCourse4List.classList.toggle("open");
+    });
+  }
+
+  // ── Full Time Course Part 5 Accordion Toggle ────────────────────
+  if (fullTimeCourse5Toggle && fullTimeCourse5List) {
+    fullTimeCourse5Toggle.addEventListener("click", () => {
+      const isExpanded = fullTimeCourse5Toggle.getAttribute("aria-expanded") === "true";
+      fullTimeCourse5Toggle.setAttribute("aria-expanded", String(!isExpanded));
+      fullTimeCourse5List.classList.toggle("open");
     });
   }
 
@@ -146,6 +182,36 @@
       "Explain everything that happens DURING the session in iSchool Teaching Course 03 — the 6-step Session Flow: (1) Welcome & Icebreaking: warmly welcome, brief icebreaker. (2) HW Review & Recap: student explains previous concepts, give hints, motivate with positive feedback, give clear definitions. (3) Explain New Concepts: start with Brainstorming (open-ended question, no right/wrong), use clarity & simplicity, right examples by age, adapt to student thinking, support with Annotation visuals, connect all concepts. Age delivery: Ages 6-10 use storytelling & short hands-on; Ages 11-14 use challenges & independent tasks; Ages 15-18 connect to professional careers. (4) Project & Make: show final result first, break into 2-3 step segments, demonstrate then guide student, connect to personal interests. (5) Q&A: every example answered by student, correct kindly. (6) Session Closure: student reflects 2-3 min (Presentation), explain homework, guide student to publish project on iSchool portfolio.",
     "post-feedback":
       "Explain everything a tutor must do AFTER the session in iSchool Teaching Course 03: (1) Feedback Submission: rate each criterion based on performance, write comment in English even for Arabic sessions, if 5 stars choose positive English comment, if not explain why. Mark absent students with the Absent toggle. Submit within 2 hours max. Use personalized comments — mention a specific moment from the session, avoid repeating generic templates. (2) Tutor Reflection: document any unexpected situations, challenges, disruptions, or important observations from the session in Arabic or English.",
+    "c4-situations":
+      "Explain how to handle common online session situations and Community Tab cases from iSchool Onboarding Course 04 Training - Part 04 (toilet/eating requests, Zoom struggles, sleeping student, inappropriate language, noise, parent interruptions, late arrival, mobile/car attendance).",
+    "c4-quality":
+      "Explain the iSchool Quality Team, evaluation process, monthly random session reviews, 5 evaluation categories, and Quality Mistakes form from iSchool Onboarding Course 04 Training - Part 04.",
+    "c4-flags":
+      "Explain the iSchool Flags Policy from iSchool Onboarding Course 04 Training - Part 04: Yellow Flags (constructive feedback), Red Flags (salary deductions: 3%, 5%, 7%), Green Flags (exemplary rewards), and repetition rules.",
+    "c4-red-violations":
+      "List all specific Red Flag violations from iSchool Onboarding Course 04 Training - Part 04 including contact info sharing, politics/religion, late join/early leave, missing camera/mic, wrong teaching language, and public place attendance.",
+    "c4-roleplay":
+      "Explain the Roleplay Submission process, question types (theoretical & project implementation), setup, dress code, and preparation requirements from iSchool Onboarding Course 04 Training - Part 04.",
+    "c5-hr-edu-roles":
+      "Explain the HR and Education department roles from iSchool Onboarding Course 05 Training - Part 05 (HR contact topics & channels, Edu Head & Supervisors, Team Leaders, Mentors, Moderation).",
+    "c5-slack-channels":
+      "Explain all Slack channels and emergency ticket procedures from iSchool Onboarding Course 05 Training - Part 05 (Education Announcement, Instructors Education, Team channel, Sub-team channel, iSchool Highlights, T-#### Moderation channel, open ticket feature).",
+    "c5-shifts-slots":
+      "Explain team shifts, operating hours, and tutor time slots from iSchool Onboarding Course 05 Training - Part 05 (Team Leaders 10AM-6PM, Mentors/Moderators 2PM-10PM, Tutors Slots 1-5 3PM-10PM Sat-Wed).",
+    "c5-student-community":
+      "Explain student live session access, parent notifications, Community Tab channels, and flagging inappropriate messages from iSchool Onboarding Course 05 Training - Part 05.",
+    "c5-career-ranks":
+      "Explain the Tutors Career Path and 10 Ranks upgrade system from iSchool Onboarding Course 05 Training - Part 05 (Bronze to Elite, quarterly upgrade schedule, study level, quality score, feedback, cancellation rate).",
+    "b2c-team-working-hours":
+      "Explain the Education Team Structure, Roles, and Working Hours / Shift Slots from B2C Project-Based Training (Edu Head, Supervisors, Team Leaders, Mentors, Moderation, Boarding, Quality, Content, 1-on-1 & Group time slots).",
+    "b2c-required-assessments":
+      "Explain the Required Video Assessments from B2C Project-Based Training (recording Make activity, camera/mic/screen share rules, submission forms, deadlines).",
+    "b2c-k12-curriculum":
+      "Explain the full K12 Curriculum Roadmap across Levels 1-6 and the 6-session iSchool Free Introductory Sessions from B2C Project-Based Training.",
+    "b2c-session-study":
+      "Explain the Session Structure (Learn-Make-Share model for 1-on-1 & group sessions) and Study Method (Slides, Practice, Teacher Manual, Demo Videos) from B2C Project-Based Training.",
+    "b2c-dashboard-features":
+      "Explain the complete iSchool Dashboard Guide from B2C Project-Based Training (Teaching tab, Join Now 10m before, Ping Parent button, 24-hour project review rule, LMS tab & quizzes, Insights quality report, Requests tab, Community tab, Credentials & Payroll).",
     teaching:
       "Tell me about Teaching Skills and all its sub-skills in detail.",
     // ── Part Time course 1 sub-section prompts ───────────────────────
@@ -240,6 +306,42 @@
       "اشرحلي الجلسات المجانية iSchool Free Sessions وهيكل الجلسة Session Structure من Part Time course 1 Training - Part 01. الجلسات المجانية: 6 جلسات تعريفية للطلاب اللي لسه مشتركوش، الهدف (إثارة الفضول، لمحة عن المحتوى، تعريف بالمدربين، أنشطة تطبيقية). توزيع حسب المستوى (L1→جلسات 1-2، L2-L3→جلسات 3-4، L4-L5-L6→جلسات 5-6). هيكل الجلسة: الجلسات الفردية والجماعية مدتها ساعة، مقسمة لـ 3 أجزاء - Learn (شرح المفاهيم الأساسية بالسلايدات + المشروع الرئيسي)، Make (الطالب يشارك شاشته ويشتغل على المشروع)، Share (الطالب يلخص اللي اتعلمه). كيفية الدراسة: ادرس السلايدات، جرب المشروع على البرنامج قبل الجلسة، شوف الفيديوهات المرفقة، استخدم الـ Manual (Training Guide) لإدارة وقت الجلسة.",
     "pt1-dashboard":
       "اشرحلي لوحة التحكم الكاملة iSchool Dashboard من Part Time course 1 Training - Part 01. غطي: تسجيل الدخول، الشاشة الرئيسية (Navigation Bar، Menu Tab، Notifications). تبويب Teaching - الجدول Schedule (شوف جلساتك اليوم، زر المواد Materials، ابحث باسم الطالب أو ID، زر Join Now يظهر 10 دقائق قبل، زر Ping Parent)، المشاريع Projects (مراجعة مشاريع الطلاب خلال 24 ساعة عمل، أي مشروع بعد كده يتعتبر متأخر)، المهام Tasks (مراجعات المشاريع، تغذية راجعة للجلسة، مهام متابعة). تبويب LMS - الموديولز المكتملة، مواد الجلسة وموارد الطلاب، اختبار في نهاية كل موديول للتقدم. تبويب Insights - نظرة عامة على أداء المدرب. تبويب Requests - كل أنواع الطلبات وتاريخها، تقدر تطلب إجازة مخططة أو طارئة أو مرضية مع تاريخ وسبب وكل طلب ليه سياسته. تبويب Community - مساحة التواصل الرئيسية بين المدربين والطلاب، نوعان من القنوات: قنوات الإعلانات Announcement (تحديثات مهمة، المدرب يرد بس لو اتذكر مباشرة) وقنوات Direct (قناة مخصصة لكل طالب للأسئلة والدعم). قائمة Profile - البيانات الشخصية، الارتباطات الفريق، Credentials (كل الأكونتات المطلوبة)، Payroll (تفاصيل الراتب والمدفوعات)، Policies & Agreements (قواعد HR والاجتماعات والتواصل وبروتوكولات الجلسة)، Reports (تقرير شهري للأداء: نقاط قوة، مجالات تحسين، علامات تحذير)، Quality Insights (ملخص أداء الجلسة).",
+
+    // ── Course 04 Arabic prompts ─────────────────────────────────────
+    "c4-situations":
+      "اشرحلي إزاي أتعامل مع مواقف الحصص الأونلاين وقسم الكوميونتي في iSchool Onboarding Course 04 Training - Part 04 (طلب الحمّام/الأكل، مشاكل زوم، الطالب النوايم، الألفاظ غير اللائقة، الضوضاء، تدخل الوالدين، التأخير، الحضور من الموبايل/العربية).",
+    "c4-quality":
+      "اشرحلي فريق الجودة iSchool Quality Team وعملية التقييم والمراجعات العشوائية الشهرية والتصنيفات الـ 5 وفورم أخطاء الجودة Quality Mistakes من iSchool Onboarding Course 04 Training - Part 04.",
+    "c4-flags":
+      "اشرحلي سياسة الأعلام Flags Policy من iSchool Onboarding Course 04 Training - Part 04: الأعلام الأصفر Yellow Flags (تغذية راجعة بناءة)، الأعلام الأحمر Red Flags (خصومات الراتب: 3%، 5%، 7%)، الأعلام الأخضر Green Flags (مكافآت التميز)، وقواعد التكرار.",
+    "c4-red-violations":
+      "قائمة مخالفات العلم الأحمر Red Flag Violations من iSchool Onboarding Course 04 Training - Part 04 مثل مشاركة معلومات التواصل، السياسة/الدين، التواجد المتأخر/الخروج المبكر، إغلاق الكاميرا/المايك، لغة الشرح الخاطئة، والحضور من مكان عام.",
+    "c4-roleplay":
+      "اشرحلي عملية تسليم الرولبلاي Roleplay Submission وأنواع الأسئلة (نظري وتطبيق مشروع) والتجهيزات والمظهر وشروط التسليم من iSchool Onboarding Course 04 Training - Part 04.",
+
+    // ── Course 05 Arabic prompts ─────────────────────────────────────
+    "c5-hr-edu-roles":
+      "اشرحلي أدوار فريق الـ HR والتعليم من iSchool Onboarding Course 05 Training - Part 05 (مواضيع وقنوات تواصل HR، رئيس التعليم والمشرفين، قادة الفرق TLs، الموجهين Mentors، وفريق المودريشن Moderation).",
+    "c5-slack-channels":
+      "اشرحلي كل قنوات سلاك Slack Channels وإجراءات تكت الطوارئ من iSchool Onboarding Course 05 Training - Part 05 (قناة الإعلانات Education Announcement، Instructors Education، قناة الفريق Team channel، قناة Sub-team، iSchool Highlights، وقناة الطوارئ T-#### Moderation وفورم فتح التكت).",
+    "c5-shifts-slots":
+      "اشرحلي مواعيد شفتات الفريق وساعات العمل وساعات الـ Slots للمدربين من iSchool Onboarding Course 05 Training - Part 05 (شفتات الـ TLs من 10ص-6م، الـ Mentors والـ Moderation من 2م-10م، والـ Slots 1-5 للمدربين من 3م-10م سبت-أربعاء).",
+    "c5-student-community":
+      "اشرحلي الدخول للحصص المباشرة للطلاب وإشعار أولياء الأمور وقنوات الكوميونتي Community Tab والإبلاغ عن الرسائل غير اللائقة بالعلم Flag من iSchool Onboarding Course 05 Training - Part 05.",
+    "c5-career-ranks":
+      "اشرحلي المسار الوظيفي للمدربين Tutors Career Path ونظام الترقيات للـ 10 رتب Ranks من iSchool Onboarding Course 05 Training - Part 05 (من Bronze لحد Elite، المواعيد الربع سنوية، مستوى الدراسة، درجات الجودة، التقييمات، ونسبة الإلغاء).",
+
+    // ── B2C Project-Based Arabic prompts ─────────────────────────────
+    "b2c-team-working-hours":
+      "اشرحلي هيكل فريق التعليم وأدوارهم وساعات العمل ومواعيد الشفتات والـ Slots من تدريب B2C Project-Based Training (رئيس التعليم، المشرفين، TLs، Mentors، Moderation، Boarding، Quality، Content، وساعات الـ 1-on-1 والـ Group sessions).",
+    "b2c-required-assessments":
+      "اشرحلي التقييمات المطلوبة Required Video Assessments من تدريب B2C Project-Based Training (تسجيل فيديو لشرح نشاط Make، شروط الشاشة والكاميرا والمايك، النماذج المطلوبة، ومواعيد التسليم).",
+    "b2c-k12-curriculum":
+      "اشرحلي خارطة طريق منهج K12 Curriculum Roadmap عبر المستويات 1-6 والجلسات المجانية iSchool Free Sessions (6 جلسات) من تدريب B2C Project-Based Training.",
+    "b2c-session-study":
+      "اشرحلي هيكل الحصة Session Structure (نموذج Learn-Make-Share للحصص الفردية والجماعية) وطريقة المذاكرة (السلايدات، التجربة العملية، دليل المعلم Manual، وفيديوهات الديمو) من تدريب B2C Project-Based Training.",
+    "b2c-dashboard-features":
+      "اشرحلي الدليل الشامل للوحة التحكم iSchool Dashboard من تدريب B2C Project-Based Training (تبويب Teaching، زر Join Now قبل 10 دقائق، زر Ping Parent، قاعدة تقييم المشاريع خلال 24 ساعة عمل، تبويب LMS والاختبارات، تقرير الجودة Insights، تبويب Requests، الكوميونتي Community، الحسابات Credentials والـ Payroll).",
 
     presentation: "اشرحلي Presentation Skills وكل التصنيفات والمهارات الفرعية بتاعتها.",
     communication:
@@ -811,6 +913,111 @@
       sidebarToggle.focus();
     }
   });
+
+  // ── Tutor Role Management & Sidebar Filtering ─────────────────────
+  const STORAGE_KEY_ROLE = "ischool-tutor-role";
+  const tutorRoleModal = document.getElementById("tutorRoleModal");
+  const btnSelectFullTime = document.getElementById("btnSelectFullTime");
+  const btnSelectPartTime = document.getElementById("btnSelectPartTime");
+  const roleBadgeBtn = document.getElementById("roleBadgeBtn");
+  const roleBadgeBtnMobile = document.getElementById("roleBadgeBtnMobile");
+  const roleBadgeText = document.getElementById("roleBadgeText");
+  const roleBadgeTextMobile = document.getElementById("roleBadgeTextMobile");
+
+  function updateRoleBadge(role) {
+    const isFullTime = role === "full-time";
+    const i18nKey = isFullTime ? "role.badge.fulltime" : "role.badge.parttime";
+
+    if (roleBadgeText) {
+      roleBadgeText.setAttribute("data-i18n", i18nKey);
+    }
+    if (roleBadgeTextMobile) {
+      roleBadgeTextMobile.setAttribute("data-i18n", i18nKey);
+    }
+
+    if (window.iSchoolUILang) {
+      window.iSchoolUILang.set(window.iSchoolUILang.get());
+    }
+  }
+
+  function filterSidebarByRole(role) {
+    const roleItems = document.querySelectorAll("[data-tutor-role]");
+    roleItems.forEach((item) => {
+      const itemRole = item.getAttribute("data-tutor-role");
+      if (itemRole === role) {
+        item.classList.remove("role-hidden");
+      } else {
+        item.classList.add("role-hidden");
+      }
+    });
+  }
+
+  function applyTutorRole(role, animate = false) {
+    try {
+      localStorage.setItem(STORAGE_KEY_ROLE, role);
+    } catch (e) {
+      /* private mode fallback */
+    }
+
+    filterSidebarByRole(role);
+    updateRoleBadge(role);
+
+    if (tutorRoleModal) {
+      if (animate) {
+        tutorRoleModal.classList.add("closing");
+        setTimeout(() => {
+          tutorRoleModal.style.display = "none";
+          tutorRoleModal.classList.remove("closing");
+        }, 300);
+      } else {
+        tutorRoleModal.style.display = "none";
+      }
+    }
+  }
+
+  function showRoleModal() {
+    if (tutorRoleModal) {
+      tutorRoleModal.style.display = "flex";
+      tutorRoleModal.classList.remove("closing");
+    }
+  }
+
+  function logoutTutor() {
+    try {
+      localStorage.removeItem(STORAGE_KEY_ROLE);
+    } catch (e) {
+      /* private mode fallback */
+    }
+    showRoleModal();
+  }
+
+  if (btnSelectFullTime) {
+    btnSelectFullTime.addEventListener("click", () => applyTutorRole("full-time", true));
+  }
+  if (btnSelectPartTime) {
+    btnSelectPartTime.addEventListener("click", () => applyTutorRole("part-time", true));
+  }
+
+  if (roleBadgeBtn) {
+    roleBadgeBtn.addEventListener("click", logoutTutor);
+  }
+  if (roleBadgeBtnMobile) {
+    roleBadgeBtnMobile.addEventListener("click", logoutTutor);
+  }
+
+  // Initialize tutor role on load
+  let savedRole = null;
+  try {
+    savedRole = localStorage.getItem(STORAGE_KEY_ROLE);
+  } catch (e) {
+    savedRole = null;
+  }
+
+  if (savedRole === "full-time" || savedRole === "part-time") {
+    applyTutorRole(savedRole, false);
+  } else {
+    showRoleModal();
+  }
 
   // Focus input on load
   chatInput.focus();

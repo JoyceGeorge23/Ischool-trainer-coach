@@ -1,0 +1,440 @@
+=== SLIDE 1 ===
+i S c h o o l
+T r a i n i n g  -  P a r t  0 5
+By iSchool
+
+
+=== SLIDE 2 ===
+Introduction
+As a tutor at iSchool, you’ll work with different people to make the learning
+experience successful. It’s important to know:
+Who you’ll communicate with?
+– like students, parents, Mentors, and other tutors.
+What their roles are?
+– understanding what they do and how they support you.
+How to communicate with them?
+– following iSchool’s rules to stay clear, professional, and respectful.
+
+
+=== SLIDE 3 ===
+T u t o r s  C y c l e  -  H R
+
+
+=== SLIDE 4 ===
+Tutors Cycle
+Team
+leaders
+Mentors
+Moderation  Students
+HR
+Heads  &
+Supervisors
+
+
+=== SLIDE 5 ===
+The HR department manages everything
+related to employees. Tutors can contact
+HR for questions about salaries, sick leave,
+vacations, or other time off. HR also helps
+with workplace issues and understanding
+company policies.
+HR
+
+
+=== SLIDE 6 ===
+How can we
+communicate
+
+
+=== SLIDE 7 ===
+H R
+i S c h o o l
+D a s h b o a r d
+W h a t s a p p
+B o t
+
+
+=== SLIDE 8 ===
+iSchool Dashboard
+
+
+=== SLIDE 9 ===
+WhatsApp Bot
+
+
+=== SLIDE 10 ===
+T u t o r s  c y c l e  -  E d u c a t i o n
+
+
+=== SLIDE 11 ===
+Tutors Cycle
+Team
+leaders
+Mentors
+Moderation  Students
+HR
+Heads  &
+Supervisors
+
+
+=== SLIDE 12 ===
+Supervisors are senior leaders who are contacted only in emergencies
+Supervisors
+A y a  E l  N a g g a r
+E d u .  H e a d
+Y o u s e f  H a s s a n
+S e i f  A l d e e n
+E d u .  S u p e r v i s o r
+A s m a a  N a s e f
+E d u .  S u p e r v i s o r
+E d u .  S u p e r v i s o r
+
+
+=== SLIDE 13 ===
+A team leader is someone who holds
+monthly evaluation meetings to help
+improve session quality.
+They work closely with tutors to
+support them in delivering better
+sessions and are available to handle
+important issues that mentors cannot
+solve.
+Team Leader
+G h a d a
+M o h a m e d
+N e r m e e n  A l
+H u b a b t i
+M o s t a f a
+A b d a l l a h
+N a d a
+H u s s i e n
+H e b a
+S a m a l o u t y
+A h m e d
+H e s h a m
+A s m a a  N a s e f
+E d u .  S u p e r v i s o r
+
+
+=== SLIDE 14 ===
+A mentor is someone who supports the
+tutor during sessions, offering both
+technical and non-technical help.
+They make sure the tutor has the tools
+& knowledge to deliver the session.
+Mentors
+M e n t o r s
+t u t o r s
+T e a m  L e a d e r s
+
+
+=== SLIDE 15 ===
+A moderator helps the tutor handle non-
+technical, unexpected situations with
+students during the session. They can
+address concerns and communicate well
+with students or parents, working with the
+tutor to keep the session smooth and
+productive.
+Moderation
+
+
+=== SLIDE 16 ===
+How can we
+communicate
+
+
+=== SLIDE 17 ===
+Mentors Team
+leaders
+Slack
+
+
+=== SLIDE 18 ===
+Education Announcement
+The Announcement channel
+on Slack is a space where
+team leaders post important
+updates and information.
+Only team leaders can post
+here to keep communication
+clear and organized. Tutors
+should check this channel
+often to stay updated with
+the latest news
+
+
+=== SLIDE 19 ===
+Instructors Education
+The Instructors Education
+channel on Slack is a space
+where Instructors / tutors can
+post and share thoughts
+regarding the content task or
+questions with other tutors at
+iSchool.
+
+
+=== SLIDE 20 ===
+Team Channel
+The Team channel on Slack is
+a space where Instructors /
+tutors can post and share
+thoughts regarding the
+content task or questions
+with other tutors at the same
+team, and Team leader can
+share the announcements
+with them .
+
+
+=== SLIDE 21 ===
+Sub-team with mentor
+The Sub-Team channel on
+Slack is a space where
+Instructors / tutors can post
+and share thoughts regarding
+the content task or questions
+with other tutors at the same
+team, and Mentors can share
+the announcements with
+them .
+
+
+=== SLIDE 22 ===
+iSchool Highlights
+The iSchool Highlights
+channel on Slack is a space
+where tutors can share their
+achievements and highlights
+from their sessions with other
+iSchool team members.
+
+
+=== SLIDE 23 ===
+Moderation Channel
+The T-#### Moderation
+channel on Slack is a space
+where tutors, Moderator,
+Mentor and Team leader  can
+communicate together in
+case of any session related
+issue happens.
+
+
+=== SLIDE 24 ===
+O p e n  T i c k e t  w i t h  M o d e r a t i o n
+
+
+=== SLIDE 25 ===
+Working Hours
+10:00 AM
+T e a m  L e a d e r s  06:00 PM
+02:00 PM
+M e n t o r s  10:00 PM
+02:00 PM
+M o d e r a t o r s  10:00 PM
+
+
+=== SLIDE 26 ===
+T u t o r s  c y c l e  -  S t u d e n t s
+
+
+=== SLIDE 27 ===
+Tutors Cycle
+Team
+leaders
+Mentors
+Moderation Students
+HR
+Heads  &
+Supervisors
+
+
+=== SLIDE 28 ===
+Students are the primary focus of tutors,
+who teach them through live online
+sessions. At iSchool, we work with students
+aged 6 to 18, guiding them in their learning
+journey.
+Students
+
+
+=== SLIDE 29 ===
+How can we
+communicate
+
+
+=== SLIDE 30 ===
+Students
+C o m m u n i t y
+T a b
+Sessions
+live
+meetings
+
+
+=== SLIDE 31 ===
+live sessions can be accessed directly from the iSchool dashboard. If a
+student is late, tutors can easily notify the parent through the
+dashboard.
+Session - Live meetings
+
+
+=== SLIDE 32 ===
+Community Tab
+A n n o u n c e m e n t s
+S t u d e n t  C h a n n e l
+C h a n n e l s
+
+
+=== SLIDE 33 ===
+Student (Private) Channel
+
+
+=== SLIDE 34 ===
+Announcements channel
+E d u c a t i o n
+A n n o u n c e m e n t s
+A n n o u n c e m e n t s
+For Tutors
+
+
+=== SLIDE 35 ===
+Education
+Announcements
+
+
+=== SLIDE 36 ===
+Announcements
+& Competitions
+
+
+=== SLIDE 37 ===
+Report Message
+If someone sends an inappropriate message, you can report it
+using the flag feature. This feature helps maintain a safe and
+respectful environment
+
+
+=== SLIDE 38 ===
+W o r k i n g  H o u r s
+Slots Time
+Slot 1 03:00 - 04:00 PM
+Slot 2 04:30 - 05:30 PM
+Slot 3 06:00 - 07:00 PM
+Slot 4 07:30 - 08:30 PM
+Slot 5 09:00 - 10:00 PM
+From Saturday to Wednesday
+From 02:00 to 10:00 PM
+Check the dashboard from 2:00 PM and during
+your shift for your scheduled sessions starting
+from 3:00 PM.
+If you have any unoccupied slots, please note
+that they may be assigned to sessions based
+on your study during the day. You will be
+notified by the moderation team on Slack, and
+the session will also appear on your dashboard.
+Tutors
+
+
+=== SLIDE 39 ===
+Communication
+Guidelines
+You can check all the rules
+and details regarding the
+communication through the
+Communication guideline
+
+
+=== SLIDE 40 ===
+T u t o r s  C a r e e r  p a t h
+
+
+=== SLIDE 41 ===
+Rank 1
+At our company, we believe in fostering a culture of growth and
+development for our Instructors through a structured Ranking system.
+ensuring that each Instructor has the opportunity to thrive and excel
+within our organization.
+Rank 2
+Rank 3
+Rank 4
+Rank 5
+Rank 6
+Rank 8
+Rank 9
+Rank 10
+Rank 7
+RANKING
+Bronze
+Instructor
+Silver
+Instructor
+Golden
+Instructor
+Platinum
+Instructor
+Hero
+InstructorDiamond
+Instructor
+Champion
+Instructor
+Master
+Instructor
+Grand Master
+Instructor
+Elite
+Instructor
+Rank 1
+
+
+=== SLIDE 42 ===
+UPGRADE
+The upgrade schedule occurs on a quarterly
+basis, subject to factors such as study level,
+quality, feedback, and cancellation
+
+
+=== SLIDE 43 ===
+Quality
+Quality management in our Sessions is the act of
+overseeing different activities and tasks within the
+session to ensure that session quality and level of
+education offered, as well as the means used to provide
+them, are consistent. It helps to achieve and maintain a
+desired level of quality within the education department
+in ISchool.
+
+
+=== SLIDE 44 ===
+The iSchool Quality Team evaluates a random
+sample of the instructor sessions each month,
+according to the the iSchool Quality Guidelines
+and Evaluation Criteria, the number of sessions
+reviewed is proportional to the number of
+sessions each instructor gives in a given month.
+Quality Process
+
+
+=== SLIDE 45 ===
+
+
+
+=== SLIDE 46 ===
+Meeting Take away
+Tutor Communication Cycle
+How to communicate with HR
+How to communicate with Education
+Department (TL, Mentor...etc)
+How to communicate with Students
+What is next?
+
+
+=== SLIDE 47 ===
+Q & A
+
+
+=== SLIDE 48 ===
+T h a n k  Y o u
+

@@ -1678,3 +1678,230 @@ textarea,
   display: block;
   object-fit: contain;
 }
+
+/* ── Role Filter Utility ───────────────────────────────────────────── */
+.role-hidden {
+  display: none !important;
+}
+
+/* ── Role Badge Button (Header) ────────────────────────────────────── */
+.role-badge-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  min-height: 38px;
+  padding: 6px 12px;
+  font-family: inherit;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: color-mix(in srgb, var(--surface) 80%, var(--action) 10%);
+  border: 1px solid var(--border-strong);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all var(--t-fast, 0.2s);
+}
+
+.role-badge-btn:hover {
+  background: color-mix(in srgb, var(--surface) 60%, var(--action) 20%);
+  border-color: var(--action);
+  transform: translateY(-1px);
+}
+
+.mobile-role-badge {
+  margin-inline-start: auto;
+  margin-inline-end: 4px;
+  min-height: 34px;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+}
+
+/* ── Tutor Role Landing Modal ────────────────────────────────────── */
+.landing-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: rgba(10, 15, 29, 0.85);
+  backdrop-filter: blur(12px);
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.landing-overlay.closing {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.landing-card {
+  width: 100%;
+  max-width: 520px;
+  background: #0f172a;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 24px;
+  padding: 32px 28px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), 0 0 40px rgba(5, 111, 236, 0.15);
+  color: #f8fafc;
+  text-align: center;
+  transform: scale(1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: landingFadeIn 0.4s ease-out;
+}
+
+@keyframes landingFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.landing-header {
+  margin-bottom: 28px;
+}
+
+.landing-logo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.landing-logo {
+  height: auto;
+  max-width: 150px;
+  filter: drop-shadow(0 2px 8px rgba(0,0,0,0.3));
+}
+
+.landing-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.02em;
+}
+
+.landing-subtitle {
+  font-size: 0.9375rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.5;
+}
+
+.landing-options {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.role-option-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  width: 100%;
+  padding: 18px 20px;
+  background: rgba(30, 41, 59, 0.7);
+  border: 1.5px solid rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  color: #f8fafc;
+  cursor: pointer;
+  text-align: start;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.role-option-card:hover {
+  background: rgba(30, 41, 59, 1);
+  border-color: rgba(5, 172, 255, 0.5);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3), 0 0 15px rgba(5, 172, 255, 0.1);
+}
+
+.role-option-card:active {
+  transform: translateY(0);
+}
+
+.role-card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  flex-shrink: 0;
+}
+
+.role-card-icon.fulltime-icon {
+  background: rgba(255, 127, 28, 0.15);
+  color: #ff7f1c;
+}
+
+.role-card-icon.parttime-icon {
+  background: rgba(168, 85, 247, 0.15);
+  color: #a855f7;
+}
+
+.role-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.role-card-content h2 {
+  font-size: 1.0625rem;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+  color: #ffffff;
+}
+
+.role-card-content p {
+  font-size: 0.8125rem;
+  color: #94a3b8;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.role-card-arrow {
+  color: #64748b;
+  transition: transform 0.2s ease, color 0.2s ease;
+  flex-shrink: 0;
+}
+
+[dir="rtl"] .role-card-arrow {
+  transform: rotate(180deg);
+}
+
+.role-option-card:hover .role-card-arrow {
+  color: #05acff;
+  transform: translateX(4px);
+}
+
+[dir="rtl"] .role-option-card:hover .role-card-arrow {
+  transform: rotate(180deg) translateX(4px);
+}
+
+@media (max-width: 480px) {
+  .landing-card {
+    padding: 24px 18px;
+    border-radius: 20px;
+  }
+  .landing-title {
+    font-size: 1.25rem;
+  }
+  .role-option-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .role-card-icon {
+    width: 44px;
+    height: 44px;
+  }
+}

@@ -12,6 +12,16 @@
       "nav.framework": "Trainer Skills Framework",
       "chat.sub": "Internal assistant to help iSchool tutors improve session delivery",
 
+      "landing.title": "Welcome to iSchool Trainer Coach",
+      "landing.subtitle": "Please select your tutor role to customize your training roadmap:",
+      "landing.fulltime.t": "Full Time Tutor",
+      "landing.fulltime.d": "Full-time training roadmap, shift schedules, team roles & career path",
+      "landing.parttime.t": "Part Time Tutor",
+      "landing.parttime.d": "Part-time training roadmap, flexible slots, assessments & dashboard guide",
+      "role.badge.fulltime": "Full Time Tutor",
+      "role.badge.parttime": "Part Time Tutor",
+      "role.badge.logout": "Log out",
+
       "welcome.lead": "Welcome 👋",
       "welcome.body":
         "I help tutors with the trainer skills framework. Ask about teaching, presentation, communication or management skills — or just describe what happened in your session. I answer only from the official framework.",
@@ -24,6 +34,14 @@
       "s.tagenda.t": "K12 Curriculum Roadmap",
       "s.dash.t": "iSchool Free Sessions",
       "s.ptdash.t": "iSchool Dashboard Tabs",
+      
+      "s.b2c.t": "B2C Project-Based Training",
+      "s.b2c.d": "Team roles, shift slots, video assessments, K12 roadmap & full dashboard guide",
+      "s.b2cteam.t": "Education Team & Working Hours",
+      "s.b2cassess.t": "Required Video Assessments",
+      "s.b2ck12.t": "K12 Roadmap & Free Sessions",
+      "s.b2cstruct.t": "Session Structure & Study Method",
+      "s.b2cdash.t": "iSchool Dashboard Full Guide",
       
       "s.fulltime2.t": "Training - Part 02",
       "s.fulltime2.d": "Presentation setup, icebreakers, feedback, session management & Zoom tools",
@@ -39,6 +57,22 @@
       "s.beforesession.t": "Before the Session",
       "s.duringsession.t": "During the Session",
       "s.aftersession.t": "After the Session",
+      
+      "s.fulltime4.t": "Training - Part 04",
+      "s.fulltime4.d": "Session situations, Quality oversight, Yellow/Red/Green flags policy & Roleplay",
+      "s.c4situations.t": "Online & Community Situations",
+      "s.c4quality.t": "Quality Oversight & Evaluation",
+      "s.c4flags.t": "Yellow, Red & Green Flags Policy",
+      "s.c4redviol.t": "Red Flag Violations List",
+      "s.c4roleplay.t": "Roleplay Submission & Requirements",
+      
+      "s.fulltime5.t": "Training - Part 05",
+      "s.fulltime5.d": "Tutor cycle, HR & Education team roles, Slack channels, shift slots & 10-rank career path",
+      "s.c5roles.t": "HR & Education Team Roles",
+      "s.c5slack.t": "Slack Channels & Moderation Ticket",
+      "s.c5shifts.t": "Shifts, Hours & Tutor Slots",
+      "s.c5community.t": "Student Sessions & Community Flagging",
+      "s.c5ranks.t": "Career Path & 10 Ranks Upgrade",
       
       "s.soft.t": "Soft Skills",
       "s.soft.d": "The four core disciplines every session draws on",
@@ -82,7 +116,17 @@
       "nav.courses": "خارطة طريق التدريب",
       "nav.framework": "إطار مهارات المدرب",
       "chat.sub": "مساعد داخلي لمساعدة مدربي آي سكول على تحسين أداء الحصة",
-      
+
+      "landing.title": "أهلاً بك في مدرب آي سكول",
+      "landing.subtitle": "يرجى اختيار نظام عملك لتخصيص خطتك التدريبية:",
+      "landing.fulltime.t": "مدرب دوام كامل (Full Time)",
+      "landing.fulltime.d": "عرض خارطة تدريب الدوام الكامل ومواعيد الشفتات والمسار الوظيفي",
+      "landing.parttime.t": "مدرب دوام جزئي (Part Time)",
+      "landing.parttime.d": "عرض خارطة تدريب الدوام الجزئي وساعات العمل والتقييمات المطلوبة",
+      "role.badge.fulltime": "دوام كامل (Full Time)",
+      "role.badge.parttime": "دوام جزئي (Part Time)",
+      "role.badge.logout": "تسجيل الخروج",
+
       "welcome.lead": "أهلاً 👋",
       "welcome.body":
         "بساعد المدربين في إطار مهارات التدريب. اسألني عن مهارات التدريس، أو العرض والتقديم، أو التواصل، أو الإدارة — أو احكيلي بس اللي حصل في الحصة. بجاوب من الإطار الرسمي بس.",
@@ -92,9 +136,17 @@
       "s.whours.t": "الرؤية وهيكل الفريق",
       "s.k12map.t": "ساعات العمل ومواعيد الـ Slots",
       "s.sflow.t": "التقييمات المطلوبة والـ Assessment",
-      "s.tagenda.t": "خارطة منهج K12 Roadmap",
-      "s.dash.t": "حصص آي سكول المجانية",
-      "s.ptdash.t": "أقسام لوحة التحكم Dashboard",
+      "s.tagenda.t": "خارطة المنهج K12",
+      "s.dash.t": "الجلسات المجانية",
+      "s.ptdash.t": "تبويبات لوحة التحكم",
+
+      "s.b2c.t": "B2C Project-Based Training",
+      "s.b2c.d": "أدوار الفريق، مواعيد الشفتات، التقييمات، خارطة K12 والدليل الكامل للداشبورد",
+      "s.b2cteam.t": "فريق التعليم وساعات العمل",
+      "s.b2cassess.t": "فيديوهات التقييم المطلوب",
+      "s.b2ck12.t": "خارطة K12 والجلسات المجانية",
+      "s.b2cstruct.t": "هيكل الحصة وطريقة المذاكرة",
+      "s.b2cdash.t": "دليل الداشبورد الشامل",
 
       "s.fulltime2.t": "Training - Part 02",
       "s.fulltime2.d": "تجهيز الجلسة، أنشطة كسر الجليد، التغذية الراجعة، وإدارة أدوات زوم",
@@ -110,6 +162,22 @@
       "s.beforesession.t": "قبل الحصة",
       "s.duringsession.t": "خلال الحصة",
       "s.aftersession.t": "بعد الحصة",
+
+      "s.fulltime4.t": "Training - Part 04",
+      "s.fulltime4.d": "مواقف الحصة، رقابة الجودة، سياسة الأعلام الأصفر والأحمر والأخضر والرولبلاي",
+      "s.c4situations.t": "مواقف الحصة وقسم المجتمع",
+      "s.c4quality.t": "رقابة وتقييم الجودة",
+      "s.c4flags.t": "سياسة الأعلام (الأصفر والأحمر والأخضر)",
+      "s.c4redviol.t": "قائمة مخالفات العلم الأحمر",
+      "s.c4roleplay.t": "تسليم ومتطلبات الرولبلاي Roleplay",
+
+      "s.fulltime5.t": "Training - Part 05",
+      "s.fulltime5.d": "دورة المدرب، أدوار فريق HR والتعليم، قنوات سلاك، مواعيد الشفتات والـ 10 رتب الوظيفية",
+      "s.c5roles.t": "أدوار فريق الـ HR والتعليم",
+      "s.c5slack.t": "قنوات سلاك وتكت الطوارئ للمودريشن",
+      "s.c5shifts.t": "مواعيد الشفتات وساعات الـ Slots",
+      "s.c5community.t": "حصص الطلاب والإبلاغ في الكوميونتي",
+      "s.c5ranks.t": "المسار الوظيفي والـ 10 رتب للترقية",
 
       "s.soft.t": "المهارات الشخصية",
       "s.soft.d": "المجالات الأربعة الأساسية اللي أي حصة بتعتمد عليها",

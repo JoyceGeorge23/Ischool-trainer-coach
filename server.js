@@ -83,24 +83,47 @@ const fs = require("fs");
 let localCoursesKB = "";
 try {
   const pt1Path = path.join(__dirname, "PartTime_Course_01.txt");
+  const b2cPath = path.join(__dirname, "B2C_Project_Based.txt");
+  const c1Path = path.join(__dirname, "OnBoarding_Course_01.txt");
   const c2Path = path.join(__dirname, "OnBoarding_Course_02.txt");
   const c3Path = path.join(__dirname, "OnBoarding_Course_03.txt");
+  const c4Path = path.join(__dirname, "OnBoarding_Course_04.txt");
+  const c5Path = path.join(__dirname, "OnBoarding_Course_05.txt");
+  const commPath = path.join(__dirname, "Communication_Skills.txt");
+  const mgmtPath = path.join(__dirname, "Management_Skills.txt");
+  const presPath = path.join(__dirname, "Presentation_Skills.txt");
+  const studPath = path.join(__dirname, "Student_Cases.txt");
+  const fwPath = path.join(__dirname, "iSchool_Trainer_Skills_Framework.txt");
 
-  let pt1Text = "";
-  let c2Text = "";
-  let c3Text = "";
+  const filesToLoad = [
+    { path: pt1Path, label: "Part Time course 1", folder: "slides_pt1" },
+    { path: b2cPath, label: "B2C Project-Based", folder: "slides_b2c" },
+    { path: c1Path, label: "Training - Part 01", folder: "slides" },
+    { path: c2Path, label: "Training - Part 02", folder: "slides_c2" },
+    { path: c3Path, label: "Teaching - Part 03", folder: "slides_c3" },
+    { path: c4Path, label: "Training - Part 04", folder: "slides_c4" },
+    { path: c5Path, label: "Training - Part 05", folder: "slides_c5" },
+    { path: commPath, label: "Communication Skills", folder: null },
+    { path: mgmtPath, label: "Management Skills", folder: null },
+    { path: presPath, label: "Presentation Skills", folder: null },
+    { path: studPath, label: "Student Cases", folder: null },
+    { path: fwPath, label: "Trainer Skills Framework", folder: null },
+  ];
 
-  if (fs.existsSync(pt1Path)) {
-    pt1Text = `=== DOCUMENT: Part Time course 1 ===\n\n` + fs.readFileSync(pt1Path, "utf8");
-  }
-  if (fs.existsSync(c2Path)) {
-    c2Text = `=== DOCUMENT: Training - Part 02 ===\n\n` + fs.readFileSync(c2Path, "utf8");
-  }
-  if (fs.existsSync(c3Path)) {
-    c3Text = `=== DOCUMENT: Teaching - Part 03 ===\n\n` + fs.readFileSync(c3Path, "utf8");
+  const loadedTexts = [];
+  for (const item of filesToLoad) {
+    if (fs.existsSync(item.path)) {
+      let content = fs.readFileSync(item.path, "utf8");
+      if (item.folder) {
+        content = content.replace(/=== SLIDE (\d+) ===/g, (match, num) => {
+          return `=== SLIDE ${num} [EXACT_IMAGE: ![Slide ${num}](/${item.folder}/slide_${num}.png)] ===`;
+        });
+      }
+      loadedTexts.push(`=== DOCUMENT: ${item.label} ===\n\n` + content);
+    }
   }
 
-  localCoursesKB = [pt1Text, c2Text, c3Text].filter(Boolean).join("\n\n============================================================\n\n");
+  localCoursesKB = loadedTexts.join("\n\n============================================================\n\n");
 } catch (err) {
   console.error("Error loading local course files:", err);
 }
@@ -263,6 +286,55 @@ C) Motivation-Driven Students:
 D) Cognitive-Driven Students:
    - Behavior: Different processing speeds, conceptual gaps, misconception struggles, overload from fast pacing.
    - Strategy: Cognitive chunking, scaffolded guidance, concept structuring, depth recognition, support calibration.
+
+=== 6. TRAINING PART 05: TUTOR CYCLE, HR, EDUCATION TEAM, SLACK, SHIFTS & 10-RANK CAREER PATH (دورة المدرب وفريق التعليم والـ HR وقنوات سلاك والـ 10 رتب) ===
+
+A) Tutor Cycle & HR Department (فريق HR والموارد البشرية):
+   - HR Role: Manages employee contracts, salaries (مرتبات/راتب), sick leave (إجازة مرضي), vacations (إجازات), time off, workplace issues, and company policies.
+   - HR Communication Channels: iSchool Dashboard & WhatsApp Bot.
+
+B) Tutor Cycle & Education Team Roles (فريق التعليم والأدوار):
+   - Supervisors (المشرفين): Senior leaders contacted only in emergency cases (Aya El Naggar Edu. Head, Youssef Hassan, Seif Aldeen, Asmaa Nasef).
+   - Team Leaders (تيم ليدر / قادة الفريق): Hold monthly evaluation meetings, help improve session quality, support tutors, and handle escalated issues (Ghada Mohamed, Nermeen Al Hubabti, Mostafa Abdallah, Nada Hussein, Heba Samalouty). Working hours: 10:00 AM - 06:00 PM.
+   - Mentors (منطور / مينتور): Support tutors during sessions with technical and non-technical guidance. Working hours: 02:00 PM - 10:00 PM.
+   - Moderators / Moderation (مودريشن / مودريتور): Help handle non-technical unexpected situations with students/parents during live sessions. Working hours: 02:00 PM - 10:00 PM.
+
+C) Slack Communication Channels (قنوات سلاك):
+   - Education Announcement: Official updates from Team Leaders (read-only for tutors).
+   - Instructors Education: Tutors share thoughts, content tasks, and questions with all tutors.
+   - Team Channel: Tutors and Team Leader share content questions and team announcements.
+   - Sub-team with Mentor: Tutors and Mentor share content tasks and announcements.
+   - iSchool Highlights: Tutors share achievements and session highlights.
+   - T-#### Moderation Channel: Tutors, Moderator, Mentor, and Team Leader solve live session issues together. Open Ticket with Moderation when needed.
+
+D) Working Hours & Shift Slots (ساعات العمل والـ Slots):
+   - Shifts: Saturday to Wednesday from 02:00 PM to 10:00 PM.
+   - Scheduled Slots:
+     - Slot 1: 03:00 PM - 04:00 PM
+     - Slot 2: 04:30 PM - 05:30 PM
+     - Slot 3: 06:00 PM - 07:00 PM
+     - Slot 4: 07:30 PM - 08:30 PM
+     - Slot 5: 09:00 PM - 10:00 PM
+   - Tutors check dashboard from 2:00 PM for scheduled sessions starting from 3:00 PM. Unoccupied slots may be assigned during the day with Slack notification from Moderation.
+
+E) Students Cycle & Community Tab (حصص الطلاب والكوميونتي):
+   - Live meetings accessed directly from iSchool dashboard; notify parents via dashboard if student is late.
+   - Community Tab: Announcements & Student Channel (private channel). Report inappropriate messages using the Flag feature.
+
+F) Tutors Career Path & 10 Ranks Upgrade System (المسار الوظيفي والـ 10 رتب والترقية):
+   - Structured 10-Rank Upgrade System ensuring continuous professional growth:
+     - Rank 1: Bronze Instructor (مدرب برونزي)
+     - Rank 2: Silver Instructor (مدرب فضي)
+     - Rank 3: Golden Instructor (مدرب ذهبي)
+     - Rank 4: Platinum Instructor (مدرب بلاتيني)
+     - Rank 5: Hero Instructor (مدرب هيرو / بطل)
+     - Rank 6: Diamond Instructor (مدرب ماسي / دايموند)
+     - Rank 7: Champion Instructor (مدرب تشامبيون)
+     - Rank 8: Master Instructor (مدرب ماستر)
+     - Rank 9: Grand Master Instructor (مدرب جراند ماستر)
+     - Rank 10: Elite Instructor (مدرب إليت / النخبة)
+   - Upgrade Schedule: Occurs on a quarterly basis (كل 3 أشهر / ربع سنوي) based on study level, session quality, feedback, and cancellation rate.
+   - Quality Team: iSchool Quality Team evaluates a random sample of tutor sessions monthly according to iSchool Quality Guidelines & Evaluation Criteria.
 `;
 
 // The material is written in English, but tutors ask in Arabic. Without this
@@ -319,6 +391,71 @@ const AR_EN_CONCEPTS = {
   "اعمل": "action solution management behavior",
   "اتصرف": "action solution management behavior",
   "ازاي": "how to handle solution action",
+
+  // Training - Part 05 & Onboarding concepts
+  "شفت": "shift shifts slot slots working hours",
+  "شفتات": "shift shifts slot slots working hours",
+  "سلوت": "slot slots shift working hours",
+  "سلوتس": "slots slot shift working hours",
+  "ساعة": "working hours slots time",
+  "ساعات": "working hours slots time",
+  "مواعيد": "working hours slots shift schedules",
+  "ميعاد": "working hours slots shift schedules",
+  "مرتب": "hr salary payroll time off",
+  "مرتبات": "hr salary payroll time off",
+  "راتب": "hr salary payroll time off",
+  "رواتب": "hr salary payroll time off",
+  "اجازة": "hr vacation sick leave time off",
+  "إجازة": "hr vacation sick leave time off",
+  "إجازات": "hr vacation sick leave time off",
+  "اجازات": "hr vacation sick leave time off",
+  "مرضي": "hr sick leave vacation time off",
+  "سلاك": "slack channels moderation announcement",
+  "قناة": "slack channels communication",
+  "قنوات": "slack channels communication",
+  "تكت": "open ticket moderation slack",
+  "تذكرة": "open ticket moderation slack",
+  "طوارئ": "emergency ticket moderation supervisor",
+  "اتشار": "hr human resources salary leave vacation policy",
+  "اتش": "hr human resources",
+  "تيم": "team leader team channel sub-team",
+  "ليدر": "team leader supervisors ghada nermeen mostafa nada heba",
+  "منطور": "mentor mentors technical help sub-team",
+  "مانتور": "mentor mentors technical help sub-team",
+  "مينتور": "mentor mentors technical help sub-team",
+  "مودريشن": "moderation moderator open ticket slack channel",
+  "مودريتور": "moderation moderator open ticket slack channel",
+  "سوبرفايزر": "supervisor supervisors aya youssef seif asmaa",
+  "مشرف": "supervisor supervisors edu head",
+  "مشرفين": "supervisors supervisor edu head",
+  "رتبة": "rank ranks career path 10 ranks upgrade bronze silver golden platinum hero diamond champion master grandmaster elite",
+  "رتب": "rank ranks career path 10 ranks upgrade bronze silver golden platinum hero diamond champion master grandmaster elite",
+  "رتبتك": "rank ranks career path 10 ranks upgrade",
+  "ترقية": "upgrade quarterly career path ranks schedule",
+  "ترقيات": "upgrade quarterly career path ranks schedule",
+  "مسار": "career path upgrade 10 ranks",
+  "كارير": "career path upgrade 10 ranks",
+  "برونز": "bronze rank 1 instructor",
+  "سيلفر": "silver rank 2 instructor",
+  "جولد": "golden rank 3 instructor",
+  "ذهبي": "golden rank 3 instructor",
+  "بلاتينيوم": "platinum rank 4 instructor",
+  "بلاتيني": "platinum rank 4 instructor",
+  "هيرو": "hero rank 5 instructor",
+  "دايموند": "diamond rank 6 instructor",
+  "ماسي": "diamond rank 6 instructor",
+  "تشمبيون": "champion rank 7 instructor",
+  "ماستر": "master rank 8 instructor",
+  "جراند": "grand master rank 9 instructor",
+  "إليت": "elite rank 10 instructor",
+  "اليت": "elite rank 10 instructor",
+  "نخبة": "elite rank 10 instructor",
+  "جودة": "quality team evaluation criteria guidelines",
+  "رقابة": "quality management oversight evaluation",
+  "كوميونتي": "community tab student channel report message flag",
+  "مجتمع": "community tab student channel report message flag",
+  "بلاغ": "report message flag feature community",
+  "علم": "report message flag yellow red green policy",
 };
 
 // Expands an Arabic query with its English concept keywords so the keyword
@@ -469,11 +606,13 @@ function hasArabic(text) {
   return ARABIC_SCRIPT.test(String(text || ""));
 }
 
-// Arabic attaches the conjunction "و" and the article "ال" to the front of a
-// word ("والتقديم" = "and the presenting"), so strip them before matching.
+// Arabic attaches conjunctions ("و", "ف") and prepositions/articles ("ال", "بال", "لل", "ب", "ل", "ك") to the front of a word,
+// so strip them so "بالرتب" matches "رتب", "للاتشار" matches "اتشار", "بالشفتات" matches "شفتات".
 function stripArabicAffixes(term) {
-  let t = term.replace(/^و(?=.{4,})/, "");
-  t = t.replace(/^ال(?=.{3,})/, "");
+  let t = String(term || "");
+  t = t.replace(/^[وفف]/, "");
+  t = t.replace(/^(بال|لل|كال|فال|ال)(?=.+)/, "");
+  t = t.replace(/^[بلك](?=[^\s]{3,})/, "");
   return t;
 }
 
@@ -537,12 +676,18 @@ const STRONG_ANCHORS = new Set([
   "free","sessions","introductory",
   "dashboard","tabs","classes","profile","study","requests","policies","payroll","insights",
   "vacation","leaves","sick","leave","emergency","slack",
+  "flag","flags","yellow","red","green","quality","roleplay","deduction","deductions","breach","evaluation",
+  "rank","ranks","career","upgrade","bronze","silver","golden","platinum","hero","diamond","champion","master","grandmaster","elite","moderator","moderation","ticket","supervisor","supervisors",
+  "b2c","project-based","ping parent","join now","credentials","lms","teaching tab",
   // Arabic equivalents
   "شفت","شفتات","ساعة","ساعات","مواعيد","سلوت","سلوتس",
   "تقييم","تقييمات","الفيديو","تسجيل","كاميرا","مايك",
   "منهج","مستويات","مستوى","صف","صفوف",
   "مجانية","مجاني","حصص",
   "لوحة","التحكم","داشبورد","طلب","طلبات","اجازة","إجازة","مرتب","مرتبات","سلاك",
+  "علامة","أصفر","أحمر","أخضر","جودة","خصم","خصومات","رولبلاي",
+  "رتبة","رتب","ترقية","رتبتك","مشرف","مشرفين","مودريتور","مودريشن","تكت","تذكرة","بي تو سي",
+  "اتشار","اتش","ار","ليدر","تيم","منطور","مانتور","مينتور","سوبرفايزر","برونز","سيلفر","هيرو","ماستر","جراند","إليت","اليت","كارير","مسار","كوميونتي","بلاغ",
   // Slide/image request anchors
   "slide","slides","image","images","picture","photo","show","screenshot",
   "شريحة","شرايح","سلايد","سلايدات","صورة","صور","وريني","ورّيني",
@@ -764,16 +909,12 @@ STRICT OPERATIONAL GUIDELINES:
     - **Management Skills**: E.g., Transitioning to an unscripted "challenge mode" if students finish early to avoid dead air. E.g., Prioritizing teaching the debugging process over finishing game features when time is running out. E.g., Looking up unknown documentation together with a student to show reliability.
     - **Student Behavior**: E.g., Redirecting an attention-seeking student by saying "Hold that thought, you can share your screen in 5 minutes." (AR: احتفظ بالكود، شارك شاشتك بعد 5 دقائق). E.g., Emotionally regulating a frustrated student by reminding them that even pros get bugs, then debugging together. E.g., Assigning a bored gifted student a "Mentor" role to help others.
 
-13. **Embedding Slide Images**:
-    - When the tutor asks to see a specific slide, mentions a slide number (e.g. "show slide 10", "الشريحة رقم 12", "وريني slide 5"), or asks for the slide/image of a specific topic, module, or curriculum level present in the knowledge base (e.g., "image of level 2", "slide of level 3", "صورة level 2", "سلايد level 3"), you MUST identify the slide number X from the header \`=== SLIDE X ===\` of that content in your knowledge base and output the Markdown image link for it.
-    - If they ask "the image?", "the slide?", "i want the image", or ask for the visual of the topic currently being discussed or explained in the previous turn, you MUST output the Markdown image link of that slide.
-    - Choose the correct folder based on the course:
-      - For **Part Time course 1** (or "Part Time 1" / "Part Time Course"): Use \`![Slide X](/slides_pt1/slide_X.png)\` (where X is the slide number from 1 to 71).
-      - For **Onboarding Course 01** (or "Course 01" / "Training - Part 01"): Use \`![Slide X](/slides/slide_X.png)\` (where X is the slide number from 1 to 56).
-      - For **Onboarding Course 02** (or "Course 02" / "Training - Part 02"): Use \`![Slide X](/slides_c2/slide_X.png)\` (where X is the slide number from 1 to 32).
-      - For **Teaching Course 03** (or "Course 03" / "Teaching - Part 03"): Use \`![Slide X](/slides_c3/slide_X.png)\` (where X is the slide number from 1 to 31).
-    - Always output the Markdown image link on its own line directly under the slide's text content. Never use HTML img tags, always use standard Markdown syntax.
-    - When an image link is requested or relevant for a topic, this topic is DEFINITELY found in the framework. You MUST explain the content and display the image link, and you must NOT trigger the fallback "This topic was not found in the official iSchool framework."`;
+13. **Embedding Slide Images & Output Modes (Text Only, Image Only, or Both)**:
+    - **Mode 1: Image/Photo Only Requested**: If the tutor explicitly asks for the photo/image/slide ONLY (e.g. "image of level 2", "photo only", "وريني الصورة بس", "show slide 18", "i want the image"), output ONLY the slide image Markdown link [EXACT_IMAGE: ...] (or a 1-line label + the image link). Do NOT write a long text explanation.
+    - **Mode 2: Text Only Requested**: If the tutor asks for text only, explanation without pictures, or explicitly asks not to include images (e.g. "text only", "no image", "شرح بدون صور"), output ONLY the text explanation without any Markdown image link.
+    - **Mode 3: Default / Explanation with Visual**: If the tutor asks an explanation question where a visual/slide is relevant, or asks for both text and image (e.g. "explain zoom tools", "explain level 2 with image", "explain yellow flags"), output a concise text explanation AND include the exact slide image Markdown link [EXACT_IMAGE: ...] directly under the text.
+    - **Exact Image Tag Rule**: Each slide header in your knowledge base explicitly contains [EXACT_IMAGE: ![Slide X](/folder/slide_X.png)]. You MUST copy and output that EXACT Markdown image link! Never alter the folder path or slide number.
+    - When an image link is requested or relevant for a topic, this topic is DEFINITELY found in the framework. You MUST NOT trigger the fallback "This topic was not found in the official iSchool framework."`;
 }
 
 // ---------------------------------------------------------------------------
