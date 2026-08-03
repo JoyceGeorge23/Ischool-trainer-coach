@@ -978,59 +978,50 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     // "assistant" → "model", and the turn list must begin with a user turn.
     const contents = toGeminiContents(trimmedMessages);
 
-    // Try primary model first, with automatic fallback models if 429 Rate Limit is reached
-    const modelsToTry = [
-      GEMINI_MODEL,
-      "gemini-2.5-flash",
-      "gemini-1.5-flash"
-    ].filter((v, i, a) => a.indexOf(v) === i);
-
+    // Call GEMINI_MODEL (gemini-3.5-flash-lite) with retries and exponential backoff
     let response;
-    let success = false;
+    let attempts = 0;
+    const maxAttempts = 4;
+    const retryDelayMs = 1500;
 
-    for (const modelCandidate of modelsToTry) {
-      let attempts = 0;
-      const maxAttempts = 2;
-      const retryDelayMs = 1200;
-
-      while (attempts < maxAttempts) {
-        attempts++;
-        try {
-          response = await fetch(
-            `${GEMINI_API_BASE}/models/${modelCandidate}:streamGenerateContent?alt=sse`,
-            {
-              method: "POST",
-              headers: {
-                "x-goog-api-key": GEMINI_API_KEY,
-                "Content-Type": "application/json",
+    while (attempts < maxAttempts) {
+      attempts++;
+      try {
+        response = await fetch(
+          `${GEMINI_API_BASE}/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse`,
+          {
+            method: "POST",
+            headers: {
+              "x-goog-api-key": GEMINI_API_KEY,
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              systemInstruction: { parts: [{ text: systemInstruction }] },
+              contents,
+              generationConfig: {
+                temperature: 0.3,
+                maxOutputTokens: 1024,
               },
-              body: JSON.stringify({
-                systemInstruction: { parts: [{ text: systemInstruction }] },
-                contents,
-                generationConfig: {
-                  temperature: 0.3,
-                  maxOutputTokens: 1024,
-                },
-              }),
-            }
-          );
-
-          if (response.status === 429 && attempts < maxAttempts) {
-            console.warn(`[Chat] Model ${modelCandidate} rate limited (429). Retrying...`);
-            await new Promise((r) => setTimeout(r, retryDelayMs));
-            continue;
+            }),
           }
+        );
 
-          if (response.ok) {
-            success = true;
-            break;
-          }
-        } catch (err) {
-          console.error(`[Chat] Request error with model ${modelCandidate}:`, err);
+        if (response.status === 429 && attempts < maxAttempts) {
+          const wait = retryDelayMs * attempts;
+          console.warn(`[Chat] Gemini API 429 rate limit. Retrying ${attempts}/${maxAttempts} in ${wait}ms...`);
+          await new Promise((r) => setTimeout(r, wait));
+          continue;
+        }
+
+        if (response.ok) {
+          break;
+        }
+      } catch (err) {
+        console.error(`[Chat] Network error calling Gemini API (attempt ${attempts}):`, err);
+        if (attempts < maxAttempts) {
+          await new Promise((r) => setTimeout(r, 1000));
         }
       }
-
-      if (success) break;
     }
 
     if (!response || !response.ok) {
