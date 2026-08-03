@@ -978,54 +978,71 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     // "assistant" → "model", and the turn list must begin with a user turn.
     const contents = toGeminiContents(trimmedMessages);
 
-    // The client aborts at 30s, so the retry budget has to fit inside that
-    // with room for the answer itself. The old 6 attempts x 5s slept for 30s
-    // on a sustained 429 and guaranteed a client-side timeout instead of
-    // surfacing the rate-limit error.
+    // Try primary model first, with automatic fallback models if 429 Rate Limit is reached
+    const modelsToTry = [
+      GEMINI_MODEL,
+      "gemini-2.5-flash",
+      "gemini-1.5-flash"
+    ].filter((v, i, a) => a.indexOf(v) === i);
+
     let response;
-    let attempts = 0;
-    const maxAttempts = 3;
-    const retryDelayMs = 1500;
+    let success = false;
 
-    while (attempts < maxAttempts) {
-      attempts++;
-      response = await fetch(
-        `${GEMINI_API_BASE}/models/${GEMINI_MODEL}:streamGenerateContent?alt=sse`,
-        {
-          method: "POST",
-          headers: {
-            "x-goog-api-key": GEMINI_API_KEY,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            systemInstruction: { parts: [{ text: systemInstruction }] },
-            contents,
-            generationConfig: {
-              temperature: 0.3,
-              maxOutputTokens: 1024,
-            },
-          }),
+    for (const modelCandidate of modelsToTry) {
+      let attempts = 0;
+      const maxAttempts = 2;
+      const retryDelayMs = 1200;
+
+      while (attempts < maxAttempts) {
+        attempts++;
+        try {
+          response = await fetch(
+            `${GEMINI_API_BASE}/models/${modelCandidate}:streamGenerateContent?alt=sse`,
+            {
+              method: "POST",
+              headers: {
+                "x-goog-api-key": GEMINI_API_KEY,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                systemInstruction: { parts: [{ text: systemInstruction }] },
+                contents,
+                generationConfig: {
+                  temperature: 0.3,
+                  maxOutputTokens: 1024,
+                },
+              }),
+            }
+          );
+
+          if (response.status === 429 && attempts < maxAttempts) {
+            console.warn(`[Chat] Model ${modelCandidate} rate limited (429). Retrying...`);
+            await new Promise((r) => setTimeout(r, retryDelayMs));
+            continue;
+          }
+
+          if (response.ok) {
+            success = true;
+            break;
+          }
+        } catch (err) {
+          console.error(`[Chat] Request error with model ${modelCandidate}:`, err);
         }
-      );
-
-      if (response.status === 429 && attempts < maxAttempts) {
-        const wait = retryDelayMs * attempts; // 1.5s, then 3s
-        console.warn(`[Chat] Rate limit hit (429). Retry ${attempts}/${maxAttempts} in ${wait}ms...`);
-        await new Promise((resolve) => setTimeout(resolve, wait));
-        continue;
       }
-      break;
+
+      if (success) break;
     }
 
-    if (!response.ok) {
-      const errorData = await response.text();
-      console.error("Gemini API error:", response.status, errorData);
-      if (response.status === 429) {
+    if (!response || !response.ok) {
+      const status = response ? response.status : 500;
+      const errorData = response ? await response.text() : "No response";
+      console.error("Gemini API error:", status, errorData);
+      if (status === 429) {
         return res.status(429).json({
-          error: "Rate limit reached. Please wait a moment and try again.",
+          error: "Google Gemini API rate limit reached (15 requests/min quota). Please wait 10 seconds and try again.",
         });
       }
-      return res.status(response.status).json({
+      return res.status(status).json({
         error: "Failed to get response from AI. Please try again.",
       });
     }
