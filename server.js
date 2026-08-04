@@ -456,6 +456,23 @@ const AR_EN_CONCEPTS = {
   "مجتمع": "community tab student channel report message flag",
   "بلاغ": "report message flag feature community",
   "علم": "report message flag yellow red green policy",
+  // English & Arabic student behavior scenario synonyms
+  "shout": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "shouting": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "yell": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "yelling": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "scream": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "screaming": "student behavior cases student_cases management_skills moderation distraction screaming yelling loud rude angry incident escalation",
+  "angry": "student behavior cases student_cases management_skills moderation distraction angry student emotional escalation",
+  "aggressive": "student behavior cases student_cases management_skills moderation aggressive student escalation red flag breach",
+  "aggression": "student behavior cases student_cases management_skills moderation aggressive student escalation red flag breach",
+  "rude": "student behavior cases student_cases management_skills moderation rude student disrespect behavior escalation",
+  "stubborn": "student behavior cases student_cases management_skills stubborn uncooperative student behavior",
+  "refuse": "student behavior cases student_cases management_skills uncooperative student behavior refusal",
+  "refuses": "student behavior cases student_cases management_skills uncooperative student behavior refusal",
+  "crying": "student behavior cases student_cases management_skills emotional student crying upset behavior",
+  "disruptive": "student behavior cases student_cases management_skills moderation distraction management disruptive behavior",
+  "disruption": "student behavior cases student_cases management_skills moderation distraction management disruptive behavior",
 };
 
 // Expands an Arabic query with its English concept keywords so the keyword
@@ -665,6 +682,7 @@ const EXPLICIT_OFF_SCOPE_TERMS = new Set([
 const STRONG_ANCHORS = new Set([
   "teaching","presentation","communication","management","student","cases","behavior","behaviour",
   "attention","emotion","motivation","cognitive","ischool","child","kid","boy","girl",
+  "shout","shouting","yell","yelling","scream","screaming","angry","aggressive","aggression","rude","stubborn","refuse","refuses","crying","disruptive","disruption","fight","fighting","noisy","noise",
   // Mind maps and diagrams
   "mind","map","mindmap","diagram","visual","chart","tree",
   // Arabic direct equivalents (post-affix-strip)
@@ -674,7 +692,7 @@ const STRONG_ANCHORS = new Set([
   "ادارة","إدارة",           // management
   "سلوك","طالب","طلاب","ولد","ولاد","اولاد","أولاد","طفل","اطفال","أطفال","بنت","بنات","مشترك","مشتركين", // student & child synonyms
   "انتباه","مشاعر","دافعية","إدراك","ادراك", // 4 student behavior models
-  "بيتكلم","يتكلم","رغي","دوشة","يسمع","سمع","مسمعش","مسمعتش","عنيد","مشاغب","بيصيح","يزعق","بيصرخ","يزعل","بيزعل","يلعب","بيلعب","تشتت","مشمركز", // behavior descriptors
+  "بيتكلم","يتكلم","رغي","دوشة","يسمع","سمع","مسمعش","مسمعتش","عنيد","مشاغب","بيصيح","يزعق","بيزعق","يصرخ","بيصرخ","يزعل","بيزعل","يلعب","بيلعب","تشتت","مشمركز","يعيط","بيعيط","يرفض","رافض","شتم","بيشتم","قلة_ادب", // behavior descriptors
   "اعمل","اتصرف","ازاي","أعمل","أتصرف", // scenario action questions ("what to do / how to handle")
   "سكول","اي","آي",         // ischool in Arabic
   "خريطة","رسم","مخطط","ذهنية", // mind maps in Arabic
