@@ -646,6 +646,19 @@ const CONTEXT_ONLY_TERMS = new Set([
   "الحصة","الجلسة","الموقف",
 ]);
 
+// Explicit off-topic subjects (food, cooking, sports, games, weather, etc.).
+// If any of these appear in a user prompt, the prompt MUST be rejected as out-of-scope,
+// even if the user includes words like 'session', 'class', 'ولد', or 'سيشن'.
+const EXPLICIT_OFF_SCOPE_TERMS = new Set([
+  "food","eating","eat","cook","cooking","recipe","recipes","meal","meals","breakfast","lunch","dinner",
+  "sandwich","burger","pizza","snack","kitchen","cookware",
+  "sport","sports","football","soccer","basketball","swimming","gym","fitness","match","tennis",
+  "weather","rain","temperature","movie","movies","song","songs","music","game","games","gaming",
+  "أكل","اكل","ياكل","بياكل","طعام","طبخ","يطبخ","بيطبخ","وصفة","وجبة","وجبات","فطار","غدا","عشا","طبيخ","سندوتش","ساندوتش","بيتزا","برجر",
+  "رياضة","كرة","قدم","سلة","سباحة","جيم","ماتش","مباراة","كرة_قدم",
+  "طقس","مطر","أغنية","اغنية","موسيقى","فيلم","افلام","أفلام","ألعاب","العاب",
+]);
+
 // The four core skill names + their Arabic equivalents. If ANY of these appear
 // in the query, it is definitively in-scope — no ratio check needed.
 // These are the actual framework topics, not incidental words.
@@ -695,15 +708,21 @@ const STRONG_ANCHORS = new Set([
 
 // Returns true when the query is answerable from the material.
 function isInScope(userQuery, isFollowUp) {
-  // If this is an ongoing multi-turn conversation, always allow follow-ups
-  // to pass to the model so the conversation can continue naturally.
-  if (isFollowUp) return true;
-
   const terms = normalizeTerms(userQuery);
+
+  // 1. Explicit off-scope keyword check (food, cooking, sports, weather, etc.)
+  // Always reject these immediately, even if 'session', 'class', 'ولد', 'سيشن' or follow-up status is present.
+  const offScopeTermFound = terms.find((t) => EXPLICIT_OFF_SCOPE_TERMS.has(t));
+  if (offScopeTermFound) {
+    console.log(`[Scope] Explicit off-scope term matched ("${offScopeTermFound}") → out-of-scope`);
+    return false;
+  }
+
+  // If this is an ongoing multi-turn conversation without off-scope terms, allow follow-ups.
+  if (isFollowUp) return true;
 
   // Strong anchors: the actual 4 skill names (+ Arabic equivalents). If any
   // appears in the query it is unambiguously in-scope — skip all ratio checks.
-  // "I made a burger" has none of these; "Teaching Skills" always has "teaching".
   if (terms.some((t) => STRONG_ANCHORS.has(t))) {
     console.log(`[Scope] Strong anchor matched → in-scope`);
     return true;
@@ -819,7 +838,7 @@ function buildSystemPrompt(userQuery = "") {
     `   - If it does not cover the question at all, reply with this fallback in the correct language, and NOTHING else. No greeting before it, no closing line after it, no explanation, no suggestion of what else to ask. The entire reply is this one sentence:`,
     `     - EN: "This topic was not found in the official iSchool framework."`,
     `     - AR: "عفواً، الموضوع ده غير موجود في إطار آي سكول الرسمي."`,
-    `   - This applies to anything outside the framework — food, sports, news, personal chat, general knowledge, coding, or any topic the material does not contain. Never answer it "just to be helpful", and never answer it from your own general knowledge.`,
+    `   - **STRICT NON-FRAMEWORK RULE (FOOD, SPORTS, COOKING, RECIPES, HOBBIES, GENERAL LIFE)**: If a tutor's question involves any off-topic activity or item (such as food, eating, cooking, recipes, meals, sports, football, games, weather, or personal life), EVEN IF the prompt contains words like 'session', 'class', 'ولد', 'طالب', 'سيشن', 'حصة', or 'ازاي أساعده', YOU MUST NOT ANSWER OR GIVE ADVICE. You MUST reply ONLY with the exact single-sentence fallback above.`,
     `   - Never refer to "context", "documents", or how you retrieve information. You are a colleague/peer coach, not a search engine.`,
     ``,
     `4. **Never Assume**:`,
