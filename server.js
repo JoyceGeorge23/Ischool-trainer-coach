@@ -1031,15 +1031,25 @@ app.post(["/api/chat", "/chat"], rateLimit, async (req, res) => {
     if (!response || !response.ok) {
       const status = response ? response.status : 500;
       const errorData = response ? await response.text() : "No response";
-      console.error("Gemini API error:", status, errorData);
-      if (status === 429) {
-        return res.status(429).json({
-          error: "Google Gemini API rate limit reached (15 requests/min quota). Please wait 10 seconds and try again.",
-        });
+      console.warn(`[Chat] Gemini API returned status ${status}. Serving fallback framework answer from loaded material...`, errorData);
+
+      const kbContent = getKnowledgeBase(userQueryText);
+      const isAr = hasArabic(userQueryText);
+
+      // Clean snippet from KB content
+      const cleanKbSnippet = kbContent
+        .replace(/=== DOCUMENT \d+:.* ===/g, "")
+        .replace(/\[EXACT_IMAGE:.*?\]/g, "")
+        .trim();
+
+      let fallbackText = "";
+      if (isAr) {
+        fallbackText = `أهلاً، أنا مساعد آي سكول. الخدمة تواجه ضغطاً مؤقتاً، وهذه الإجابة المباشرة من إطار العمل الرسمي:\n\n${cleanKbSnippet.slice(0, 1800)}\n\nعايز نتوسع في دي؟`;
+      } else {
+        fallbackText = `Hi, I'm iSchool Support. The service is experiencing temporary high demand, here is the direct answer from the official framework:\n\n${cleanKbSnippet.slice(0, 1800)}\n\nWant me to go deeper on this?`;
       }
-      return res.status(status).json({
-        error: "Failed to get response from AI. Please try again.",
-      });
+
+      return streamPlainReply(res, fallbackText);
     }
 
     // Stream the response back using SSE
