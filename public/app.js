@@ -1005,7 +1005,7 @@
     roleBadgeBtnMobile.addEventListener("click", logoutTutor);
   }
 
-  // Initialize tutor role on load
+  // Initialize tutor role on load — Always show role selection overlay every time the page opens
   let savedRole = null;
   try {
     savedRole = localStorage.getItem(STORAGE_KEY_ROLE);
@@ -1014,10 +1014,15 @@
   }
 
   if (savedRole === "full-time" || savedRole === "part-time") {
-    applyTutorRole(savedRole, false);
+    filterSidebarByRole(savedRole);
+    updateRoleBadge(savedRole);
   } else {
-    showRoleModal();
+    filterSidebarByRole("part-time");
+    updateRoleBadge("part-time");
   }
+
+  // Always present the role choice screen every time the link is opened
+  showRoleModal();
 
   // Focus input on load
   chatInput.focus();

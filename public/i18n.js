@@ -276,7 +276,7 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     apply(current);
-    document.querySelectorAll("#langSwitch, #langSwitchMobile").forEach((btn) => {
+    document.querySelectorAll("#langSwitch, #langSwitchMobile, #langSwitchModal, .lang-switch-btn").forEach((btn) => {
       btn.addEventListener("click", toggle);
     });
   });

@@ -39,7 +39,39 @@ let isLoading = false;
 // Authenticate with the service account
 // ---------------------------------------------------------------------------
 function getAuth() {
-  const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, "utf-8"));
+  let credentials = null;
+
+  if (process.env.GOOGLE_CREDENTIALS_JSON) {
+    try {
+      credentials = JSON.parse(process.env.GOOGLE_CREDENTIALS_JSON);
+    } catch (e) {
+      console.error("Failed to parse GOOGLE_CREDENTIALS_JSON:", e);
+    }
+  } else if (process.env.GOOGLE_SERVICE_ACCOUNT_JSON) {
+    try {
+      credentials = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT_JSON);
+    } catch (e) {
+      console.error("Failed to parse GOOGLE_SERVICE_ACCOUNT_JSON:", e);
+    }
+  } else if (process.env.GOOGLE_CREDENTIALS_BASE64) {
+    try {
+      const decoded = Buffer.from(process.env.GOOGLE_CREDENTIALS_BASE64, "base64").toString("utf8");
+      credentials = JSON.parse(decoded);
+    } catch (e) {
+      console.error("Failed to parse GOOGLE_CREDENTIALS_BASE64:", e);
+    }
+  } else if (fs.existsSync(CREDENTIALS_PATH)) {
+    try {
+      credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, "utf-8"));
+    } catch (e) {
+      console.error("Failed to read credentials file:", e);
+    }
+  }
+
+  if (!credentials) {
+    return null;
+  }
+
   return new google.auth.GoogleAuth({
     credentials,
     scopes: ["https://www.googleapis.com/auth/drive.readonly"],
@@ -229,18 +261,16 @@ async function loadKnowledgeBase() {
     return knowledgeBase;
   }
 
-  if (!fs.existsSync(CREDENTIALS_PATH)) {
-    console.warn(
-      `⚠️  Credentials file not found at ${CREDENTIALS_PATH} — falling back`
-    );
-    return knowledgeBase;
-  }
-
   isLoading = true;
   console.log("\n📥 Loading knowledge base from Google Drive...");
 
   try {
     const auth = getAuth();
+    if (!auth) {
+      console.warn("⚠️ No Google Drive credentials found (file or environment variable) — using local course documents.");
+      isLoading = false;
+      return knowledgeBase;
+    }
     const drive = google.drive({ version: "v3", auth });
 
     const files = await listFiles(drive);

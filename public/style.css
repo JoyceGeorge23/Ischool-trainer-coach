@@ -1765,6 +1765,34 @@ textarea,
   }
 }
 
+.landing-top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.landing-lang-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 999px;
+  color: #f8fafc;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.landing-lang-switch:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(5, 172, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+
 .landing-header {
   margin-bottom: 28px;
 }
